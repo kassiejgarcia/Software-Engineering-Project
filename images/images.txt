@@ -1,0 +1,1 @@
+This folder is where we will put all of our image files for our website. You can just drag and drop files into this folder on the github website.
