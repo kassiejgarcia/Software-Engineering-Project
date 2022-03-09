@@ -26,7 +26,7 @@ if(!empty($_POST['submit'])){
     		exit("<p>Failed to initialize statement</p>");
 
 	// prepare statement
-	$query = "SELECT id, password FROM users WHERE username = ?";
+	$query = "SELECT user_id, password FROM users WHERE username = ?";
 	if(!mysqli_stmt_prepare($stmt, $query))
     		exit("<p>Failed to prepare statement</p>");
 	
@@ -81,8 +81,11 @@ echo '
         <label for="password">Password:</label>
         <input type="password" name="password" id="password"/>
     </div>
+	<div>
     <input type="submit" name="submit" value="LogIn"/>
         <p>Don\'t Have an Account Yet?<a href = "register.php">Register Here!</a></p>
+	<p>Forgot your Password?<a href = "forgot-password/index.php">Click Here to Recover Password</a></p>
+</div>
 </form>';
 }
 printForm();

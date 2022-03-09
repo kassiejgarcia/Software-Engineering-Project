@@ -48,13 +48,13 @@ if (!empty($_POST['submit'])) {
 	/* if no errors, register the user into the database */
 
 	// prepare statement	
-	$query = "INSERT INTO users (username, password, first_name, last_name) VALUES (?, ?, ?, ?)";
+	$query = "INSERT INTO users (username, password, email, first_name, last_name) VALUES (?, ?, ?, ?, ?)";
 	if (!mysqli_stmt_prepare($stmt, $query))
 		exit("<p>statement failed to prepare</p>");
 
 	// bind the parameters
 	$hashed_result = password_hash($_POST['password'], PASSWORD_DEFAULT); // hash the plaintext password given
-	mysqli_stmt_bind_param($stmt, "ssss", trim($_POST['username']), $hashed_result, trim($_POST['first_name']), trim($_POST['last_name']));
+	mysqli_stmt_bind_param($stmt, "sssss", trim($_POST['username']), $hashed_result, trim($_POST['email']), trim($_POST['first_name']), trim($_POST['last_name']));
 	// execute query
 	if (!mysqli_stmt_execute($stmt))
 		exit("<p>Failed to execute statement</p>");
@@ -92,6 +92,10 @@ echo '
 	<label for="password">Enter a Unique Password:</label>
 	<input type="password" name="password" id="password"/>
     </div>
+	<div>
+	<label for="email">Enter Your Email Address:</label>
+	<input type="email" name="email" id="email"/>
+	</div>
 	<div>
 	<label for="first_name">Enter Your First Name:</label>
 	<input type="first_name" name ="first_name" id="first_name"/>
