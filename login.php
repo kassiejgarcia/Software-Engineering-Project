@@ -47,7 +47,10 @@ if(!empty($_POST['submit'])){
 		exit();
 	}
 	else {
-		echo '<p>Error: Please try logging in again <a href="login.php">here</a>.</p>';
+		//echo '<p>Error: Please try logging in again <a href="login.php">here</a>.</p>';
+		printForm();
+		echo 'ERROR: Please try logging in again.';
+		echo '</body></html>';
 		exit();
 	}
 	mysqli_stmt_close($stmt);
@@ -55,6 +58,7 @@ if(!empty($_POST['submit'])){
 
 }
 // print out html for this page
+function printForm(){
 echo '<html>
         <head>
                 <title>
@@ -80,4 +84,6 @@ echo '
     <input type="submit" name="submit" value="LogIn"/>
         <p>Don\'t Have an Account Yet?<a href = "register.php">Register Here!</a></p>
 </form>';
+}
+printForm();
 echo '</body></html>';

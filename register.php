@@ -38,8 +38,9 @@ if (!empty($_POST['submit'])) {
 	// go through all the usernames in the table, if they match the given username, return an error
 	while(mysqli_stmt_fetch($stmt) != NULL){
 		if($savedusernames == trim($_POST['username'])){
+			printReg();
 			echo "<p>Error, this username has already been registered. If you already have an account, sign in <a href='login.php'>here</a>.</p>";
-			echo "<br><p> Or click <a href='register.php'>here</a> to try again.</p>";
+		//	echo "<br><p> Or click <a href='register.php'>here</a> to try again.</p>";
 			exit();
 		}
 	}
@@ -67,6 +68,7 @@ if (!empty($_POST['submit'])) {
 }
 ?>
 <?php
+function printReg(){
 echo '<!-- Register a User for Our Website -->
 	<html>
 		<head>
@@ -99,7 +101,9 @@ echo '
 	<input type="last_name" name="last_name" id="last_name"/>
 	</div>
     <input type="submit" name="submit" value="Register"/>
-</form>
-</body>
+</form>';
+}
+printReg();
+echo '</body>
 </html>';
 ?>

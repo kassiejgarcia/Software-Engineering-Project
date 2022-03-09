@@ -4,6 +4,6 @@
 // This file is specific to the database we have that stores users information
 
 define('DB_SERVER', 'localhost');
-define('DATABASE', 'user_information');
-define('DB_USERNAME', 'users_db_username');
-define('DB_PASSWORD', 'UTSA2022');
+define('DATABASE', 'SoftwareEngineeringProject');
+define('DB_USERNAME', 'root');
+define('DB_PASSWORD', 'UTSA2022se!');

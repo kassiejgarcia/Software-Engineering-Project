@@ -1,10 +1,9 @@
 <!-- index page for SE Project -->
-<!-- Kassie Garcia -->
 
 <html lang = "en-US">
         <head>
                 <title>
-                        Coffee Shop Name goes here
+                        Hug with Mug
                 </title>
                 <!-- this is where we will put any css files we are using -->
                 <!-- <link rel="stylesheet" type="text/css" href=""> -->
