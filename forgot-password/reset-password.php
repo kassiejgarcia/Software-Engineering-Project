@@ -67,7 +67,7 @@ echo "<div class='error'>".$error."</div><br />";
 }else{
 $pass1 = md5($pass1);
 mysqli_query($con,
-"UPDATE `users` SET `password`='".$pass1."', `trn_date`='".$curDate."' 
+"UPDATE `users` SET `password`='".$pass1."' 
 WHERE `email`='".$email."';"
 );
 
