@@ -1,0 +1,9 @@
+body{
+    background-color: #f6deca;
+}
+
+.slider{
+    height: 100px;
+    width: 400px;
+    border: 1px dotted brown;
+}

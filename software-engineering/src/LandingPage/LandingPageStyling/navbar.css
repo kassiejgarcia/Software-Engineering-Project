@@ -1,0 +1,98 @@
+#hamburger-icon, #x-icon, #shopping-icon, #user-icon, #search-icon{
+    font-size: 1.5em;
+    color: white;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    
+}
+
+#hamburger-icon {
+    margin-left: 12px;
+    margin-right: 1px;
+    margin-top: 10px;
+}
+
+#search-icon{
+    margin-left: px; 
+}
+
+#x-icon{
+    margin-top: 0px;
+    margin-left: 13px;
+
+}
+
+#shopping-icon{
+    position: absolute;
+    right: 47px; 
+    top: 12px;
+}
+
+#user-icon{
+   position: absolute;
+    right: 10px;
+    top: 12px;
+}
+
+.logo{
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    border-radius: 50%;
+    background-color: #be9b7e;
+    top: 2px;
+    left: 400px;
+    overflow: hidden;
+}
+
+.navbar{
+    background-color: #be9b7e;
+    height: 55px;
+    justify-content: center;
+    margin: 0px;
+    padding: 0px;
+
+}
+
+.navbar span{
+    font-weight: bold;
+    justify-content: center;
+    margin-left: 50px;
+    color: white;
+}
+
+.navbar-menu{
+    background-color: #be9b7e;
+    height: 65vh;
+    width: 100px;
+    justify-content: center;
+    display: flex;
+    position: absolute;
+    left: -100%;
+    transition: 850ms;
+}
+
+.navbar-menu:active{
+   left: 0;
+   transition: 350ms;
+}
+
+.navbar-items{
+   font-size: 15px;
+   list-style: none;
+   position: absolute;
+   right: 22px;
+}
+
+.navbar-items li{
+    margin-top: 10px;
+}
+
+.navbar-items span{
+    color: white;
+    font-weight: bold;
+}
+
+
+
