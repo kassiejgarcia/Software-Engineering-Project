@@ -1,3 +1,4 @@
+//import './App.css'
 import LandingPage from "./LandingPage/landingpage";
 import NavBar from "./LandingPage/navbar";
 import Footer from "./LandingPage/footer";

@@ -1,6 +1,6 @@
 import React from "react";
 import './LandingPageStyling/landingpage.css'
-import { SlideShowData } from "./LandingPageData/slideshowdata";
+import { SlideShowData } from './LandingPageData/slideshowdata'
 
 
 function LandingPage() {

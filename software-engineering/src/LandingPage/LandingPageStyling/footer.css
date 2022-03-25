@@ -1,18 +1,28 @@
-.wrapper{
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: block;
-    padding: 55px 0;
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+
+.footer{
+    background-color: #be9b7e;
+    padding: 70px 0;
 }
 
-.wrapper.row1{
-    background-color: #be9b7e;
+.wrapper{
+    max-width: 1120px;
 }
-.footer{
-  
-   height: 1px; 
+
+.footer_title{
+    color: white;
+    font-family: 'Special Elite', cursive;
+}
+
+.one_quarter{
+    width: 20%;
+    padding: 0 15px;
+}
+
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
+ul{
+    list-style: none;
 }

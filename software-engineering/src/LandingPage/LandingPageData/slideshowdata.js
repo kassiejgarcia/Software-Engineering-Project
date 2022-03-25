@@ -1,11 +1,14 @@
 export const SlideShowData = [
     {
-        image: './LandingPageData/Images/matchaslide.jpg',
+        image: '../Images/matchaslide.png',
         title: 'Matcha Slide'
     },
     {
-        image: './LandingPageData/Images/matchaslide.jpg',
-        title: 'Matcha Slide'
+        image: './LandingPageData/Images/merchslide.png',
+        title: 'Merch Slide'
     },
-
+    {
+        image: 'src/LandigPage/LandingPageData/Images/hugwithmug.png',
+        title: 'Hug w/ Mug'
+    },
 ]
