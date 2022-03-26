@@ -42,13 +42,7 @@ class Footer extends Component{
 
                     <div class="one_quarter">
                         <h4 class="footer_title">Keep informed</h4>
-                        
-                            <ul>
-                                <li><a href="https://www.facebook.com/hispanicunity">Facebook</a></li>
-                                <li><a href="https://twitter.com/HispanicUnity">Twitter</a></li>
-                                <li><a href="https://www.youtube.com/channel/UCJC8isla6VHiM5Eubshl0Iw?view_as=subscriber">Youtube</a></li>
-                                <li><a href="http://www.linkedin.com/company/hispanic-unity-of-florida">Linkdin</a></li>
-                            </ul>
+                            <FaGithub/>
                         
                     </div>
                
