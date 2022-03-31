@@ -12,13 +12,15 @@ include("includes/main.php");
 
   <!-- Cover -->
   <main>
-    <div class="hero">
-      <a href="shop.php" class="btn1">View all products
-</a>
+<div class="image-container">
+<img class = "slidepic" src="/images/merch_image.png" id = "pic3"/>
+<img class = "slidepic" src="/images/matcha_tea_image.png" id = "pic2"/>
+<img class = "slidepic" src="/images/hug_w_mug_image.png" id = "pic1"/>
+</div>
     </div>
     <!-- Main -->
     <div class="wrapper">
-            <h1>Featured Collection<h1>
+            <h1>BESTSELLERS<h1>
             
       </div>
 

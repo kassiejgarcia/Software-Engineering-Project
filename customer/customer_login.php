@@ -6,14 +6,13 @@
 
 <h1>Login</h1>
 
-<p class="lead" >Already our Customer</p>
+<p class="lead" >Are you a Hug With Mug Customer?</p>
 
 
 </center>
 
 <p class="text-muted" >
-Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
-
+Sign in down below with your Hug With Mug Username and Password!
 </p>
 
 
@@ -25,9 +24,9 @@ Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac tu
 
 <div class="form-group" ><!-- form-group Starts -->
 
-<label>Email</label>
+<label>Username</label>
 
-<input type="text" class="form-control" name="c_email" required >
+<input type="text" class="form-control" name="username" required >
 
 </div><!-- form-group Ends -->
 
@@ -35,7 +34,7 @@ Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac tu
 
 <label>Password</label>
 
-<input type="password" class="form-control" name="c_pass" required >
+<input type="password" class="form-control" name="password" required >
 
 <h4 align="center">
 
@@ -63,7 +62,7 @@ Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac tu
 
 <a href="customer_register.php" >
 
-<h3>New ? Register Here</h3>
+<h3>Are you a new customer? Register Here!</h3>
 
 </a>
 
@@ -74,55 +73,73 @@ Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac tu
 </div><!-- box Ends -->
 
 <?php
+include("includes/db.php");
 
-if(isset($_POST['login'])){
+// if the user submitted the login form
+if(!empty($_POST['login'])){
 
-$customer_email = $_POST['c_email'];
+/**/
+	// create a statement
+	$stmt = mysqli_stmt_init($con);
+	if(!$stmt)
+    		exit("<p>Failed to initialize statement</p>");
 
-$customer_pass = $_POST['c_pass'];
+	// prepare statement
+	$query = "SELECT customer_email, customer_pass FROM customers WHERE username = ?";
+	if(!mysqli_stmt_prepare($stmt, $query))
+    		exit("<p>Failed to prepare statement</p>");
+	
+	// bind the parameter
+	mysqli_stmt_bind_param($stmt, "s", trim($_POST['username']));
 
-$select_customer = "select * from customers where customer_email='$customer_email' AND customer_pass='$customer_pass'";
+	// execute statement
+	if(!mysqli_stmt_execute($stmt))
+		exit("<p>Failed to execute statement: " . mysqli_stmt_error($stmt) . "</p>");
 
-$run_customer = mysqli_query($con,$select_customer);
+	// bind the result variables
+	mysqli_stmt_bind_result($stmt, $email, $password);
 
-$get_ip = getRealUserIp();
 
-$check_customer = mysqli_num_rows($run_customer);
+	// verify the password matches the one in the record
+	mysqli_stmt_fetch($stmt);
+        if(password_verify($_POST['password'], $password)){
+	// check if the cart is active
+        $get_ip = getRealUserIp();
+        $select_cart = "select * from cart where ip_add='$get_ip'";
 
-$select_cart = "select * from cart where ip_add='$get_ip'";
+        $run_cart = mysqli_query($con,$select_cart);
 
-$run_cart = mysqli_query($con,$select_cart);
+	$check_cart = mysqli_num_rows($run_cart);
 
-$check_cart = mysqli_num_rows($run_cart);
+	if($check_cart==0){
 
-if($check_customer==0){
+	$_SESSION['customer_email']=$email;
 
-echo "<script>alert('password or email is wrong')</script>";
+	echo "<script>alert('You are Logged In')</script>";
 
-exit();
+	echo "<script>window.open('customer/my_account.php?my_orders','_self')</script>";
 
+	}
+	else {
+
+	$_SESSION['customer_email']=$email;
+
+	echo "<script>alert('You are Logged In')</script>";
+
+	echo "<script>window.open('checkout.php','_self')</script>";
+	}
+		exit();
+	}
+	else {
+		echo "<script>alert('password or email is wrong')</script>";
+		exit();
+	} 
+	mysqli_stmt_close($stmt);
+	mysqli_close($con);
 }
 
-if($check_customer==1 AND $check_cart==0){
 
-$_SESSION['customer_email']=$customer_email;
+/**/
 
-echo "<script>alert('You are Logged In')</script>";
-
-echo "<script>window.open('customer/my_account.php?my_orders','_self')</script>";
-
-}
-else {
-
-$_SESSION['customer_email']=$customer_email;
-
-echo "<script>alert('You are Logged In')</script>";
-
-echo "<script>window.open('checkout.php','_self')</script>";
-
-} 
-
-
-}
 
 ?>

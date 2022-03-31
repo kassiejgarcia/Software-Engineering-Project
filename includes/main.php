@@ -9,25 +9,25 @@
 
 	<div class="currency">
 	  <a class="currency__change" href="customer/my_account.php?my_orders">
+	 
 <?php
-if(!isset($_SESSION['customer_email'])){
+/*if(!isset($_SESSION['customer_email'])){
 	echo "Welcome :Guest"; 
 }
 else
 { 
 	echo "Welcome : " . $_SESSION['customer_email'] . "";
 }
-?>
+*/?>
 	  </a>
 	</div>
-
 	<div class="basket">
 	  <a href="cart.php" class="btn btn--basket">
 	    <i class="icon-basket"></i>
 	    <?php items(); ?> items
 	  </a>
 	</div>
-
+ 
 
 	<ul class="login">
 
