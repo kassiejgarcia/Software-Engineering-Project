@@ -38,8 +38,6 @@ Sign in down below with your Hug With Mug Username and Password!
 
 <h4 align="center">
 
-<a href="forgot_pass.php"> Forgot Password </a>
-
 </h4>
 
 </div><!-- form-group Ends -->

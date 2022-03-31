@@ -156,20 +156,6 @@ include("includes/main.php");
         </div>
       </div> -->
 
-      <div class="page-footer__subline">
-        <div class="container clearfix">
-
-          <div class="copyright">
-            &copy; <?php echo date("Y");?> Ecommerce Website-PHP&trade;
-          </div>
-
-          <div class="developer">
-            Developed by Yasser Dalouzi
-          </div>
-
-          <div class="designby">
-            Design by Yasser Dalouzi
-          </div>
 
         </div>
       </div>
