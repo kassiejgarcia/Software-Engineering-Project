@@ -113,7 +113,7 @@
 
 		</div>
 	</div> -->
-
+<!--
 	<div class="page-footer__subline">
 		<div class="container clearfix">
 
@@ -129,5 +129,5 @@
 				Design by Yasser Dalouzi
 			</div>
 		</div>
-	</div>
+	</div> -->
 </footer>
