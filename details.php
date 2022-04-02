@@ -66,15 +66,10 @@ if($pro_label == ""){
 else{
 
 $product_label = "
-
 <a class='label sale' href='#' style='color:black;'>
-
 <div class='thelabel'>$pro_label</div>
-
 <div class='label-background'> </div>
-
 </a>
-
 ";
 
 }
@@ -203,7 +198,7 @@ if(mysqli_num_rows($run_check)>0){
 
 echo "<script>alert('This Product is already added in cart')</script>";
 
-echo "<script>window.open('$pro_url','_self')</script>";
+echo "<script>window.open('http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url','_self')</script>";
 
 }
 else {
@@ -235,7 +230,7 @@ $query = "insert into cart (p_id,ip_add,qty,p_price,size) values ('$p_id','$ip_a
 
 $run_query = mysqli_query($db,$query);
 
-echo "<script>window.open('$pro_url','_self')</script>";
+echo "<script>window.open('http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url','_self')</script>";
 
 }
 
@@ -355,28 +350,19 @@ if($status == "product"){
 if($pro_label == "Sale" or $pro_label == "Gift"){
 
 echo "
-
 <p class='price'>
-
 Product Price : <del> $$pro_price </del><br>
-
 Product sale Price : $$pro_psp_price
-
 </p>
-
 ";
 
 }
 else{
 
 echo "
-
 <p class='price'>
-
 Product Price : $$pro_price
-
 </p>
-
 ";
 
 }
@@ -388,28 +374,19 @@ else{
 if($pro_label == "Sale" or $pro_label == "Gift"){
 
 echo "
-
 <p class='price'>
-
 Bundle Price : <del> $$pro_price </del><br>
-
 Bundle sale Price : $$pro_psp_price
-
 </p>
-
 ";
 
 }
 else{
 
 echo "
-
 <p class='price'>
-
 Bundle Price : $$pro_price
-
 </p>
-
 ";
 
 }
@@ -467,7 +444,7 @@ if($check_wishlist == 1){
 
 echo "<script>alert('This Product Has Been already Added In Wishlist')</script>";
 
-echo "<script>window.open('$pro_url','_self')</script>";
+echo "<script>window.open('http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url','_self')</script>";
 
 }
 else{
@@ -480,7 +457,7 @@ if($run_wishlist){
 
 echo "<script> alert('Product Has Inserted Into Wishlist') </script>";
 
-echo "<script>window.open('$pro_url','_self')</script>";
+echo "<script>window.open('http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url','_self')</script>";
 
 }
 
@@ -676,68 +653,38 @@ if($pro_label == ""){
 else{
 
 $product_label = "
-
 <a class='label sale' href='#' style='color:black;'>
-
 <div class='thelabel'>$pro_label</div>
-
 <div class='label-background'> </div>
-
 </a>
-
 ";
 
 }
 
 
 echo "
-
 <div class='col-md-3 col-sm-6 center-responsive' >
-
 <div class='product' >
-
-<a href='$pro_url' >
-
+<a href='http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url' >
 <img src='admin_area/product_images/$pro_img1' class='img-responsive' >
-
 </a>
-
 <div class='text' >
-
 <center>
-
 <p class='btn btn-warning'> $manufacturer_name </p>
-
 </center>
-
 <hr>
-
-<h3><a href='$pro_url' >$pro_title</a></h3>
-
+<h3><a href='http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url' >$pro_title</a></h3>
 <p class='price' > $product_price $product_psp_price </p>
-
 <p class='buttons' >
-
-<a href='$pro_url' class='btn btn-default' >View Details</a>
-
-<a href='$pro_url' class='btn btn-danger'>
-
+<a href='http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url' class='btn btn-default' >View Details</a>
+<a href='http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url' class='btn btn-danger'>
 <i class='fa fa-shopping-cart'></i> Add To Cart
-
 </a>
-
-
 </p>
-
 </div>
-
 $product_label
-
-
 </div>
-
 </div>
-
 ";
 
 
@@ -818,68 +765,38 @@ if($pro_label == ""){
 else{
 
 $product_label = "
-
 <a class='label sale' href='#' style='color:black;'>
-
 <div class='thelabel'>$pro_label</div>
-
 <div class='label-background'> </div>
-
 </a>
-
 ";
 
 }
 
 
 echo "
-
 <div class='col-md-3 col-sm-6 center-responsive' >
-
 <div class='product' >
-
 <a href='$pro_url' >
-
 <img src='admin_area/product_images/$pro_img1' class='img-responsive' >
-
 </a>
-
 <div class='text' >
-
 <center>
-
 <p class='btn btn-primary'> $manufacturer_name </p>
-
 </center>
-
 <hr>
-
-<h3><a href='$pro_url' >$pro_title</a></h3>
-
+<h3><a href='http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url' >$pro_title</a></h3>
 <p class='price' > $product_price $product_psp_price </p>
-
 <p class='buttons' >
-
-<a href='$pro_url' class='btn btn-default' >View details</a>
-
-<a href='$pro_url' class='btn btn-primary'>
-
+<a href='http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url' class='btn btn-default' >View details</a>
+<a href='http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url' class='btn btn-primary'>
 <i class='fa fa-shopping-cart'></i> Add to cart
-
 </a>
-
-
 </p>
-
 </div>
-
 $product_label
-
-
 </div>
-
 </div>
-
 ";
 
 
