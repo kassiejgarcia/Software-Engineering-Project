@@ -103,6 +103,7 @@ $p_cat_title = $row_p_cat['p_cat_title'];
 <div class="col-sm-6"><!-- col-sm-6 Starts -->
 
 <div id="mainImage"><!-- mainImage Starts -->
+ <!-- showcase the carousel of product images -->
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
 
