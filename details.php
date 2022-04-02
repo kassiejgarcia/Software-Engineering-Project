@@ -1,5 +1,6 @@
 <?php
-
+/* This file is where we view the details of every individual product. It takes in the product url stored in the database which
+correlates to the product. If there is a match, then we will showcase all the details of the product */
 session_start();
 
 include("includes/db.php");
@@ -19,19 +20,19 @@ $get_product = "select * from products where product_url='$product_id'";
 $run_product = mysqli_query($con,$get_product);
 
 $check_product = mysqli_num_rows($run_product);
-
+// if there is no match, redirect user to the homepage
 if($check_product == 0){
 
 echo "<script> window.open('index.php','_self') </script>";
 
 }
 else{
-
+// if there is a match
 
 
 $row_product = mysqli_fetch_array($run_product);
-
-$p_cat_id = $row_product['p_cat_id'];
+// assign the variables of the product from the DB
+$p_cat_id = $row_product['p_cat_id']; // this is the product categorie id (tea->!matcha!)
 
 $pro_id = $row_product['product_id'];
 
@@ -43,9 +44,9 @@ $pro_desc = $row_product['product_desc'];
 
 $pro_img1 = $row_product['product_img1'];
 
-$pro_img2 = $row_product['product_img2'];
+$pro_img2 = $row_product['product_img2']; //if any 
 
-$pro_img3 = $row_product['product_img3'];
+$pro_img3 = $row_product['product_img3']; //if any
 
 $pro_label = $row_product['product_label'];
 
