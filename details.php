@@ -76,13 +76,10 @@ $row_p_cat = mysqli_fetch_array($run_p_cat);
 
 $p_cat_title = $row_p_cat['p_cat_title'];
 
-
-
-
 ?>
-
+<!-- ********
   <main>
-    <!-- HERO -->
+   
     <div class="nero">
       <div class="nero__heading">
         <span class="nero__bold">Product </span>View
@@ -91,7 +88,7 @@ $p_cat_title = $row_p_cat['p_cat_title'];
       </p>
     </div>
   </main>
-
+-->
 <div id="content" ><!-- content Starts -->
 <div class="container" ><!-- container Starts -->
 
