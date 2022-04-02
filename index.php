@@ -1,5 +1,5 @@
 <?php
-
+/* This file is our homepage. It can be visited by clicking on our logo or just entering the website URL */
 session_start();
 
 include("includes/db.php");
@@ -10,7 +10,7 @@ include("includes/main.php");
 ?>
 
 
-  <!-- Cover -->
+  <!-- slide show cover images -->
   <main>
 <div class="image-container">
 <img class = "slidepic" src="/images/merch_image.png" id = "pic3"/>
@@ -31,7 +31,7 @@ include("includes/main.php");
     <div class="row"><!-- row Starts -->
 
     <?php
-
+/* in the functions/functions.php, run getPro() which gets 8 products to display on our home page */
     getPro();
 
     ?>
