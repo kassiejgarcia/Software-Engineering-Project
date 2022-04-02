@@ -36,43 +36,36 @@ $p_cat_id = $row_product['p_cat_id']; // this is the product categorie id (tea->
 
 $pro_id = $row_product['product_id'];
 
-$pro_title = $row_product['product_title'];
+$pro_title = $row_product['product_title']; // product title
 
-$pro_price = $row_product['product_price'];
+$pro_price = $row_product['product_price']; //product price
 
-$pro_desc = $row_product['product_desc'];
+$pro_desc = $row_product['product_desc']; //product description
 
-$pro_img1 = $row_product['product_img1'];
+$pro_img1 = $row_product['product_img1']; //product image
 
-$pro_img2 = $row_product['product_img2']; //if any 
+$pro_img2 = $row_product['product_img2']; //image if any 
 
-$pro_img3 = $row_product['product_img3']; //if any
+$pro_img3 = $row_product['product_img3']; //image if any
 
-$pro_label = $row_product['product_label'];
+$pro_label = $row_product['product_label']; // is it on Sale?
 
-$pro_psp_price = $row_product['product_psp_price'];
+$pro_psp_price = $row_product['product_psp_price']; // Sale price if given
+//**** product features
+ //***** product video
 
-$pro_features = $row_product['product_features'];
+$status = $row_product['status']; //****** is it a product or a bundle?????
 
-$pro_video = $row_product['product_video'];
+$pro_url = $row_product['product_url']; // this is a product identifier used to access this page
 
-$status = $row_product['status'];
-
-$pro_url = $row_product['product_url'];
-
-if($pro_label == ""){
-
-
-}
-else{
-
+//if the product is on sale
+if($pro_label == "Sale"){
 $product_label = "
 <a class='label sale' href='#' style='color:black;'>
 <div class='thelabel'>$pro_label</div>
 <div class='label-background'> </div>
 </a>
 ";
-
 }
 
 $get_p_cat = "select * from product_categories where p_cat_id='$p_cat_id'";
