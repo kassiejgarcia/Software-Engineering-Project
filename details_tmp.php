@@ -1,4 +1,4 @@
-<?php
+i<?php
 /* This file is where we view the details of every individual product. It takes in the product url stored in the database which
 correlates to the product. If there is a match, then we will showcase all the details of the product */
 session_start();
@@ -51,15 +51,13 @@ $pro_img3 = $row_product['product_img3']; //image if any
 $pro_label = $row_product['product_label']; // is it on Sale?
 
 $pro_psp_price = $row_product['product_psp_price']; // Sale price if given
-//**** product features
- //***** product video
 
 $status = $row_product['status']; //****** is it a product or a bundle?????
 
 $pro_url = $row_product['product_url']; // this is a product identifier used to access this page
 
 //if the product is on sale
-if($pro_label == "Sale"){
+if($pro_label == "Sale" or $pro_label == "sale"){
 $product_label = "
 <a class='label sale' href='#' style='color:black;'>
 <div class='thelabel'>$pro_label</div>
@@ -156,26 +154,27 @@ $p_cat_title = $row_p_cat['p_cat_title'];
 <h1 class="text-center" > <?php echo $pro_title; ?> </h1>
 
 <?php
-
+// add to cart functionality
 
 if(isset($_POST['add_cart'])){
+	echo "HELROEOOEGOEHOHEHE";
 
 $ip_add = getRealUserIp();
 
 $p_id = $pro_id;
 
 $product_qty = $_POST['product_qty'];
-
+/******************************88
 $product_size = $_POST['product_size'];
-
-
+ */
+// grab the current cart, if the cart already has the item, do not add it in
 $check_product = "select * from cart where ip_add='$ip_add' AND p_id='$p_id'";
 
 $run_check = mysqli_query($con,$check_product);
-
+// redirect the user back to page
 if(mysqli_num_rows($run_check)>0){
 
-echo "<script>alert('This Product is already added in cart')</script>";
+echo "<script>alert('Product already added to cart')</script>";
 
 echo "<script>window.open('http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url','_self')</script>";
 
@@ -194,7 +193,8 @@ $pro_psp_price = $row_price['product_psp_price'];
 
 $pro_label = $row_price['product_label'];
 
-if($pro_label == "Sale" or $pro_label == "Gift"){
+// if the product is on sale, display the sale price
+if($pro_label == "Sale" or $pro_label == "sale"){
 
 $product_price = $pro_psp_price;
 
@@ -204,11 +204,12 @@ else{
 $product_price = $pro_price;
 
 }
-
-$query = "insert into cart (p_id,ip_add,qty,p_price,size) values ('$p_id','$ip_add','$product_qty','$product_price','$product_size')";
+$size = "NULL";
+// add the product to the cart
+$query = "insert into cart (p_id,ip_add,qty,p_price,size) values ('$p_id','$ip_add','$product_qty','$product_price', '$size')";
 
 $run_query = mysqli_query($db,$query);
-
+// refresh the homepage
 echo "<script>window.open('http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url','_self')</script>";
 
 }
@@ -217,17 +218,15 @@ echo "<script>window.open('http://ec2-54-172-16-142.compute-1.amazonaws.com/deta
 
 
 ?>
-
+<!-- display the product form on the right --> <!-- displays product quanity options and cart/wishlist buttons -- >
 <form action="" method="post" class="form-horizontal" ><!-- form-horizontal Starts -->
 
-<?php
-
-if($status == "product"){
-
-?>
 
 <div class="form-group"><!-- form-group Starts -->
-
+<!-- <label class="col-md-5 control-label"> Product Description </label>
+ <div id = "description">
+<?php /*echo "$pro_desc"; */?>
+</div> -->
 <label class="col-md-5 control-label" >Product Quantity </label>
 
 <div class="col-md-7" ><!-- col-md-7 Starts -->
@@ -238,8 +237,6 @@ if($status == "product"){
 <option>1</option>
 <option>2</option>
 <option>3</option>
-<option>4</option>
-<option>5</option>
 
 
 </select>
@@ -247,86 +244,11 @@ if($status == "product"){
 </div><!-- col-md-7 Ends -->
 
 </div><!-- form-group Ends -->
-
-<div class="form-group" ><!-- form-group Starts -->
-
-<label class="col-md-5 control-label" >Product Size</label>
-
-<div class="col-md-7" ><!-- col-md-7 Starts -->
-
-<select name="product_size" class="form-control" >
-
-<option>Select a Size</option>
-<option>Small</option>
-<option>Medium</option>
-<option>Large</option>
-
-
-</select>
-
-</div><!-- col-md-7 Ends -->
-
-
-</div><!-- form-group Ends -->
-
-<?php }else { ?>
-
-
-<div class="form-group"><!-- form-group Starts -->
-
-<label class="col-md-5 control-label" >Bundle Quantity </label>
-
-<div class="col-md-7" ><!-- col-md-7 Starts -->
-
-<select name="product_qty" class="form-control" >
-
-<option>Select quantity</option>
-<option>1</option>
-<option>2</option>
-<option>3</option>
-<option>4</option>
-<option>5</option>
-
-
-</select>
-
-</div><!-- col-md-7 Ends -->
-
-</div><!-- form-group Ends -->
-
-<div class="form-group" ><!-- form-group Starts -->
-
-<label class="col-md-5 control-label" >Bundle Size</label>
-
-<div class="col-md-7" ><!-- col-md-7 Starts -->
-
-<select name="product_size" class="form-control" >
-
-<option>Select a Size</option>
-<option>Small</option>
-<option>Medium</option>
-<option>Large</option>
-
-
-</select>
-
-</div><!-- col-md-7 Ends -->
-
-
-</div><!-- form-group Ends -->
-
-
-<?php } ?>
-
 
 <?php
 
-if($status == "product"){
-
-
-
-
-if($pro_label == "Sale" or $pro_label == "Gift"){
+// if the product is labeled as for sale, display the sale price
+if($pro_label == "Sale" or $pro_label == "sale"){
 
 echo "
 <p class='price'>
@@ -346,32 +268,6 @@ Product Price : $$pro_price
 
 }
 
-}
-else{
-
-
-if($pro_label == "Sale" or $pro_label == "Gift"){
-
-echo "
-<p class='price'>
-Bundle Price : <del> $$pro_price </del><br>
-Bundle sale Price : $$pro_psp_price
-</p>
-";
-
-}
-else{
-
-echo "
-<p class='price'>
-Bundle Price : $$pro_price
-</p>
-";
-
-}
-
-
-}
 
 ?>
 
@@ -391,18 +287,18 @@ Bundle Price : $$pro_price
 
 
 <?php
-
+// if the user wants to add the product to their wish list
 if(isset($_POST['add_wishlist'])){
-
+// if the user is not logged in, then they cannot add the product to a list
 if(!isset($_SESSION['customer_email'])){
 
-echo "<script>alert('You Must Login To Add Product In Wishlist')</script>";
+echo "<script>alert('Please Sign in to add product in wishlist')</script>";
 
 echo "<script>window.open('checkout.php','_self')</script>";
 
 }
 else{
-
+// add the product to the wishlist
 $customer_session = $_SESSION['customer_email'];
 
 $get_customer = "select * from customers where customer_email='$customer_session'";
@@ -418,10 +314,10 @@ $select_wishlist = "select * from wishlist where customer_id='$customer_id' AND 
 $run_wishlist = mysqli_query($con,$select_wishlist);
 
 $check_wishlist = mysqli_num_rows($run_wishlist);
-
+// if the product is already within the wishlist, the user cannot add the product again
 if($check_wishlist == 1){
 
-echo "<script>alert('This Product Has Been already Added In Wishlist')</script>";
+echo "<script>alert('Product is already in wishlist')</script>";
 
 echo "<script>window.open('http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url','_self')</script>";
 
@@ -431,10 +327,10 @@ else{
 $insert_wishlist = "insert into wishlist (customer_id,product_id) values ('$customer_id','$pro_id')";
 
 $run_wishlist = mysqli_query($con,$insert_wishlist);
-
+// insert the product into the wishlist successfully 
 if($run_wishlist){
 
-echo "<script> alert('Product Has Inserted Into Wishlist') </script>";
+echo "<script> alert('Product is successfully inserted into wishlist') </script>";
 
 echo "<script>window.open('http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url','_self')</script>";
 
@@ -453,7 +349,7 @@ echo "<script>window.open('http://ec2-54-172-16-142.compute-1.amazonaws.com/deta
 </form><!-- form-horizontal Ends -->
 
 </div><!-- box Ends -->
-
+<!-- display all the images for the product at the bottom of the product view form -->
 
 <div class="row" id="thumbs" ><!-- row Starts -->
 
@@ -495,73 +391,12 @@ echo "<script>window.open('http://ec2-54-172-16-142.compute-1.amazonaws.com/deta
 
 
 </div><!-- row Ends -->
-
-<div class="box" id="details"><!-- box Starts -->
-
-<a class="btn btn-info tab" style="margin-bottom:10px;" href="#description" data-toggle="tab"><!-- btn btn-primary tab Starts -->
-
-<?php
-
-if($status == "product"){
-
-echo "Product Description";
-
-}
-else{
-
-echo "Bundle Description";
-
-}
-
-?>
-
-</a><!-- btn btn-primary tab Ends -->
-
-<a class="btn btn-info tab" style="margin-bottom:10px;" href="#features" data-toggle="tab"><!-- btn btn-primary tab Starts -->
-
-Features
-
-</a><!-- btn btn-primary tab Ends -->
-
-<a class="btn btn-info tab" style="margin-bottom:10px;" href="#video" data-toggle="tab"><!-- btn btn-primary tab Starts -->
-
-Sounds and Videos
-
-</a><!-- btn btn-primary tab Ends -->
-
-<hr style="margin-top:0px;">
-
-<div class="tab-content"><!-- tab-content Starts -->
-
-<div id="description" class="tab-pane fade in active" style="margin-top:7px;" ><!-- description tab-pane fade in active Starts -->
-
-<?php echo $pro_desc; ?>
-
-</div><!-- description tab-pane fade in active Ends -->
-
-<div id="features" class="tab-pane fade in" style="margin-top:7px;" ><!-- features tab-pane fade in  Starts -->
-
-<?php echo $pro_features; ?>
-
-</div><!-- features tab-pane fade in  Ends -->
-
-<div id="video" class="tab-pane fade in" style="margin-top:7px;" ><!-- video tab-pane fade in Starts -->
-
-<?php echo $pro_video; ?>
-
-</div><!-- video tab-pane fade in  Ends -->
-
-
-</div><!-- tab-content Ends -->
-
-</div><!-- box Ends -->
-
+ 
 <div id="row same-height-row"><!-- row same-height-row Starts -->
 
 <?php
 
-if($status == "product"){
-
+if(true){
 
 
 ?>
@@ -570,7 +405,7 @@ if($status == "product"){
 
 <div class="box same-height headline"><!-- box same-height headline Starts -->
 
-<h3 class="text-center"> You may also like these Products: We provide you top 3 product items. </h3>
+<h3 class="text-center"> Check out these Similar Products: </h3>
 
 </div><!-- box same-height headline Ends -->
 
