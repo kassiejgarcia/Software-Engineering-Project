@@ -3455,10 +3455,10 @@ a.btn.disabled, fieldset[disabled] a.btn {
   background-color: #fff
 }
 
-.btn-danger {
+.btn-danger { /**/
   color: #fff;
-  background-color: #d9534f;
-  border-color: #d43f3a
+  background-color: #6e966e;
+  border-color: #6e966e
 }
 
 .btn-danger.focus, .btn-danger:focus {
