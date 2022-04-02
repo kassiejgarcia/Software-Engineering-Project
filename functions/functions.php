@@ -78,7 +78,6 @@ echo "$" . $total;
 // total_price function Ends //
 
 // getPro function Starts //
-/* get products for the featured page, limited to 8 products */
 
 function getPro(){
 
@@ -99,7 +98,7 @@ $pro_price = $row_products['product_price'];
 $pro_img1 = $row_products['product_img1'];
 
 $pro_label = $row_products['product_label'];
-/*
+
 $manufacturer_id = $row_products['manufacturer_id'];
 
 $get_manufacturer = "select * from manufacturers where manufacturer_id='$manufacturer_id'";
@@ -109,11 +108,11 @@ $run_manufacturer = mysqli_query($db,$get_manufacturer);
 $row_manufacturer = mysqli_fetch_array($run_manufacturer);
 
 $manufacturer_name = $row_manufacturer['manufacturer_title'];
-*/
+
 $pro_psp_price = $row_products['product_psp_price'];
 
 $pro_url = $row_products['product_url'];
-/*
+
 if($pro_label == "Sale" or $pro_label == "Gift"){
 
 $product_price = "<del> $$pro_price </del>";
@@ -127,9 +126,28 @@ $product_psp_price = "";
 
 $product_price = "$$pro_price";
 
-}*/
+}
 
 
+if($pro_label == ""){
+
+
+}
+else{
+
+$product_label = "
+
+<a class='label sale' href='#' style='color:black;'>
+
+<div class='thelabel'>$pro_label</div>
+
+<div class='label-background'> </div>
+
+</a>
+
+";
+
+}
 
 
 echo "
@@ -138,7 +156,7 @@ echo "
 
 <div class='product' >
 
-<a href='$pro_url' >
+<a href='http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url' >
 
 <img src='admin_area/product_images/$pro_img1' class='img-responsive' >
 
@@ -154,15 +172,15 @@ echo "
 
 <hr>
 
-<h3><a href='$pro_url' >$pro_title</a></h3>
+<h3><a href='http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url' >$pro_title</a></h3>
 
 <p class='price' > $product_price $product_psp_price </p>
 
 <p class='buttons' >
 
-<a href='$pro_url' class='btn btn-default' >View Details</a>
+<a href='http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url' class='btn btn-default' >View Details</a>
 
-<a href='$pro_url' class='btn btn-danger'>
+<a href='http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url' class='btn btn-danger'>
 
 <i class='fa fa-shopping-cart'></i> Add To Cart
 
@@ -361,15 +379,15 @@ echo "
 
 <hr>
 
-<h3><a href='$pro_url' >$pro_title</a></h3>
+<h3><a href='http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url' >$pro_title</a></h3>
 
 <p class='price' > $product_price $product_psp_price </p>
 
 <p class='buttons' >
 
-<a href='$pro_url' class='btn btn-default' >View details</a>
+<a href='http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url' class='btn btn-default' >View details</a>
 
-<a href='$pro_url' class='btn btn-danger'>
+<a href='http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url' class='btn btn-danger'>
 
 <i class='fa fa-shopping-cart' data-price=$pro_price></i> Add To Cart
 
