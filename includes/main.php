@@ -119,13 +119,13 @@ echo '<li class="categories__item">
 		    <div class="dropdown__heading">Account Settings</div>
 		    <ul class="dropdown__items">
 		      <li class="dropdown__item">
-			<a href="#" class="dropdown__link">My Wishlist</a>
+			<a href="customer/my_account.php?my_wishlist" class="dropdown__link">My Wishlist</a>
 		      </li>
 		      <li class="dropdown__item">
-			<a href="#" class="dropdown__link">My Orders</a>
+			<a href="customer/my_account.php?my_orders" class="dropdown__link">My Orders</a>
 		      </li>
 		      <li class="dropdown__item">
-			<a href="#" class="dropdown__link">View Shopping Cart</a>
+			<a href="cart.php" class="dropdown__link">View Shopping Cart</a>
 		      </li>
 		    </ul>
 		  </div>
@@ -133,13 +133,7 @@ echo '<li class="categories__item">
 		    <div class="dropdown__heading"></div>
 		    <ul class="dropdown__items">
 		      <li class="dropdown__item">
-			<a href="#" class="dropdown__link">Edit Your Account</a>
-		      </li>
-		      <li class="dropdown__item">
-			<a href="#" class="dropdown__link">Change Password</a>
-		      </li>
-		      <li class="dropdown__item">
-			<a href="#" class="dropdown__link">Delete Account</a>
+			<a href="customer/my_account.php?change_pass" class="dropdown__link">Change Password</a>
 		      </li>
 		    </ul>
 		  </div>

@@ -3,14 +3,6 @@
 
 <h1>My Orders</h1>
 
-<p class="lead"> Your orders on one place.</p>
-
-<p class="text-muted" >
-
-If you have any questions, please feel free to <a href="../contact.php" > contact us,</a> our customer service center is working for you 24/7.
-
-
-</p>
 
 
 </center><!-- center Ends -->
@@ -29,17 +21,14 @@ If you have any questions, please feel free to <a href="../contact.php" > contac
 <th>Amount</th>
 <th>Invoice</th>
 <th>Qty</th>
-<th>Size</th>
 <th>Order Date</th>
-<th>Status</th>
-<th>Action</th>
 
 
 </tr>
 
 </thead><!-- thead Ends -->
 
-<tbody><!--- tbody Starts --->
+<tbody><!--- tbody Starts -->
 
 <?php
 
@@ -68,25 +57,22 @@ $due_amount = $row_orders['due_amount'];
 $invoice_no = $row_orders['invoice_no'];
 
 $qty = $row_orders['qty'];
-
+/*
 $size = $row_orders['size'];
-
+ */
 $order_date = substr($row_orders['order_date'],0,11);
-
+/*
 $order_status = $row_orders['order_status'];
-
+ */
 $i++;
-
+/*
 if($order_status=='pending'){
 
 $order_status = "<b style='color:red;'>Unpaid</b>";
 
-}
-else{
+}*/
 
 $order_status = "<b style='color:green;'>Paid</b>";
-
-}
 
 ?>
 
@@ -99,23 +85,22 @@ $order_status = "<b style='color:green;'>Paid</b>";
 <td><?php echo $invoice_no; ?></td>
 
 <td><?php echo $qty; ?></td>
-
-<td><?php echo $size; ?></td>
-
+<!--
+<td><?php /*echo $size; */?></td>
+-->
 <td><?php echo $order_date; ?></td>
-
-<td><?php echo $order_status; ?></td>
-
+<!--
+<td><?php /*echo $order_status;*/ ?></td>
 <td>
-<a href="confirm.php?order_id=<?php echo $order_id; ?>" target="blank" class="btn btn-success btn-xs" > Confirm If Paid </a>
-</td>
+<a href="confirm.php?order_id=<?php /*echo $order_id;*/ ?>" target="blank" class="btn btn-success btn-xs" > Confirm If Paid </a>
+</td> -->
 
 
 </tr><!-- tr Ends -->
 
 <?php } ?>
 
-</tbody><!--- tbody Ends --->
+</tbody><!--- tbody Ends -->
 
 
 </table><!-- table table-bordered table-hover Ends -->

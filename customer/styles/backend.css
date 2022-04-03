@@ -7,29 +7,8 @@ html {
 
 body {
   margin: 0
-  
 }
-.btnn btn--basket{
-  display: inline-block;
-  padding: 6px 12px;
-  margin-bottom: 0;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.42857143;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  -ms-touch-action: manipulation;
-  touch-action: manipulation;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  background-image: none;
- 
 
-}
 article, aside, footer, header, nav, section {
   display: block
 }
@@ -396,15 +375,14 @@ img {
     opacity: 1
   }
 }
-
+/* header with register, login, and cart */
 .page-header__topline {
-  height: 45px;
-  background-color: #333
+  height: 35px;
 }
 
 .page-header__topline .currency {
   float: left;
-  min-width: 120px
+  min-width: auto;
 }
 
 .page-header__topline .currency__change {
@@ -418,17 +396,17 @@ img {
 }
 
 .page-header__topline .currency__change:hover {
-  color: #5e5e5e
+  /*color: #4e6133 */
 }
 
 .page-header__topline .login {
-  float: right;
+  /*float: right;*/
   min-width: 135px;
   margin: 0;
   padding: 0;
   margin-right: 82px;
   list-style: none;
-  font-size: 0
+  /*font-size: 0 */
 }
 
 .page-header__topline .login__item {
@@ -444,7 +422,7 @@ img {
 .page-header__topline .login__link {
   display: block;
   font-size: 13px;
-  color: #999;
+  color: black;
   line-height: 45px;
   text-decoration: none;
   -webkit-transition: color .3s;
@@ -457,7 +435,7 @@ img {
 
 .page-header__topline .basket {
   float: right;
-  width: 147px
+  width: 95px;
 }
 
 .page-header__bottomline {
@@ -517,7 +495,7 @@ img {
 }
 
 .page-header__bottomline .main-nav .categories__link:hover {
-  color: #00c8c8
+  color: #6e966e
 }
 
 .page-header__bottomline .main-nav .categories__link i {
@@ -528,7 +506,7 @@ img {
 }
 
 .page-header__bottomline .main-nav .categories__link--active {
-  color: #00c8c8
+  color: #6e966e
 }
 
 .page-header .dropdown {
@@ -765,28 +743,6 @@ img {
   color: #333
 }
 
-.page-footer__subline {
-  padding: 15px;
-  font-size: 13px;
-  color: #777;
-  background-color: #333
-}
-
-.page-footer__subline .copyright {
-  float: left;
-  width: 300px
-}
-
-.page-footer__subline .designby {
-  float: right;
-  width: 220px
-}
-
-.page-footer__subline .developer {
-  float: right;
-  width: 170px
-}
-
 .brand {
   padding-top: 63px;
   padding-bottom: 120px
@@ -878,19 +834,19 @@ img {
   width: 100%;
   height: 45px;
   padding-left: 18px;
-  background-color: #00c8c8;
+ /* background-color: #00c8c8; */
   -webkit-transition: background-color .3s;
   transition: background-color .3s
 }
 
 .btn--basket:hover {
-  background-color: #009595
+  background-color: white;
 }
 
 .btn--basket .icon-basket {
   position: relative;
-  top: 3px;
-  margin-right: 13px;
+ /* top: 3px;*/
+/*  margin-right: 13px; */
   font-size: 20px
 }
 
@@ -901,11 +857,13 @@ img {
   padding-bottom: 140px;
   font-family: 'montserratlight', sans-serif;
   text-align: center;
-  text-transform: uppercase;
-  color: #FFF;
-  background: #666 url("../images/banner-ave.jpg") no-repeat;
+  /*text-transform: uppercase;*/
+  color: #ededed;
+  background: #666 url("../../images/shop_header.jpg") no-repeat;
   background-size: cover;
   background-position: center;
+  background-blend-mode: lighten;
+
 }
 
 .nero__heading {
@@ -996,4 +954,68 @@ img {
 
 .tac {
   text-align: center;
+}
+/*transitioning images in homepage*/
+.image-container {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 900px;
+  height: 500px;
+  margin: 0 auto;
+}
+.slidepic {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  -webkit-animation: fade 8s infinite;
+  animation: fade 8s infinite;
+}
+#pic1 {
+  animation-delay: 0s;
+}
+#pic2 {
+  animation-delay: 3s;
+}
+#pic3 {
+  animation-delay: 5s;
+}
+@-webkit-keyframes fade {
+  0% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 1;
+  }
+  34% {
+    opacity: 0;
+  }
+  88% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade {
+  0% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 1;
+  }
+  34% {
+    opacity: 0;
+  }
+  88% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

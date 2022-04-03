@@ -1,5 +1,5 @@
 <?php
-
+/* this file is what displays when you click on the shopping cart in the top right corner */
 session_start();
 
 include("includes/db.php");
@@ -12,10 +12,9 @@ include("includes/main.php");
 
   <!-- MAIN -->
   <main>
-    <!-- HERO -->
     <div class="nero">
       <div class="nero__heading">
-        <span class="nero__bold">SHOP</span> Cart
+        Shopping Cart
       </div>
       <p class="nero__text">
       </p>
@@ -65,8 +64,6 @@ $count = mysqli_num_rows($run_cart);
 
 <th>Unit Price</th>
 
-<th>Size</th>
-
 <th colspan="1">Delete</th>
 
 <th colspan="2"> Sub Total </th>
@@ -81,16 +78,14 @@ $count = mysqli_num_rows($run_cart);
 <?php
 
 $total = 0;
-
+// for every product in the cart, display its info in the cart
 while($row_cart = mysqli_fetch_array($run_cart)){
 
-$pro_id = $row_cart['p_id'];
+$pro_id = $row_cart['p_id']; //product id
 
-$pro_size = $row_cart['size'];
+$pro_qty = $row_cart['qty']; //product quantity
 
-$pro_qty = $row_cart['qty'];
-
-$only_price = $row_cart['p_price'];
+$only_price = $row_cart['p_price']; // product price
 
 $get_products = "select * from products where product_id='$pro_id'";
 
@@ -98,9 +93,9 @@ $run_products = mysqli_query($con,$get_products);
 
 while($row_products = mysqli_fetch_array($run_products)){
 
-$product_title = $row_products['product_title'];
+$product_title = $row_products['product_title']; // product title
 
-$product_img1 = $row_products['product_img1'];
+$product_img1 = $row_products['product_img1']; // get the 1st product image
 
 $sub_total = $only_price*$pro_qty;
 
@@ -131,12 +126,6 @@ $total += $sub_total;
 <td>
 
 $<?php echo $only_price; ?>.00
-
-</td>
-
-<td>
-
-<?php echo $pro_size; ?>
 
 </td>
 
@@ -223,14 +212,12 @@ Proceed to Checkout <i class="fa fa-chevron-right"></i>
 </div><!-- box Ends -->
 
 <?php
-
+// if a coupon code was inserted by the user
 if(isset($_POST['apply_coupon'])){
 
 $code = $_POST['code'];
 
-if($code == ""){
-
-
+if($code == "" or $code == "NULL"){
 }
 else{
 
@@ -238,7 +225,7 @@ $get_coupons = "select * from coupons where coupon_code='$code'";
 
 $run_coupons = mysqli_query($con,$get_coupons);
 
-$check_coupons = mysqli_num_rows($run_coupons);
+$check_coupons = mysqli_num_rows($run_coupons); // if the coupon code was in our DB
 
 if($check_coupons == 1){
 
@@ -252,7 +239,7 @@ $coupon_limit = $row_coupons['coupon_limit'];
 
 $coupon_used = $row_coupons['coupon_used'];
 
-
+// if the coupon is expired
 if($coupon_limit == $coupon_used){
 
 echo "<script>alert('Your Coupon Code Has Been Expired')</script>";
@@ -260,7 +247,7 @@ echo "<script>alert('Your Coupon Code Has Been Expired')</script>";
 }
 else{
 
-$get_cart = "select * from cart where p_id='$coupon_pro' AND ip_add='$ip_add'";
+$get_cart = "select * from cart where p_id = '$coupon_pro' and ip_add='$ip_add'";
 
 $run_cart = mysqli_query($con,$get_cart);
 
@@ -268,14 +255,16 @@ $check_cart = mysqli_num_rows($run_cart);
 
 
 if($check_cart == 1){
-
+//increment its usage by 1
 $add_used = "update coupons set coupon_used=coupon_used+1 where coupon_code='$code'";
 
 $run_used = mysqli_query($con,$add_used);
-
-$update_cart = "update cart set p_price='$coupon_price' where p_id='$coupon_pro' AND ip_add='$ip_add'";
+$coupon_total = $total - $coupon_price;
+$flag = 1;
+$update_cart = "update cart set p_price='$coupon_total', coupon='$coupon_price', flag = '$flag' where p_id='$coupon_pro' AND ip_add='$ip_add'";
 
 $run_update = mysqli_query($con,$update_cart);
+
 
 echo "<script>alert('Your Coupon Code Has Been Applied')</script>";
 
@@ -375,7 +364,7 @@ $pro_img1 = $row_products['product_img1'];
 
 $pro_label = $row_products['product_label'];
 
-$manufacturer_id = $row_products['manufacturer_id'];
+/*$manufacturer_id = $row_products['manufacturer_id'];
 
 $get_manufacturer = "select * from manufacturers where manufacturer_id='$manufacturer_id'";
 
@@ -385,12 +374,13 @@ $row_manufacturer = mysqli_fetch_array($run_manufacturer);
 
 $manufacturer_name = $row_manufacturer['manufacturer_title'];
 
+ */
 $pro_psp_price = $row_products['product_psp_price'];
 
 $pro_url = $row_products['product_url'];
 
 
-if($pro_label == "Sale" or $pro_label == "Gift"){
+if($pro_label == "Sale" or $pro_label == "sale"){
 
 $product_price = "<del> $$pro_price </del>";
 
@@ -406,7 +396,7 @@ $product_price = "$$pro_price";
 }
 
 
-if($pro_label == ""){
+if($pro_label == "NULL"){
 
 
 }
@@ -433,31 +423,31 @@ echo "
 
 <div class='product' >
 
-<a href='$pro_url' >
+<a href='http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url' >
 
 <img src='admin_area/product_images/$pro_img1' class='img-responsive' >
 
 </a>
 
 <div class='text' >
-
+<!--
 <center>
 
 <p class='btn btn-warning'> $manufacturer_name </p>
 
 </center>
-
+-->
 <hr>
 
-<h3><a href='$pro_url' >$pro_title</a></h3>
+<h3><a href='http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url' >$pro_title</a></h3>
 
 <p class='price' > $product_price $product_psp_price </p>
 
 <p class='buttons' >
 
-<a href='$pro_url' class='btn btn-default' >View Details</a>
+<a href='http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url' class='btn btn-default' >View Details</a>
 
-<a href='$pro_url' class='btn btn-danger'>
+<a href='http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url' class='btn btn-danger'>
 
 <i class='fa fa-shopping-cart'></i> Add To Cart
 
@@ -466,11 +456,11 @@ echo "
 
 </p>
 
-</div>
-
-$product_label
-
-
+</div>;";
+if ($pro_label == "Sale" or $pro_label == "sale"){
+echo "$product_label";
+}
+echo "
 </div>
 
 </div>
@@ -501,9 +491,6 @@ $product_label
 
 </div><!-- box-header Ends -->
 
-<p class="text-muted">
-Shipping and additional costs are calculated based on the values you have entered.
-</p>
 
 <div class="table-responsive"><!-- table-responsive Starts -->
 
@@ -523,7 +510,7 @@ Shipping and additional costs are calculated based on the values you have entere
 
 <td> Shipping and handling </td>
 
-<th>$0.00</th>
+<th>$5.00</th>
 
 </tr>
 
@@ -531,18 +518,47 @@ Shipping and additional costs are calculated based on the values you have entere
 
 <td>Tax</td>
 
-<th>$0.00</th>
+<th>
+<?php
+$tax_rate = .0825;
+$tax = ($tax_rate*$total);
+echo "$$tax";
+?>
+</th>
 
 </tr>
 
+<tr>
+<td>Discount</td>
+<th>
+<?php
+$flag = 1;
+$get_cart = "select * from cart where flag = '$flag' and ip_add='$ip_add'";
+
+$run_cart = mysqli_query($con,$get_cart);
+
+$check_cart = mysqli_num_rows($run_cart);
+
+if($check_cart == 1){
+$row_cart = mysqli_fetch_array($run_cart);
+$coupon = $row_cart['coupon'];	
+echo "-$$coupon.00";
+}
+else {
+	echo "$0.00";
+}
+?>
+</th>
+</tr>
 <tr class="total">
 
 <td>Total</td>
 
-<th>$<?php echo $total; ?>.00</th>
+<th>$<?php 
+$total = $total + $shipping + $tax; 
+echo $total; ?></th>
 
 </tr>
-
 </tbody><!-- tbody Ends -->
 
 </table><!-- table Ends -->

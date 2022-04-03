@@ -22,7 +22,7 @@ else
 	  </a>
 	</div>
 	<div class="basket">
-	  <a href="cart.php" class="btn btn--basket">
+	  <a href="../../cart.php" class="btn btn--basket">
 	    <i class="icon-basket"></i>
 	    <?php items(); ?> items
 	  </a>
@@ -36,11 +36,11 @@ else
 // if the customer is not logged in, show them the register page
 // if the customer is logged in, show them the account page
 if(!isset($_SESSION['customer_email'])){
-	echo '<a href="customer_register.php" class="login__link">Register</a>';
+	echo '<a href="../../customer_register.php" class="login__link">Register</a>';
 } 
 else
 { 
-	echo '<a href="customer/my_account.php?my_orders" class="login__link">My Account</a>';
+	echo '<a href="my_account.php?my_orders" class="login__link">My Account</a>';
 }   
 ?>  
 </li>
@@ -51,11 +51,11 @@ else
 // if the customer is not logged in, show then the sign in page
 // if the customer is logged in, show them the logout page
 if(!isset($_SESSION['customer_email'])){
-	echo '<a href="checkout.php" class="login__link">Sign In</a>';
+	echo '<a href="../../checkout.php" class="login__link">Sign In</a>';
 } 
 else
 { 
-	echo '<a href="./logout.php" class="login__link">Logout</a>';
+	echo '<a href="../../logout.php" class="login__link">Logout</a>';
 }   
 ?>  
 
@@ -69,8 +69,8 @@ else
       <div class="container clearfix">
 
 	<div class="logo">
-	  <a class="logo__link" href="index.php">
-	    <img class="logo__img" src="images/main_page_logo.png" alt="Hug With Mug Coffee Company" width="450" height="23">
+	  <a class="logo__link" href="../../index.php">
+	    <img class="logo__img" src="../../images/main_page_logo.png" alt="Hug With Mug Coffee Company" width="450" height="23">
 	  </a>
 	</div>
 
@@ -99,7 +99,7 @@ else
 	    </li>
 
 	    <li class="categories__item">
-	      <a class="categories__link categories__link--active" href="shop.php">
+	      <a class="categories__link categories__link--active" href="../../shop.php">
 		Shop All
 	      </a>
 	    </li>
@@ -109,7 +109,7 @@ else
 // if the customer is not signed in, do not show them this menu
 if (isset($_SESSION['customer_email'])){
 echo '<li class="categories__item">
-	      <a class="categories__link" href="customer/my_account.php?my_orders">
+	      <a class="categories__link" href="../../customer/my_account.php?my_orders">
 		My Account
 		<i class="icon-down-open-1"></i>
 	      </a>
@@ -119,13 +119,13 @@ echo '<li class="categories__item">
 		    <div class="dropdown__heading">Account Settings</div>
 		    <ul class="dropdown__items">
 		      <li class="dropdown__item">
-			<a href="#" class="dropdown__link">My Wishlist</a>
+			<a href="my_account.php?my_wishlist" class="dropdown__link">My Wishlist</a>
 		      </li>
 		      <li class="dropdown__item">
-			<a href="#" class="dropdown__link">My Orders</a>
+			<a href="my_account.php?my_orders" class="dropdown__link">My Orders</a>
 		      </li>
 		      <li class="dropdown__item">
-			<a href="#" class="dropdown__link">View Shopping Cart</a>
+			<a href="../../cart.php" class="dropdown__link">View Shopping Cart</a>
 		      </li>
 		    </ul>
 		  </div>
@@ -133,18 +133,15 @@ echo '<li class="categories__item">
 		    <div class="dropdown__heading"></div>
 		    <ul class="dropdown__items">
 		      <li class="dropdown__item">
-			<a href="#" class="dropdown__link">Edit Your Account</a>
-		      </li>
-		      <li class="dropdown__item">
-			<a href="#" class="dropdown__link">Change Password</a>
-		      </li>
-		      <li class="dropdown__item">
-			<a href="#" class="dropdown__link">Delete Account</a>
+			<a href="my_account.php?change_pass" class="dropdown__link">Change Password</a>
 		      </li>
 		    </ul>
 		  </div>
 		</div>
+
+
 	      </div>
+
 	    </li>';
 }?>
 
@@ -154,3 +151,4 @@ echo '<li class="categories__item">
       </div>
     </div>
   </header>
+

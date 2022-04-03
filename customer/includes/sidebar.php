@@ -23,16 +23,9 @@ if(!isset($_SESSION['customer_email'])){
 else {
 
 echo "
-
-<center>
-
-<img src='customer_images/$customer_image' class='img-responsive'>
-
-</center>
-
 <br>
 
-<h3 align='center' class='panel-title'> Name : $customer_name </h3>
+<h3 align='center' class='panel-title'> Account Settings </h3>
 
 ";
 
@@ -52,18 +45,6 @@ echo "
 
 </li>
 
-<li class="<?php if(isset($_GET['pay_offline'])){ echo "active"; } ?>">
-
-<a href="my_account.php?pay_offline"> <i class="fa fa-bolt"></i> Pay Offline </a>
-
-</li>
-
-<li class="<?php if(isset($_GET['edit_account'])){ echo "active"; } ?>">
-
-<a href="my_account.php?edit_account"> <i class="fa fa-pencil"></i> Edit Account </a>
-
-</li>
-
 <li class="<?php if(isset($_GET['change_pass'])){ echo "active"; } ?>">
 
 <a href="my_account.php?change_pass"> <i class="fa fa-user"></i> Change Password </a>
@@ -76,11 +57,6 @@ echo "
 
 </li>
 
-<li class="<?php if(isset($_GET['delete_account'])){ echo "active"; } ?>">
-
-<a href="my_account.php?delete_account"> <i class="fa fa-trash-o"></i> Delete Account </a>
-
-</li>
 
 <li>
 
