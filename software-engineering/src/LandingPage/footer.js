@@ -1,5 +1,6 @@
 import React, {Component} from  "react";
 import './LandingPageStyling/footer.css'
+import { Link } from "react-router-dom";
 import { FaGithub } from "react-icons/fa"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {} from "@fortawesome/free-solid-svg-icons";
@@ -42,7 +43,7 @@ class Footer extends Component{
 
                     <div class="one_quarter">
                         <h4 class="footer_title">Keep informed</h4>
-                            <FaGithub/>
+                        <a href="https://github.com/kassiejgarcia/Software-Engineering-Project" target="_blank"><FaGithub/></a>
                         
                     </div>
                
