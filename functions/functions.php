@@ -158,7 +158,7 @@ echo "
 
 <a href='http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url' >
 
-<img src='admin_area/product_images/$pro_img1' class='img-responsive' >
+<img src='admin_area/product_images/$pro_img1' class='product-display' >
 
 </a>
 
@@ -366,9 +366,9 @@ echo "
 
 <div class='product' >
 
-<a href='$pro_url' >
+<a href='http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url' >
 
-<img src='admin_area/product_images/$pro_img1' class='img-responsive' >
+<img src='admin_area/product_images/$pro_img1' class='product-display' >
 
 </a>
 
