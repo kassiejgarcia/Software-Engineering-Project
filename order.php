@@ -45,6 +45,16 @@ $insert_pending_order = "insert into pending_orders (customer_id,invoice_no,prod
 
 $run_pending_order = mysqli_query($con,$insert_pending_order);
 
+
+$select_product = "select * from products where product_id = '$pro_id'";
+$run_product = mysqli_query($con,$select_product);
+$row_product = mysqli_fetch_array($run_product);
+$product_qt = $row_product['product_quantity'];
+$new_qty = $product_qt - $pro_qty; 
+$change_quantity = "update products set product_quantity = '$new_qty' where product_id = '$pro_id'";
+$run_update = mysqli_query($con,$change_quantity);
+
+
 $delete_cart = "delete from cart where ip_add='$ip_add'";
 
 $run_delete = mysqli_query($con,$delete_cart);

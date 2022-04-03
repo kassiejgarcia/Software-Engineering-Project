@@ -42,6 +42,7 @@ $pro_price = $row_product['product_price']; //product price
 
 $pro_desc = $row_product['product_desc']; //product description
 
+$pro_quantity = $row_product['product_quantity']; //product quantity
 $pro_img1 = $row_product['product_img1']; //product image
 
 $pro_img2 = $row_product['product_img2']; //image if any 
@@ -220,6 +221,10 @@ echo "<script>window.open('http://ec2-54-172-16-142.compute-1.amazonaws.com/deta
  <label class="col-md-5 control-label"> Product Description </label>
  <div id = "description">
 <?php echo "$pro_desc"; ?>
+</div>
+<label class="col-md-5 control-label"> In Stock </label>
+<div id = "description">
+<?php echo "<p>$pro_quantity</p>"; ?>
 </div>
 <label class="col-md-5 control-label" >Product Quantity </label>
 
