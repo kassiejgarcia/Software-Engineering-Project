@@ -131,7 +131,7 @@ $product_price = "$$pro_price";
 
 }
 
-if($pro_label == "NULL"){
+if($pro_label == "NULL" or $pro_label != "Sale" or $pro_label != "sale"){
 
 
 }
