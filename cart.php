@@ -256,10 +256,12 @@ $check_cart = mysqli_num_rows($run_cart);
 
 if($check_cart == 1){
 //increment its usage by 1
-$add_used = "update coupons set coupon_used=coupon_used+1 where coupon_code='$code'";
+$row_ct = mysqli_fetch_array($run_cart);
+$pro_total = $row_ct['p_price'];
 
+$add_used = "update coupons set coupon_used=coupon_used+1 where coupon_code='$code'";
 $run_used = mysqli_query($con,$add_used);
-$coupon_total = $total - $coupon_price;
+$coupon_total = $pro_total - $coupon_price;
 $flag = 1;
 $update_cart = "update cart set p_price='$coupon_total', coupon='$coupon_price', flag = '$flag' where p_id='$coupon_pro' AND ip_add='$ip_add'";
 
@@ -522,6 +524,7 @@ echo "
 <?php
 $tax_rate = .0825;
 $tax = ($tax_rate*$total);
+$tax = round($tax, 2);
 echo "$$tax";
 ?>
 </th>
@@ -555,6 +558,7 @@ else {
 <td>Total</td>
 
 <th>$<?php 
+$shipping = 5.00;
 $total = $total + $shipping + $tax; 
 echo $total; ?></th>
 

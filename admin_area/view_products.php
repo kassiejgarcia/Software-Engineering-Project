@@ -57,13 +57,14 @@ else {
 <thead>
 
 <tr>
-<th>#</th>
+<th>ID</th>
 <th>Title</th>
 <th>Image</th>
 <th>Price</th>
 <th>Sold</th>
 <th>Keywords</th>
 <th>Date</th>
+<th>QTY</th>
 <th>Delete</th>
 <th>Edit</th>
 
@@ -79,7 +80,7 @@ else {
 
 $i = 0;
 
-$get_pro = "select * from products where status='product'";
+$get_pro = "select * from products";
 
 $run_pro = mysqli_query($con,$get_pro);
 
@@ -96,6 +97,8 @@ $pro_price = $row_pro['product_price'];
 $pro_keywords = $row_pro['product_keywords'];
 
 $pro_date = $row_pro['date'];
+
+$pro_qty = $row_pro['product_quantity'];
 
 $i++;
 
@@ -124,6 +127,8 @@ echo $count;
 <td> <?php echo $pro_keywords; ?> </td>
 
 <td><?php echo $pro_date; ?></td>
+
+<td><?php echo $pro_qty; ?></td>
 
 <td>
 

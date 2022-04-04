@@ -1,9 +1,9 @@
 <?php
-
+// this is the index page for the admin area
 session_start();
 
 include("includes/db.php");
-
+// open the login page if the user does not have a session yet
 if(!isset($_SESSION['admin_email'])){
 
 echo "<script>window.open('login.php','_self')</script>";
@@ -52,9 +52,9 @@ $get_customers = "SELECT * FROM customers";
 $run_customers = mysqli_query($con,$get_customers);
 $count_customers = mysqli_num_rows($run_customers);
 
-$get_p_categories = "SELECT * FROM product_categories";
+$get_p_categories = "SELECT * FROM categories";
 $run_p_categories = mysqli_query($con,$get_p_categories);
-$count_p_categories = mysqli_num_rows($run_p_categories);
+$count_categories = mysqli_num_rows($run_p_categories);
 
 
 $get_total_orders = "SELECT * FROM customer_orders";
@@ -71,7 +71,7 @@ $run_completed_orders = mysqli_query($con,$get_completed_orders);
 $count_completed_orders = mysqli_num_rows($run_completed_orders);
 
 
-$get_total_earnings = "SELECT SUM( due_amount) as Total FROM customer_orders WHERE order_status = 'Complete'";
+$get_total_earnings = "SELECT SUM( due_amount) as Total FROM customer_orders WHERE order_status = 'pending'";
 $run_total_earnings = mysqli_query($con, $get_total_earnings);
 $row = mysqli_fetch_assoc($run_total_earnings);                       
 $count_total_earnings = $row['Total'];
@@ -90,14 +90,14 @@ $count_coupons = mysqli_num_rows($run_coupons);
 
 <head>
 
-<title>Admin Panel</title>
+<title>Administrator Panel</title>
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 
 <link href="css/style.css" rel="stylesheet">
 
 <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" >
-<link rel="shortcut icon" href="//cdn.shopify.com/s/files/1/2484/9148/files/SDQSDSQ_32x32.png?v=1511436147" type="image/png">
+<link rel="shortcut icon" href="http://ec2-54-172-16-142.compute-1.amazonaws.com/images/coffee_mug_icon.png" type="image/png">
 
 </head>
 
@@ -142,7 +142,7 @@ if(isset($_GET['edit_product'])){
 include("edit_product.php");
 
 }
-
+/*
 if(isset($_GET['insert_p_cat'])){
 
 include("insert_p_cat.php");
@@ -166,7 +166,7 @@ if(isset($_GET['edit_p_cat'])){
 include("edit_p_cat.php");
 
 }
-
+ */
 if(isset($_GET['insert_cat'])){
 
 include("insert_cat.php");
@@ -243,7 +243,7 @@ include("order_delete.php");
 
 }
 
-
+/*
 if(isset($_GET['view_payments'])){
 
 include("view_payments.php");
@@ -255,7 +255,7 @@ if(isset($_GET['payment_delete'])){
 include("payment_delete.php");
 
 }
-
+ */
 if(isset($_GET['insert_user'])){
 
 include("insert_user.php");
@@ -306,7 +306,7 @@ if(isset($_GET['edit_box'])){
 include("edit_box.php");
 
 }
-
+/*
 if(isset($_GET['insert_term'])){
 
 include("insert_term.php");
@@ -330,13 +330,13 @@ if(isset($_GET['edit_term'])){
 include("edit_term.php");
 
 }
-
+ */
 if(isset($_GET['edit_css'])){
 
 include("edit_css.php");
 
 }
-
+/*
 if(isset($_GET['insert_manufacturer'])){
 
 include("insert_manufacturer.php");
@@ -360,7 +360,7 @@ if(isset($_GET['edit_manufacturer'])){
 include("edit_manufacturer.php");
 
 }
-
+ */
 
 if(isset($_GET['insert_coupon'])){
 
@@ -412,7 +412,7 @@ if(isset($_GET['edit_icon'])){
 include("edit_icon.php");
 
 }
-
+/*
 if(isset($_GET['insert_bundle'])){
 
 include("insert_bundle.php");
@@ -463,14 +463,14 @@ if(isset($_GET['edit_rel'])){
 include("edit_rel.php");
 
 }
-
-
+ */
+/*
 if(isset($_GET['edit_contact_us'])){
 
 include("edit_contact_us.php");
 
 }
-
+ */
 if(isset($_GET['insert_enquiry'])){
 
 include("insert_enquiry.php");
@@ -502,7 +502,7 @@ if(isset($_GET['edit_about_us'])){
 include("edit_about_us.php");
 
 }
-
+/*
 
 if(isset($_GET['insert_store'])){
 
@@ -527,7 +527,7 @@ if(isset($_GET['edit_store'])){
 include("edit_store.php");
 
 }
-
+ */
 ?>
 
 </div><!-- container-fluid Ends -->

@@ -79,9 +79,22 @@ else {
 <?php
 
 $i = 0;
+if (isset($_POST['price']))
+{
 
+$get_orders = "select * from customer_orders order by due_amount DESC";
+}
+else if (isset($_POST['customer']))
+{
+$get_orders = "select * from customer_orders order by customer_id DESC";
+}
+else if (isset($_POST['date']))
+{
+$get_orders = "select * from customer_orders order by order_date ASC";
+}
+else {
 $get_orders = "select * from pending_orders";
-
+}
 $run_orders = mysqli_query($con,$get_orders);
 
 while ($row_orders = mysqli_fetch_array($run_orders)) {
@@ -198,7 +211,25 @@ echo $order_status='Completed';
 </table><!-- table table-bordered table-hover table-striped Ends -->
 
 </div><!-- table-responsive Ends -->
-
+<table>
+<tr>
+<td>
+<form action="index.php?view_orders" method="post">
+  <input type="submit" value="Sort by Order Size $$" name = "price" class = "sortbutton">
+</form>
+</td>
+<td>
+<form action="index.php?view_orders" method="post">
+  <input type="submit" value="Sort by Customer" name = "customer" class = "sortbutton">
+</form>
+</td>
+<td>
+<form action="index.php?view_orders" method="post">
+  <input type="submit" value="Sort by Date" name = "date" class = "sortbutton">
+</form>
+</td>
+</tr>
+</table>
 </div><!-- panel-body Ends -->
 
 </div><!-- panel panel-default Ends -->

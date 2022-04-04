@@ -116,7 +116,7 @@ $pro_psp_price = $row_products['product_psp_price']; //sale price
 
 $pro_url = $row_products['product_url']; //GET id to access it
 
-if($pro_label == "Sale" && $pro_label != "NULL"){
+if($pro_label == "Sale" or $pro_label == "sale"){
 
 $product_price = "<del> $$pro_price </del>";
 
@@ -131,15 +131,15 @@ $product_price = "$$pro_price";
 
 }
 
-if($pro_label == "NULL"){
-
+if($pro_label == "NULL" and $pro_label != "Sale"){
+ 
 
 }
 else{
 
 $product_label = "
 
-<a class='label sale' href='#' style='color:black;'>
+<a class='label sale' style='color:black;'>
 
 <div class='thelabel'>$pro_label</div>
 
@@ -190,7 +190,7 @@ echo "
 </p>
 
 </div>"; //only show the product label if there is one
-if($pro_label != NULL){
+if($pro_label == "Sale" or $pro_label == "sale"){
 	echo"$product_label";
 
 }
@@ -361,11 +361,8 @@ $product_label = "
 
 
 echo "
-
 <div class='col-md-4 col-sm-6 center-responsive' >
-
-<div class='product' >
-
+<div class = 'product'>
 <a href='http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url' >
 
 <img src='admin_area/product_images/$pro_img1' class='product-display' >
@@ -532,3 +529,4 @@ echo "' >".'Last Page'."</a></li>";
 
 
 ?>
+

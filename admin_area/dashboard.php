@@ -144,7 +144,7 @@ else {
 
 <div class="col-xs-9 text-right"><!-- col-xs-9 text-right Starts -->
 
-<div class="huge"> <?php echo $count_p_categories; ?> </div>
+<div class="huge"> <?php echo $count_categories; ?> </div>
 
 <div>Products Categories</div>
 
@@ -154,7 +154,7 @@ else {
 
 </div><!-- panel-heading Ends -->
 
-<a href="index.php?view_p_cats">
+<a href="index.php?view_cats">
 
 <div class="panel-footer"><!-- panel-footer Starts -->
 
@@ -312,49 +312,6 @@ else {
 
 
 
-            <div class="col-lg-3 col-md-6"><!-- col-lg-3 col-md-6 Starts -->
-
-                <div class="panel panel-info"><!-- panel panel-red Starts -->
-                
-                <div class="panel-heading"><!-- panel-heading Starts -->
-                
-                <div class="row"><!-- panel-heading row Starts -->
-                
-                <div class="col-xs-3"><!-- col-xs-3 Starts -->
-                
-                <i class="fa fa-check fa-5x"> </i>
-                
-                </div><!-- col-xs-3 Ends -->
-                
-                <div class="col-xs-9 text-right"><!-- col-xs-9 text-right Starts -->
-                
-                <div class="huge"> <?php echo $count_completed_orders ?> </div>
-                
-                <div>Completed Orders</div>
-                
-                </div><!-- col-xs-9 text-right Ends -->
-                
-                </div><!-- panel-heading row Ends -->
-                
-                </div><!-- panel-heading Ends -->
-                
-                <a href="index.php?view_orders">
-                
-                <div class="panel-footer"><!-- panel-footer Starts -->
-                
-                <span class="pull-left"> View Details </span>
-                
-                <span class="pull-right"> <i class="fa fa-arrow-circle-right"></i> </span>
-                
-                <div class="clearfix"></div>
-                
-                </div><!-- panel-footer Ends -->
-                
-                </a>
-                
-                </div><!-- panel panel-red Ends -->
-                
-                </div><!-- col-lg-3 col-md-6 Ends -->
 
 
 
@@ -433,7 +390,6 @@ else {
 <th>Invoice No</th>
 <th>Product ID</th>
 <th>Qty</th>
-<th>Size</th>
 <th>Status</th>
 
 
@@ -446,7 +402,7 @@ else {
 <?php
 
 $i = 0;
-
+// display the newest orders, up to 5
 $get_order = "select * from pending_orders order by 1 DESC LIMIT 0,5";
 $run_order = mysqli_query($con,$get_order);
 
@@ -462,8 +418,6 @@ $invoice_no = $row_order['invoice_no'];
 $product_id = $row_order['product_id'];
 
 $qty = $row_order['qty'];
-
-$size = $row_order['size'];
 
 $order_status = $row_order['order_status'];
 
@@ -490,7 +444,6 @@ echo $customer_email;
 <td><?php echo $invoice_no; ?></td>
 <td><?php echo $product_id; ?></td>
 <td><?php echo $qty; ?></td>
-<td><?php echo $size; ?></td>
 <td>
 <?php
 if($order_status=='pending'){

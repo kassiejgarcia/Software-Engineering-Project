@@ -545,8 +545,12 @@ $cat_title
 ";
 
 }
-
-
+/*
+include("../functions/functions.php");
+echo'<form action="shop.php" method="post">
+<input type="submit" name = "price">
+</form>';
+ */
 ?>
 
 </ul><!-- nav nav-pills nav-stacked category-menu Ends -->
@@ -556,3 +560,4 @@ $cat_title
 </div><!-- panel-collapse collapse-data Ends -->
 
 </div><!--- panel panel-default sidebar-menu Ends -->
+
