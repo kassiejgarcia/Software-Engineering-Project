@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 4.9.5deb2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Sep 16, 2021 at 09:33 AM
--- Server version: 5.6.21
--- PHP Version: 5.6.3
+-- Host: localhost:3306
+-- Generation Time: Apr 03, 2022 at 09:44 PM
+-- Server version: 8.0.28-0ubuntu0.20.04.3
+-- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -27,7 +29,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `about_us` (
-  `about_id` int(10) NOT NULL,
+  `about_id` int NOT NULL,
   `about_heading` text NOT NULL,
   `about_short_desc` text NOT NULL,
   `about_desc` text NOT NULL
@@ -38,7 +40,7 @@ CREATE TABLE `about_us` (
 --
 
 INSERT INTO `about_us` (`about_id`, `about_heading`, `about_short_desc`, `about_desc`) VALUES
-(1, 'About Us - Our Story', '\r\nIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,\r\n', 'Rhone was the collective vision of a small group of weekday warriors. For years, we were frustrated by the lack of activewear designed for men and wanted something better. With that in mind, we set out to design premium apparel that is made for motion and engineered to endure.\r\n\r\nAdvanced materials and state of the art technology are combined with heritage craftsmanship to create a new standard in activewear. Every product tells a story of premium performance, reminding its wearer to push themselves physically without having to sacrifice comfort and style.\r\n\r\nBeyond our product offering, Rhone is founded on principles of progress and integrity. Just as we aim to become better as a company, we invite men everywhere to raise the bar and join us as we move Forever Forward.');
+(1, 'About Us - Our Story for Hug With Mug Co.', 'Coffee. For some people, it’s more than a drink. It’s a way to connect. It’s a way to share moments. And, ok, sometimes it’s just a way to wake up and get work done.\r\n\r\n\r\n', 'Hug With Mug Co. is the collective vision of a small group of Computer Science students at the University of Texas at San Antonio for the Software Engineering course.\r\nEver since we joined together as a group, we decided coffee was the perfect thing to sell. It is a daily part of all our lives and routines, so when it came to picking a theme- coffee was a no-brainer! \r\n\r\n\r\nSo say hello to Hug With Mug Coffee Co. - I hope you like it.\r\n');
 
 -- --------------------------------------------------------
 
@@ -47,7 +49,7 @@ INSERT INTO `about_us` (`about_id`, `about_heading`, `about_short_desc`, `about_
 --
 
 CREATE TABLE `admins` (
-  `admin_id` int(10) NOT NULL,
+  `admin_id` int NOT NULL,
   `admin_name` varchar(255) NOT NULL,
   `admin_email` varchar(255) NOT NULL,
   `admin_pass` varchar(255) NOT NULL,
@@ -72,10 +74,10 @@ INSERT INTO `admins` (`admin_id`, `admin_name`, `admin_email`, `admin_pass`, `ad
 --
 
 CREATE TABLE `bundle_product_relation` (
-  `rel_id` int(10) NOT NULL,
+  `rel_id` int NOT NULL,
   `rel_title` varchar(255) NOT NULL,
-  `product_id` int(10) NOT NULL,
-  `bundle_id` int(10) NOT NULL
+  `product_id` int NOT NULL,
+  `bundle_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -85,12 +87,21 @@ CREATE TABLE `bundle_product_relation` (
 --
 
 CREATE TABLE `cart` (
-  `p_id` int(10) NOT NULL,
+  `p_id` int NOT NULL,
   `ip_add` varchar(255) NOT NULL,
-  `qty` int(10) NOT NULL,
+  `qty` int NOT NULL,
   `p_price` varchar(255) NOT NULL,
-  `size` text NOT NULL
+  `size` text CHARACTER SET latin1 COLLATE latin1_swedish_ci,
+  `coupon` int DEFAULT NULL,
+  `flag` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`p_id`, `ip_add`, `qty`, `p_price`, `size`, `coupon`, `flag`) VALUES
+(33, '136.50.168.49', 1, '6', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -99,7 +110,7 @@ CREATE TABLE `cart` (
 --
 
 CREATE TABLE `categories` (
-  `cat_id` int(10) NOT NULL,
+  `cat_id` int NOT NULL,
   `cat_title` text NOT NULL,
   `cat_top` text NOT NULL,
   `cat_image` text NOT NULL
@@ -110,10 +121,9 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`cat_id`, `cat_title`, `cat_top`, `cat_image`) VALUES
-(2, 'Feminine', 'no', 'feminelg.png'),
-(3, 'Kids', 'no', 'kidslg.jpg'),
-(4, 'Others', 'yes', 'othericon.png'),
-(5, 'Men', 'yes', 'malelg.png');
+(1, 'Coffee', 'no', 'feminelg.png'),
+(2, 'Tea', 'no', 'kidslg.jpg'),
+(3, 'Merch', 'yes', 'othericon.png');
 
 -- --------------------------------------------------------
 
@@ -122,7 +132,7 @@ INSERT INTO `categories` (`cat_id`, `cat_title`, `cat_top`, `cat_image`) VALUES
 --
 
 CREATE TABLE `contact_us` (
-  `contact_id` int(10) NOT NULL,
+  `contact_id` int NOT NULL,
   `contact_email` text NOT NULL,
   `contact_heading` text NOT NULL,
   `contact_desc` text NOT NULL
@@ -142,13 +152,13 @@ INSERT INTO `contact_us` (`contact_id`, `contact_email`, `contact_heading`, `con
 --
 
 CREATE TABLE `coupons` (
-  `coupon_id` int(10) NOT NULL,
-  `product_id` int(10) NOT NULL,
+  `coupon_id` int NOT NULL,
+  `product_id` int NOT NULL,
   `coupon_title` varchar(255) NOT NULL,
   `coupon_price` varchar(255) NOT NULL,
   `coupon_code` varchar(255) NOT NULL,
-  `coupon_limit` int(100) NOT NULL,
-  `coupon_used` int(100) NOT NULL
+  `coupon_limit` int NOT NULL,
+  `coupon_used` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -156,8 +166,8 @@ CREATE TABLE `coupons` (
 --
 
 INSERT INTO `coupons` (`coupon_id`, `product_id`, `coupon_title`, `coupon_price`, `coupon_code`, `coupon_limit`, `coupon_used`) VALUES
-(5, 8, 'Sale', '10', 'CASTRO', 2, 1),
-(6, 14, 'Sale', '65', 'CODEASTRO', 3, 1);
+(6, 14, 'Sale', '65', 'CODEASTRO', 3, 1),
+(12, 32, 'Sale', '5', 'HUGWMUG5OFF', 20, 10);
 
 -- --------------------------------------------------------
 
@@ -166,29 +176,26 @@ INSERT INTO `coupons` (`coupon_id`, `product_id`, `coupon_title`, `coupon_price`
 --
 
 CREATE TABLE `customers` (
-  `customer_id` int(10) NOT NULL,
-  `customer_name` varchar(255) NOT NULL,
+  `customer_id` int NOT NULL,
+  `full_name` varchar(255) NOT NULL,
+  `username` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `customer_email` varchar(255) NOT NULL,
-  `customer_pass` varchar(255) NOT NULL,
-  `customer_country` text NOT NULL,
-  `customer_city` text NOT NULL,
+  `customer_pass` varchar(500) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `customer_contact` varchar(255) NOT NULL,
-  `customer_address` text NOT NULL,
-  `customer_image` text NOT NULL,
-  `customer_ip` varchar(255) NOT NULL,
-  `customer_confirm_code` text NOT NULL
+  `customer_address` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `customers`
 --
 
-INSERT INTO `customers` (`customer_id`, `customer_name`, `customer_email`, `customer_pass`, `customer_country`, `customer_city`, `customer_contact`, `customer_address`, `customer_image`, `customer_ip`, `customer_confirm_code`) VALUES
-(2, 'user', 'user@ave.com', '123', 'United State', 'New York', '0092334566931', 'new york', 'user.jpg', '::1', ''),
-(3, 'Demo Customer', 'demo@customer.com', 'Password123', 'DemoCountry', 'DemoCity', '700000000', 'DemoAddress', 'sample_image.jpg', '::1', ''),
-(4, 'Thomas', 'thomas@demo.com', 'Password123', 'One Country', 'One City', '777777777', '111 Address', 'sample_img360.png', '::1', '1427053935'),
-(5, 'Fracis', 'test@customer.com', 'Password123', 'US', 'Demo City', '780000000', '112 Bleck Street', 'userav-min.png', '::1', '1634138674'),
-(6, 'Sample Customer', 'customer@mail.com', 'Password123', 'Sample Country', 'Sample City', '7800000000', 'Sample Address', 'user-icn-min.png', '::1', '174829126');
+INSERT INTO `customers` (`customer_id`, `full_name`, `username`, `customer_email`, `customer_pass`, `customer_contact`, `customer_address`) VALUES
+(2, '', 'test_user', 'user@ave.com', '123', '0092334566931', 'new york'),
+(3, '', 'test_user_2', 'demo@customer.com', 'Password123', '700000000', 'DemoAddress'),
+(4, '', 'UTSA_user', 'thomas@demo.com', 'Password123', '777777777', '111 Address'),
+(5, '', 'hellokitty', 'test@customer.com', 'Password123', '780000000', '112 Bleck Street'),
+(6, '', 'smpl_user', 'customer@mail.com', 'Password123', '7800000000', 'Sample Address'),
+(10, 'Kassie Garcia', 'hamtaro', 'kassiejgarcia@gmail.com', '$2y$10$YitACqQ5IJd2UTYgYAqv2.sdCfbF3vKL09.72v9p8StDmVyev26ae', '210210210', 'san antonio ');
 
 -- --------------------------------------------------------
 
@@ -197,11 +204,11 @@ INSERT INTO `customers` (`customer_id`, `customer_name`, `customer_email`, `cust
 --
 
 CREATE TABLE `customer_orders` (
-  `order_id` int(10) NOT NULL,
-  `customer_id` int(10) NOT NULL,
-  `due_amount` int(100) NOT NULL,
-  `invoice_no` int(100) NOT NULL,
-  `qty` int(10) NOT NULL,
+  `order_id` int NOT NULL,
+  `customer_id` int NOT NULL,
+  `due_amount` int NOT NULL,
+  `invoice_no` int NOT NULL,
+  `qty` int NOT NULL,
   `size` text NOT NULL,
   `order_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `order_status` text NOT NULL
@@ -211,16 +218,15 @@ CREATE TABLE `customer_orders` (
 -- Dumping data for table `customer_orders`
 --
 
-INSERT INTO `customer_orders` (`order_id`, `customer_id`, `due_amount`, `invoice_no`, `qty`, `size`, `order_date`, `order_status`) VALUES
-(17, 2, 100, 1715523401, 2, 'Large', '2017-02-20 08:21:42', 'pending'),
-(23, 3, 20, 1762810884, 1, 'Medium', '2021-09-14 08:35:57', 'Complete'),
-(24, 4, 100, 1972602052, 1, 'Large', '2021-09-14 16:37:52', 'Complete'),
-(25, 4, 90, 2008540778, 1, 'Medium', '2021-09-14 16:43:15', 'pending'),
-(27, 5, 120, 2138906686, 1, 'Small', '2021-09-15 03:18:41', 'Complete'),
-(28, 5, 180, 361540113, 2, 'Medium', '2021-09-15 03:25:42', 'Complete'),
-(29, 3, 100, 858195683, 1, 'Large', '2021-09-15 03:14:01', 'Complete'),
-(31, 6, 245, 901707655, 1, 'Medium', '2021-09-15 03:52:18', 'Complete'),
-(32, 6, 75, 2125554712, 1, 'Large', '2021-09-15 03:52:58', 'pending');
+INSERT INTO `customer_orders` (`order_id`, `customer_id`, `due_amount`, `invoice_no`, `qty`, `size`, `order_status`) VALUES
+(33, 10, 10, 533714995, 1, '', 'pending'),
+(34, 10, 38, 533714995, 2, '', 'pending'),
+(35, 10, 21, 533714995, 1, '', 'pending'),
+(36, 10, 15, 533714995, 1, '', 'pending'),
+(37, 10, 21, 533714995, 1, '', 'pending'),
+(38, 10, 16, 801177859, 1, '', 'pending'),
+(39, 10, 12, 2084351728, 2, '', 'pending'),
+(40, 10, 12, 235453125, 2, '', 'pending');
 
 -- --------------------------------------------------------
 
@@ -229,7 +235,7 @@ INSERT INTO `customer_orders` (`order_id`, `customer_id`, `due_amount`, `invoice
 --
 
 CREATE TABLE `enquiry_types` (
-  `enquiry_id` int(10) NOT NULL,
+  `enquiry_id` int NOT NULL,
   `enquiry_title` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -249,7 +255,7 @@ INSERT INTO `enquiry_types` (`enquiry_id`, `enquiry_title`) VALUES
 --
 
 CREATE TABLE `manufacturers` (
-  `manufacturer_id` int(10) NOT NULL,
+  `manufacturer_id` int NOT NULL,
   `manufacturer_title` text NOT NULL,
   `manufacturer_top` text NOT NULL,
   `manufacturer_image` text NOT NULL
@@ -270,16 +276,30 @@ INSERT INTO `manufacturers` (`manufacturer_id`, `manufacturer_title`, `manufactu
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `order_summary`
+--
+
+CREATE TABLE `order_summary` (
+  `subtotal` int NOT NULL,
+  `shipping` int NOT NULL,
+  `tax` float NOT NULL,
+  `total` float NOT NULL,
+  `coupon_price` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `payments`
 --
 
 CREATE TABLE `payments` (
-  `payment_id` int(10) NOT NULL,
-  `invoice_no` int(10) NOT NULL,
-  `amount` int(10) NOT NULL,
+  `payment_id` int NOT NULL,
+  `invoice_no` int NOT NULL,
+  `amount` int NOT NULL,
   `payment_mode` text NOT NULL,
-  `ref_no` int(10) NOT NULL,
-  `code` int(10) NOT NULL,
+  `ref_no` int NOT NULL,
+  `code` int NOT NULL,
   `payment_date` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -311,11 +331,11 @@ INSERT INTO `payments` (`payment_id`, `invoice_no`, `amount`, `payment_mode`, `r
 --
 
 CREATE TABLE `pending_orders` (
-  `order_id` int(10) NOT NULL,
-  `customer_id` int(10) NOT NULL,
-  `invoice_no` int(10) NOT NULL,
+  `order_id` int NOT NULL,
+  `customer_id` int NOT NULL,
+  `invoice_no` int NOT NULL,
   `product_id` text NOT NULL,
-  `qty` int(10) NOT NULL,
+  `qty` int NOT NULL,
   `size` text NOT NULL,
   `order_status` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -325,15 +345,14 @@ CREATE TABLE `pending_orders` (
 --
 
 INSERT INTO `pending_orders` (`order_id`, `customer_id`, `invoice_no`, `product_id`, `qty`, `size`, `order_status`) VALUES
-(17, 2, 1715523401, '9', 2, 'Large', 'pending'),
-(23, 3, 1762810884, '12', 1, 'Medium', 'Complete'),
-(24, 4, 1972602052, '5', 1, 'Large', 'Complete'),
-(25, 4, 2008540778, '13', 1, 'Medium', 'pending'),
-(27, 5, 2138906686, '14', 1, 'Small', 'Complete'),
-(28, 5, 361540113, '13', 2, 'Medium', 'Complete'),
-(29, 3, 858195683, '5', 1, 'Large', 'Complete'),
-(31, 6, 901707655, '8', 1, 'Medium', 'Complete'),
-(32, 6, 2125554712, '15', 1, 'Large', 'pending');
+(33, 10, 533714995, '9', 1, '', 'pending'),
+(34, 10, 533714995, '27', 2, '', 'pending'),
+(35, 10, 533714995, '29', 1, '', 'pending'),
+(36, 10, 533714995, '30', 1, '', 'pending'),
+(37, 10, 533714995, '32', 1, '', 'pending'),
+(38, 10, 801177859, '32', 1, '', 'pending'),
+(39, 10, 2084351728, '33', 2, '', 'pending'),
+(40, 10, 235453125, '33', 2, '', 'pending');
 
 -- --------------------------------------------------------
 
@@ -342,38 +361,47 @@ INSERT INTO `pending_orders` (`order_id`, `customer_id`, `invoice_no`, `product_
 --
 
 CREATE TABLE `products` (
-  `product_id` int(10) NOT NULL,
-  `p_cat_id` int(10) NOT NULL,
-  `cat_id` int(10) NOT NULL,
-  `manufacturer_id` int(10) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `product_id` int NOT NULL,
+  `p_cat_id` int NOT NULL,
+  `cat_id` int NOT NULL,
+  `manufacturer_id` int NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `product_title` text NOT NULL,
   `product_url` text NOT NULL,
   `product_img1` text NOT NULL,
   `product_img2` text NOT NULL,
   `product_img3` text NOT NULL,
-  `product_price` int(10) NOT NULL,
-  `product_psp_price` int(100) NOT NULL,
+  `product_price` int NOT NULL,
+  `product_psp_price` int NOT NULL,
   `product_desc` text NOT NULL,
   `product_features` text NOT NULL,
   `product_video` text NOT NULL,
   `product_keywords` text NOT NULL,
-  `product_label` text NOT NULL,
-  `status` varchar(255) NOT NULL
+  `product_label` text CHARACTER SET latin1 COLLATE latin1_swedish_ci,
+  `status` varchar(255) NOT NULL,
+  `product_quantity` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`product_id`, `p_cat_id`, `cat_id`, `manufacturer_id`, `date`, `product_title`, `product_url`, `product_img1`, `product_img2`, `product_img3`, `product_price`, `product_psp_price`, `product_desc`, `product_features`, `product_video`, `product_keywords`, `product_label`, `status`) VALUES
-(5, 7, 5, 5, '2021-09-14 09:13:25', 'Denim Borg Lined Western Jacket', 'product-url-5', 'Next-Denim-Borg-Lined-Western-Jacket-0463-0064553-1-pdp_slider_l.jpg', 'Next-Denim-Borg-Lined-Western-Jacket-0463-0064553-2-pdp_slider_l.jpg', 'Next-Denim-Borg-Lined-Western-Jacket-0465-0064553-3-pdp_slider_l.jpg', 259, 100, '\r\n<p>This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description.</p>\r\n', '\r\nIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,\r\n', '\r\n<iframe width=\"854\" height=\"480\" src=\"https://www.youtube.com/embed/qRswlmADRa8\" frameborder=\"0\" allowfullscreen></iframe>\r\n', 'Jackets', 'Gift', 'product'),
-(8, 4, 2, 4, '2021-09-14 10:13:02', 'Sleeveless Flaux Fur Hybrid Coat', 'product-url-8', 'Black Blouse Versace Coat1.jpg', 'Black Blouse Versace Coat2.jpg', 'Black Blouse Versace Coat3.jpg', 245, 100, '\r\n\r\n\r\n<p>This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description.</p>\r\n\r\n\r\n', '\r\n\r\n\r\nIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,\r\n\r\n\r\n', '\r\n\r\n\r\n<iframe width=\"854\" height=\"480\" src=\"https://www.youtube.com/embed/qRswlmADRa8\" frameborder=\"0\" allowfullscreen></iframe>\r\n\r\n\r\n', 'Coats', 'New', 'product'),
-(9, 5, 4, 7, '2021-09-14 17:06:30', 'Long Sleeves Polo Shirt for Men', 'product-url-9', 'product-1.jpg', 'product-2.jpg', 'product-3.jpg', 50, 35, '\r\n\r\n\r\n\r\n<p>This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description. This is a sample product description.</p>\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\nIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n<iframe width=\"854\" height=\"480\" src=\"https://www.youtube.com/embed/qRswlmADRa8\" frameborder=\"0\" allowfullscreen></iframe>\r\n\r\n\r\n\r\n', 'T-Shirt', 'Sale', 'product'),
-(12, 8, 5, 2, '2021-05-25 09:15:09', 'Ultraboost 21 PrimeBlue Shoes', 'ultraboost-21-adidas', 'Ultraboost_21.jpg', 'Ultraboost_21_2.jpg', 'Ultraboost_21_3.jpg', 150, 180, '\r\n\r\nThis product is made with Primeblue, a high-performance recycled material made in part with Parley Ocean Plastic. 50% of the upper is textile, 92% of the textile is Primeblue yarn. No virgin polyester.', '\r\n\r\nComfortable and responsive, Ultraboost became our first shoe to be as popular in streetwear style as it is in performance running.', '\r\nhttps://assets.adidas.com/videos/q_auto,f_auto,g_auto/599fff35a3cf432aa9bbac7c0091316f_d98c/Ultraboost_21_Primeblue_Shoes_Blue_FX7729_video.mp4\r\n', 'sneakers adidas ultraboost shoes', 'New', 'product'),
-(13, 9, 2, 3, '2021-09-14 16:26:51', 'Nike Sportswear Essential Collection', 'nike-sportswear-essen-col', 'nike-s.jpg', 'nike-s2.jpg', 'nike-s02.jpg', 90, 85, '\r\n\r\nThis is a sample text. This is a sample text. This is a sample text. This is a sample text. This is a sample text. This is a sample text. This is a sample text. This is a sample text. This is a sample text. This is a sample text. This is a sample text. This is a sample text.\r\n\r\n\r\n\r\n', '\r\n\r\n\r\nThis is a sample text. This is a sample text. This is a sample text.This is a sample text. This is a sample text. This is a sample text.This is a sample text. This is a sample text. This is a sample text.This is a sample text. This is a sample text. This is a sample text.\r\n\r\n', '\r\n\r\n\r\nThis is a sample text. This is a sample text. This is a sample text.\r\n\r\n\r\n', 'nike sportswear', 'Featured', 'product'),
-(14, 5, 5, 7, '2021-09-14 17:03:38', 'Demo Product Title Name - Test', 'demo-product-showcase', 'Prod-placeholder.jpg', 'Prod-placeholder.jpg', 'Prod-placeholder.jpg', 120, 111, '\r\nThis is a demo. This is a demo. This is a demo. This is a demo.\r\n\r\n\r\n', '\r\n\r\n\r\nThis is a demo.\r\n', '\r\n\r\n\r\nThis is a demo.\r\n', 'demo test product', 'Test', 'product'),
-(15, 5, 5, 8, '2021-09-15 03:46:42', 'Gildan 1800 Ultra Cotton Polo Shirt', 'cotton-polo-shirt', 'g18bulk.jpg', 'g18bulk2.jpg', 'g18bulk3.jpg', 88, 75, '\r\nTHIS IS A DEMO DESCRIPTION\r\n', '\r\n\r\nDEMO FEATURES\r\n\r\n', '\r\n\r\n\r\n\r\n', 'polo shirt', 'Sale', 'bundle');
+INSERT INTO `products` (`product_id`, `p_cat_id`, `cat_id`, `manufacturer_id`, `date`, `product_title`, `product_url`, `product_img1`, `product_img2`, `product_img3`, `product_price`, `product_psp_price`, `product_desc`, `product_features`, `product_video`, `product_keywords`, `product_label`, `status`, `product_quantity`) VALUES
+(9, 3, 3, 7, '2022-04-03 19:54:28', 'Coffee and work mug', 'coffee-work-mug', 'hugwithmugaccessory1.png', 'product_image_placeholder.jpeg', 'faded.jpg', 16, 35, '\r\n<p> A mug with a catchy slogan to display to your friends.</p>\r\n\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n\r\n', 'Merch', 'NULL', 'product', 100),
+(13, 3, 3, 3, '2022-04-02 01:19:31', ' Coffee Definition T-shirt\r\n', 'coffee-definition-shirt', 'hugwithmugshirt1.png', 'product_image_placeholder.jpeg', 'product_image_placeholder.jpeg', 90, 85, '<p>A T-shirt that defines the qualities of coffee in the morning or anytime\r\n</p>\r\n\r\n', '', '', 'Merch', NULL, 'product', 50),
+(15, 2, 2, 8, '2022-04-02 01:19:40', 'Organic Lemon Tea', 'lemon-tea', 'organiclemontea_1.png', 'product_image_placeholder.jpeg', 'product_image_placeholder.jpeg', 9, 75, ' <p>A box containing 10 organic tea bags ready to be brewed </p>', '', '\r\n\r\n\r\n\r\n', 'Tea', NULL, 'product', 90),
+(18, 3, 3, 0, '2022-04-02 01:26:55', 'Coffee Heartbeat T-shirt', 'coffee-heartbeat-shirt', 'hugwithmugshirt2.png', 'product_image_placeholder.jpeg', 'product_image_placeholder.jpeg', 15, 0, '<p>A T-shirt that shows coffee flows with every heartbeat </p>', '', '', 'Merch', NULL, 'Product', 300),
+(19, 3, 3, 0, '2022-04-02 01:29:08', ' PotHead T-shirt', 'pot-head-shirt', 'hugwithmugshirt3.png', 'product_image_placeholder.jpeg', 'product_image_placeholder.jpeg', 15, 0, '<p> A T-shirt that shows the wonders of caffeine contained within a pot of coffee  \r\n</p>', '', '', 'Merch', NULL, 'Product', 210),
+(25, 1, 1, 0, '2022-04-02 04:05:13', 'Whole Bean Espresso', 'bean-espresso', 'coffee7.png', 'coffee_showcase_image_1.jpeg', 'coffee_showcase_image_2.jpeg', 23, 0, '<p> An espresso blend ready to be brewed to create the perfect cup of espresso </p>', '', '', 'Coffee', NULL, 'Product', 150),
+(26, 2, 2, 0, '2022-04-02 04:07:11', 'Organic Green Tea', 'green-tea-org', 'greentea_1.jpeg', 'product_image_placeholder.jpeg', 'product_image_placeholder.jpeg', 9, 0, '<p> A bag containing 15 green tea bags ready to be brewed </p>', 'Tea', '', '', NULL, 'Product', 300),
+(27, 1, 1, 0, '2022-04-02 04:22:31', 'Cold Brew Coffee Blend', 'cold-brew-blend', 'coffee6.png', 'coffee_showcase_image_1.jpeg', 'coffee_showcase_image_2.jpeg', 24, 19, '<p> A blend of coffee ready to be cold brewed into the perfect cup of coffee</p>', '', '', 'Coffee', 'Sale', 'Product', 110),
+(28, 1, 1, 0, '2022-04-02 04:22:43', ' French Roast Coffee Blend', 'french-blend', 'coffee5.png', 'coffee_showcase_image_1.jpeg', 'coffee_showcase_image_2.jpeg', 21, 0, '<p> A french roast coffee blend enough for 15 cups </p>', '', '', 'Coffee', NULL, 'Product', 110),
+(29, 1, 1, 0, '2022-04-02 04:23:00', 'Espresso Roast Coffee Blend', 'espresso-blend', 'coffee4.png', 'coffee_showcase_image_1.jpeg', 'coffee_showcase_image_2.jpeg', 21, 0, '<p>A espresso roast coffee blend enough for 15 cups. </p>', '', '', 'Coffee', NULL, 'Product', 120),
+(30, 1, 1, 0, '2022-04-02 04:23:15', 'Premium Roast Coffee Beans', 'premium-coffee', 'coffee3.png', 'coffee_showcase_image_1.jpeg', 'coffee_showcase_image_2.jpeg', 15, 0, '\r\n<p> A valve bag containing high-quality coffee beans from the Caribbean. </p>', '', '', 'Coffee', NULL, 'Product', 130),
+(31, 1, 1, 0, '2022-04-02 04:23:33', 'Breakfast Coffee Blend', 'breakfast-coffee', 'coffee2.png', 'coffee_showcase_image_1.jpeg', 'coffee_showcase_image_2.jpeg', 12, 0, '<p> A light roast coffee blend with enough to make 20 cups. Perfect for mornings </p>', '', '', 'Coffee', NULL, 'Product', 200),
+(32, 3, 3, 2, '2022-04-02 04:24:39', 'Coffee Lover bag', 'coffee-tote-bg', 'hugwithmugaccessory2.png', 'tote_showcase_image_1.jpeg', 'tote_showcase_image_2.jpeg', 21, 180, '<p> A tote bag displaying for love for the liquid happiness that is coffee </p>', '', '', 'Merch', NULL, 'product', 120),
+(33, 1, 1, 5, '2022-04-02 04:25:13', 'Yellow Instant Coffee Blend', 'yellow-coffee-blend', 'coffee1.png', 'coffee_showcase_image_1.jpeg', 'coffee_showcase_image_2.jpeg', 10, 6, '<p>A bag of instant coffee powder ready to make within minutes, med roast coffee. </p>\r\n', '\r\n', '', 'Coffee', 'Sale', 'product', 198),
+(34, 2, 2, 4, '2022-04-02 04:25:38', 'Matcha Tea Powder', 'matcha-tea-powder', 'matchapowder.png', 'matcha_showcase_image_1.jpeg', 'matcha_showcase_image_2.jpeg', 15, 100, '\r\n\r\n\r\n<p> 20 servings of high-quality matcha tea powder </p>\r\n\r\n\r\n', '\r\n\r\n', '', 'Tea', NULL, 'product', 200);
 
 -- --------------------------------------------------------
 
@@ -382,7 +410,7 @@ INSERT INTO `products` (`product_id`, `p_cat_id`, `cat_id`, `manufacturer_id`, `
 --
 
 CREATE TABLE `product_categories` (
-  `p_cat_id` int(10) NOT NULL,
+  `p_cat_id` int NOT NULL,
   `p_cat_title` text NOT NULL,
   `p_cat_top` text NOT NULL,
   `p_cat_image` text NOT NULL
@@ -393,12 +421,9 @@ CREATE TABLE `product_categories` (
 --
 
 INSERT INTO `product_categories` (`p_cat_id`, `p_cat_title`, `p_cat_top`, `p_cat_image`) VALUES
-(4, 'Coats', 'no', 'coaticn.png'),
-(5, 'T-Shirts', 'no', 'tshirticn.png'),
-(6, 'Sweater', 'no', 'sweatericn.png'),
-(7, 'jackets', 'yes', 'jacketicn.png'),
-(8, 'Sneakers', 'yes', 'sneakericn.png'),
-(9, 'Trousers', 'no', 'trousericn.png');
+(1, 'Coffee', 'no', 'coaticn.png'),
+(2, 'Tea', 'yes', 'tshirticn.png'),
+(3, 'Merch', 'yes', 'sweatericn.png');
 
 -- --------------------------------------------------------
 
@@ -407,7 +432,7 @@ INSERT INTO `product_categories` (`p_cat_id`, `p_cat_title`, `p_cat_top`, `p_cat
 --
 
 CREATE TABLE `store` (
-  `store_id` int(10) NOT NULL,
+  `store_id` int NOT NULL,
   `store_title` varchar(255) NOT NULL,
   `store_image` varchar(255) NOT NULL,
   `store_desc` text NOT NULL,
@@ -427,35 +452,13 @@ INSERT INTO `store` (`store_id`, `store_title`, `store_image`, `store_desc`, `st
 -- --------------------------------------------------------
 
 --
--- Table structure for table `terms`
---
-
-CREATE TABLE `terms` (
-  `term_id` int(10) NOT NULL,
-  `term_title` varchar(100) NOT NULL,
-  `term_link` varchar(100) NOT NULL,
-  `term_desc` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `terms`
---
-
-INSERT INTO `terms` (`term_id`, `term_title`, `term_link`, `term_desc`) VALUES
-(1, 'Rules And Regulations', 'rules', '<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance.&nbsp;</p>'),
-(2, 'Refund Policy', 'link2', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).Why do we use it?It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on'),
-(3, 'Pricing and Promotions Policy', 'link3', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).Why do we use it?It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `wishlist`
 --
 
 CREATE TABLE `wishlist` (
-  `wishlist_id` int(10) NOT NULL,
-  `customer_id` int(10) NOT NULL,
-  `product_id` int(10) NOT NULL
+  `wishlist_id` int NOT NULL,
+  `customer_id` int NOT NULL,
+  `product_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -569,12 +572,6 @@ ALTER TABLE `store`
   ADD PRIMARY KEY (`store_id`);
 
 --
--- Indexes for table `terms`
---
-ALTER TABLE `terms`
-  ADD PRIMARY KEY (`term_id`);
-
---
 -- Indexes for table `wishlist`
 --
 ALTER TABLE `wishlist`
@@ -588,87 +585,99 @@ ALTER TABLE `wishlist`
 -- AUTO_INCREMENT for table `about_us`
 --
 ALTER TABLE `about_us`
-  MODIFY `about_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `about_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `admin_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `admin_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `bundle_product_relation`
 --
 ALTER TABLE `bundle_product_relation`
-  MODIFY `rel_id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `rel_id` int NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `cat_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `cat_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `contact_us`
 --
 ALTER TABLE `contact_us`
-  MODIFY `contact_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `contact_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `coupons`
 --
 ALTER TABLE `coupons`
-  MODIFY `coupon_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `coupon_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `customer_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `customer_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
 -- AUTO_INCREMENT for table `customer_orders`
 --
 ALTER TABLE `customer_orders`
-  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `order_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+
 --
 -- AUTO_INCREMENT for table `enquiry_types`
 --
 ALTER TABLE `enquiry_types`
-  MODIFY `enquiry_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `enquiry_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `manufacturers`
 --
 ALTER TABLE `manufacturers`
-  MODIFY `manufacturer_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `manufacturer_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
 --
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `payment_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `payment_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
 --
 -- AUTO_INCREMENT for table `pending_orders`
 --
 ALTER TABLE `pending_orders`
-  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `order_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `product_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
 --
 -- AUTO_INCREMENT for table `product_categories`
 --
 ALTER TABLE `product_categories`
-  MODIFY `p_cat_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `p_cat_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
 --
 -- AUTO_INCREMENT for table `store`
 --
 ALTER TABLE `store`
-  MODIFY `store_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT for table `terms`
---
-ALTER TABLE `terms`
-  MODIFY `term_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `store_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `wishlist_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `wishlist_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

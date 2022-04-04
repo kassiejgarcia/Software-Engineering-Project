@@ -9,6 +9,11 @@ include("includes/main.php");
 
 ?>
 
+<div class="wrapper">
+	<h1>
+		<b>Welcome to Hug with Mug!</b>
+	</h1>
+</div>
 
   <!-- slide show cover images -->
   <main>
@@ -16,6 +21,16 @@ include("includes/main.php");
 <img class = "slidepic" src="/images/merch_image.png" id = "pic3"/>
 <img class = "slidepic" src="/images/matcha_tea_image.png" id = "pic2"/>
 <img class = "slidepic" src="/images/hug_w_mug_image.png" id = "pic1"/>
+</div>
+
+    <div class="wrapper">
+	    <h1>
+		Happiness in a mug :)			
+	    </h1>
+	    <p> We sell the best coffee and tea available to bring a smile on your face. Need a mug? Want a shirt related to coffee or tea? We got that too!  </p>
+	</div>
+            
+
 </div>
     </div>
     <!-- Main -->
