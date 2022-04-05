@@ -10,17 +10,7 @@ include("includes/main.php");
 
 ?>
 
-
-  <!-- MAIN -->
-  <main>
-    <!-- NERO -->
-  <!-- --------************   <div class="nero">
-      <div class="nero__heading">
-        <span class="nero__bold">Register</span> an account with Hug With Mug!
-      </div>
-      <p class="nero__text">
-      </p>
-    </div> -->
+<main>
   </main>
 
 
@@ -89,7 +79,7 @@ include("includes/main.php");
 </div><!-- form-group Ends -->
 <div class="form-group"><!-- form-group Starts -->
 
-<label> Customer Contact </label>
+<label> Customer Mobile Number </label>
 
 <input type="text" class="form-control" name="contact" required>
 
@@ -102,15 +92,6 @@ include("includes/main.php");
 <input type="text" class="form-control" name="address" required>
 
 
-<!--
-<div class="form-group">
-
- <label> Customer Address </label>
-
-<input type="text" class="form-control" name="c_address" required>
-
-</div>
--->
 <center>
 
 <div class="text-center"><!-- text-center Starts -->

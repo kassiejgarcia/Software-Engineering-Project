@@ -272,7 +272,7 @@ $aWhere[] = 'cat_id='.(int)$sVal;
 
 /// Categories Code Ends ///
 
-$per_page=6;
+$per_page=8;
 
 if(isset($_GET['page'])){
 
@@ -361,7 +361,7 @@ $product_label = "
 
 
 echo "
-<div class='col-md-4 col-sm-6 center-responsive' >
+<div class='col-md-4 col-sm-6 single' >
 <div class = 'product'>
 <a href='http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url' >
 
@@ -424,7 +424,7 @@ function getPaginator(){
 
 /// getPaginator Function Code Starts ///
 
-$per_page = 6;
+$per_page = 8;
 
 global $db;
 

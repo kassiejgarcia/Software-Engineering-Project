@@ -151,34 +151,13 @@ else {
 
 </li><!-- Products li Ends -->
 
-
 <li><!-- li Starts -->
-
-<a href="#" data-toggle="collapse" data-target="#cat">
-
-<i class="fa fa-fw fa-arrows-v"></i> Categories
-
-<i class="fa fa-fw fa-caret-down"></i>
-
-</a>
-
-<ul id="cat" class="collapse">
-
-<li>
-<a href="index.php?insert_cat"> Insert Category </a>
-</li>
 
 <li>
 <a href="index.php?view_cats"> View Categories </a>
 </li>
 
-
-</ul>
-
 </li><!-- li Ends -->
-
-
-
 
 <li><!-- about us li Starts -->
 
@@ -257,12 +236,10 @@ else {
 <li>
 <a href="index.php?view_users"> View Users </a>
 </li>
-
-<li>
-<a href="index.php?user_profile=<?php echo $admin_id; ?>"> Edit Profile </a>
-</li>
-
 </ul>
+<li>
+<a href="index.php?user_profile=<?php echo $admin_id; ?>"> Edit Your Profile </a>
+</li>
 
 </li><!-- li Ends -->
 

@@ -268,6 +268,11 @@ include("view_users.php");
 
 }
 
+if(isset($_GET['edit_user'])){
+
+include("edit_user.php");
+
+}
 
 if(isset($_GET['user_delete'])){
 

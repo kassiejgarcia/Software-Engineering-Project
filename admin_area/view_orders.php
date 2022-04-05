@@ -16,7 +16,7 @@ else {
 
 <div class="col-lg-12"><!-- col-lg-12 Starts -->
 
-<ol class="breadcrumb"><!-- breadcrumb Starts  --->
+<ol class="breadcrumb"><!-- breadcrumb Starts  -->
 
 <li class="active">
 
@@ -24,7 +24,7 @@ else {
 
 </li>
 
-</ol><!-- breadcrumb Ends  --->
+</ol><!-- breadcrumb Ends  -->
 
 </div><!-- col-lg-12 Ends -->
 
@@ -62,7 +62,6 @@ else {
 <th>Invoice</th>
 <th>Product</th>
 <th>Qty</th>
-<th>Size</th>
 <th>Order Date</th>
 <th>Total Amount</th>
 <th>Status</th>
@@ -109,8 +108,6 @@ $product_id = $row_orders['product_id'];
 
 $qty = $row_orders['qty'];
 
-$size = $row_orders['size'];
-
 $order_status = $row_orders['order_status'];
 
 $get_products = "select * from products where product_id='$product_id'";
@@ -150,8 +147,6 @@ echo $customer_email;
 <td><?php echo $product_title; ?></td>
 
 <td><?php echo $qty; ?></td>
-
-<td><?php echo $size; ?></td>
 
 <td>
 <?php

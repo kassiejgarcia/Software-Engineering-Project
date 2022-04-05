@@ -60,7 +60,6 @@ else {
 <th>#</th>
 <th>Category Name</th>
 <th>Delete</th>
-<th>Edit</th>
 
 
 
@@ -103,16 +102,6 @@ $i++;
 <a href="index.php?delete_cat=<?php echo $cat_id; ?>" >
 
 <i class="fa fa-trash-o" ></i> Delete
-
-</a>
-
-</td>
-
-<td>
-
-<a href="index.php?edit_cat=<?php echo $cat_id; ?>" >
-
-<i class="fa fa-pencil" ></i> Edit
 
 </a>
 

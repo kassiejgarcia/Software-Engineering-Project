@@ -31,7 +31,7 @@ else {
 
 </div><!-- 1 row Ends -->
 
-<div class="row"><!-- 2 row Starts --->
+<div class="row"><!-- 2 row Starts -->
 
 <div class="col-lg-12"><!-- col-lg-12 Starts -->
 
@@ -65,7 +65,7 @@ else {
 
 <div class="form-group" ><!-- form-group Starts -->
 
-<label class="col-md-3 control-label"> Coupon Price </label>
+<label class="col-md-3 control-label"> Coupon Price Off </label>
 
 <div class="col-md-6">
 
@@ -101,7 +101,7 @@ else {
 
 <div class="form-group" ><!-- form-group Starts -->
 
-<label class="col-md-3 control-label">Select coupon for Product Or bundle</label>
+<label class="col-md-3 control-label">Select which product this coupon applies to</label>
 
 <div class="col-md-6">
 
@@ -129,27 +129,6 @@ echo "<option value='$p_id'> $p_title </option>";
 
 <option></option>
 
-<option>Select Coupon For Bundle</option>
-
-<option></option>
-
-<?php
-
-$get_p = "select * from products where status='bundle'";
-
-$run_p = mysqli_query($con,$get_p);
-
-while($row_p = mysqli_fetch_array($run_p)){
-
-$p_id = $row_p['product_id'];
-
-$p_title = $row_p['product_title'];
-
-echo "<option value='$p_id'> $p_title </option>";
-
-}
-
-?>
 
 </select>
 

@@ -58,10 +58,9 @@ else {
 
 <th>#</th>
 <th>Name</th>
+<th>Username</th>
 <th>Email</th>
-<th>Image</th>
-<th>Country</th>
-<th>City</th>
+<th>Address</th>
 <th>Phone Number</th>
 <th>Delete</th>
 
@@ -85,16 +84,16 @@ while($row_c=mysqli_fetch_array($run_c)){
 
 $c_id = $row_c['customer_id'];
 
-$c_name = $row_c['customer_name'];
+$c_name = $row_c['full_name'];
+
+$c_username = $row_c['username'];
 
 $c_email = $row_c['customer_email'];
 
 $c_image = $row_c['customer_image'];
 
-$c_country = $row_c['customer_country'];
-
-$c_city = $row_c['customer_city'];
-
+$c_address = $row_c['customer_address'];
+ 
 $c_contact = $row_c['customer_contact'];
 
 $i++;
@@ -110,13 +109,11 @@ $i++;
 
 <td><?php echo $c_name; ?></td>
 
+<td><?php echo $c_username; ?></td>
+
 <td><?php echo $c_email; ?></td>
 
-<td><img src="../customer/customer_images/<?php echo $c_image; ?>" width="60" height="60" ></td>
-
-<td><?php echo $c_country; ?></td>
-
-<td><?php echo $c_city; ?></td>
+<td><?php echo $c_address; ?></td>
 
 <td><?php echo $c_contact; ?></td>
 

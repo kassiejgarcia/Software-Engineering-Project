@@ -1,7 +1,5 @@
 <?php
 
-
-
 if(!isset($_SESSION['admin_email'])){
 
 echo "<script>window.open('login.php','_self')</script>";
@@ -10,44 +8,43 @@ echo "<script>window.open('login.php','_self')</script>";
 
 else {
 
+
 ?>
 
-<div class="row" ><!-- 1 row Starts -->
+<div class="row"><!-- 1 row Starts -->
 
-<div class="col-lg-12" ><!-- col-lg-12 Starts -->
+<div class="col-lg-12"><!-- col-lg-12 Starts -->
 
-<ol class="breadcrumb" ><!-- breadcrumb Starts -->
+<ol class="breadcrumb"><!-- breadcrumb Starts -->
 
-<li class="active" >
+<li class="active">
 
-<i class="fa fa-dashboard" ></i> Dashboard / View Users
+<i class="fa fa-dashboard"></i> Dashboard / View Customers
 
 </li>
 
 </ol><!-- breadcrumb Ends -->
 
-
 </div><!-- col-lg-12 Ends -->
 
 </div><!-- 1 row Ends -->
 
+<div class="row"><!-- 2 row Starts --> 
 
-<div class="row" ><!-- 2 row Starts -->
+<div class="col-lg-12"><!-- col-lg-12 Starts -->
 
-<div class="col-lg-12" ><!-- col-lg-12 Starts -->
+<div class="panel panel-default"><!-- panel panel-default Starts -->
 
-<div class="panel panel-default" ><!-- panel panel-default Starts -->
+<div class="panel-heading"><!-- panel-heading Starts -->
 
-<div class="panel-heading" ><!-- panel-heading Starts -->
+<h3 class="panel-title"><!-- panel-title Starts -->
 
-<h3 class="panel-title" ><!-- panel-title Starts -->
-
-<i class="fa fa-money fa-fw" ></i> View Users
+<i class="fa fa-money fa-fw"></i> View Customers
 
 </h3><!-- panel-title Ends -->
 
-
 </div><!-- panel-heading Ends -->
+
 
 <div class="panel-body" ><!-- panel-body Starts -->
 
@@ -59,45 +56,47 @@ else {
 
 <tr>
 
-<th>User Name</th>
-
+<th>#</th>
+<th>Name</th>
+<th>Username</th>
 <th>Email</th>
-
-<th>Image</th>
-
-<th>Country</th>
-
-<th>Job</th>
-
+<th>Address</th>
+<th>Phone Number</th>
 <th>Delete</th>
-
+<th>Edit</th>
 
 </tr>
 
 </thead><!-- thead Ends -->
 
+
 <tbody><!-- tbody Starts -->
 
 <?php
 
-$get_admin = "select * from admins";
+$i=0;
 
-$run_admin = mysqli_query($con,$get_admin);
+$get_c = "select * from customers";
 
-while($row_admin = mysqli_fetch_array($run_admin)){
+$run_c = mysqli_query($con,$get_c);
 
-$admin_id = $row_admin['admin_id'];
+while($row_c=mysqli_fetch_array($run_c)){
 
-$admin_name = $row_admin['admin_name'];
+$c_id = $row_c['customer_id'];
 
-$admin_email = $row_admin['admin_email'];
+$c_name = $row_c['full_name'];
 
-$admin_image = $row_admin['admin_image'];
+$c_username = $row_c['username'];
 
-$admin_country = $row_admin['admin_country'];
+$c_email = $row_c['customer_email'];
 
-$admin_job = $row_admin['admin_job'];
+$c_image = $row_c['customer_image'];
 
+$c_address = $row_c['customer_address'];
+ 
+$c_contact = $row_c['customer_contact'];
+
+$i++;
 
 
 
@@ -106,31 +105,42 @@ $admin_job = $row_admin['admin_job'];
 
 <tr>
 
-<td><?php echo $admin_name; ?></td>
+<td><?php echo $i; ?></td>
 
-<td><?php echo $admin_email; ?></td>
+<td><?php echo $c_name; ?></td>
 
-<td><img src="admin_images/<?php echo $admin_image; ?>" width="60" height="60" ></td>
+<td><?php echo $c_username; ?></td>
 
-<td><?php echo $admin_country; ?></td>
+<td><?php echo $c_email; ?></td>
 
-<td><?php echo $admin_job; ?></td>
+<td><?php echo $c_address; ?></td>
+
+<td><?php echo $c_contact; ?></td>
 
 <td>
 
-<a href="index.php?user_delete=<?php echo $admin_id; ?>" >
+<a href="index.php?customer_delete=<?php echo $c_id; ?>" >
 
 <i class="fa fa-trash-o" ></i> Delete
 
 </a>
 
-</td>
 
+</td>
+<td>
+
+<a href="index.php?edit_user=<?php echo $c_id; ?>">
+
+<i class="fa fa-pencil"> </i> Edit
+
+</a>
+
+</td>
 
 </tr>
 
-
 <?php } ?>
+
 
 </tbody><!-- tbody Ends -->
 
@@ -140,21 +150,13 @@ $admin_job = $row_admin['admin_job'];
 
 </div><!-- table-responsive Ends -->
 
-
 </div><!-- panel-body Ends -->
 
 
 </div><!-- panel panel-default Ends -->
 
-
 </div><!-- col-lg-12 Ends -->
 
+</div><!-- 2 row Ends --> 
 
-
-</div><!-- 2 row Ends -->
-
-
-
-
-
-<?php }  ?>
+<?php } ?>
