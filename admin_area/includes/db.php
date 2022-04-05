@@ -1,5 +1,5 @@
 <?php
 
-$con = mysqli_connect("localhost","root","UTSA2022se!","ecom_store");
+$con = mysqli_connect("localhost","root","@Datahere!23","ecom_store");
 
 ?>

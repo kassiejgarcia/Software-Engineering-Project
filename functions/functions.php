@@ -1,6 +1,6 @@
 <?php
 
-$db = mysqli_connect("localhost","root","UTSA2022se!","ecom_store");
+$db = mysqli_connect("localhost","root","@Datahere!23","ecom_store");
 
 /// IP address code starts /////
 function getRealUserIp(){
