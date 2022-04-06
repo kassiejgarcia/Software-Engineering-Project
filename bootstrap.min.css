@@ -1353,7 +1353,7 @@ button, input, select, textarea {
 }
 
 a {
-  color: black;
+  color: #337ab7;
   text-decoration: none
 }
 
@@ -1837,8 +1837,8 @@ pre code {
 .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
   position: relative;
   min-height: 1px;
-  padding-right: 20px;
-  padding-left: 20px
+  padding-right: 15px;
+  padding-left: 15px
 }
 
 .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
@@ -2209,11 +2209,8 @@ pre code {
 }
 
 @media (min-width:992px) {
-  .col-md-13, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9 {
+  .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9 {
     float: left
-  }
-  .col-md-13 {
-	  background-color: white;
   }
   .col-md-12 {
     width: 100%
@@ -2239,9 +2236,8 @@ pre code {
   .col-md-5 {
     width: 41.66666667%
   }
-  .col-md-4 {/**/
-    width: 33.33333333%;
-    height: 800px;
+  .col-md-4 {
+    width: 33.33333333%
   }
   .col-md-3 {
     width: 25%
@@ -3460,51 +3456,51 @@ a.btn.disabled, fieldset[disabled] a.btn {
 
 .btn-danger {
   color: #fff;
-  background-color: #6e966e;
-  border-color: #6e966e
+  background-color: #d9534f;
+  border-color: #d43f3a
 }
 
 .btn-danger.focus, .btn-danger:focus {
   color: #fff;
-  background-color: #556255;
-  border-color: #556255;
+  background-color: #c9302c;
+  border-color: #761c19
 }
 
 .btn-danger:hover {
   color: #fff;
-  background-color: #7f957f;
-  border-color: #7f957f;
+  background-color: #c9302c;
+  border-color: #ac2925
 }
 
 .btn-danger.active, .btn-danger:active, .open>.dropdown-toggle.btn-danger {
   color: #fff;
-  background-color: #7f957f;
-  border-color: #7f957f
+  background-color: #c9302c;
+  border-color: #ac2925
 }
 
 .btn-danger.active.focus, .btn-danger.active:focus, .btn-danger.active:hover, .btn-danger:active.focus, .btn-danger:active:focus, .btn-danger:active:hover, .open>.dropdown-toggle.btn-danger.focus, .open>.dropdown-toggle.btn-danger:focus, .open>.dropdown-toggle.btn-danger:hover {
   color: #fff;
-  background-color: #556255;
-  border-color: #556255
-  }
+  background-color: #ac2925;
+  border-color: #761c19
+}
 
 .btn-danger.active, .btn-danger:active, .open>.dropdown-toggle.btn-danger {
   background-image: none
 }
 
 .btn-danger.disabled.focus, .btn-danger.disabled:focus, .btn-danger.disabled:hover, .btn-danger[disabled].focus, .btn-danger[disabled]:focus, .btn-danger[disabled]:hover, fieldset[disabled] .btn-danger.focus, fieldset[disabled] .btn-danger:focus, fieldset[disabled] .btn-danger:hover {
-  background-color: #556255;
-  border-color: #556255
+  background-color: #d9534f;
+  border-color: #d43f3a
 }
 
 .btn-danger .badge {
-  color: #556255;
+  color: #d9534f;
   background-color: #fff
 }
 
 .btn-link {
   font-weight: 400;
-  color: #556255;
+  color: #337ab7;
   border-radius: 0
 }
 
@@ -4886,6 +4882,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
   padding: 6px 12px;
   margin-left: -1px;
   line-height: 1.42857143;
+  color: #337ab7;
   text-decoration: none;
   background-color: #fff;
   border: 1px solid #ddd
@@ -6956,19 +6953,5 @@ button.close {
     display: none !important
   }
 }
-.similar-product {
-	display: block;
-	max-width: 100%;
-	height: 275px;
-}
-.product-display {
-	display: block;
-	max-width: 100%;
-	height: 300px;
-}
-.img-shop {
-	width:1500px;
-	height:400px;
-}
-/*# sourceMappingURL=bootstrap.min.css.map */
 
+/*# sourceMappingURL=bootstrap.min.css.map */

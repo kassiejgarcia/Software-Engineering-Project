@@ -8,7 +8,6 @@ include("functions/functions.php");
 include("includes/main.php");
 
 ?>
-
 <div class="wrapper">
 	<h1>
 		<b>Welcome to Hug with Mug!</b>
