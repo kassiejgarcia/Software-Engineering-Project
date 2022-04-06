@@ -458,7 +458,7 @@ echo "
 
 </p>
 
-</div>;";
+</div>";
 if ($pro_label == "Sale" or $pro_label == "sale"){
 echo "$product_label";
 }
