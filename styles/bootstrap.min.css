@@ -2225,8 +2225,7 @@ pre code {
     width: 83.33333333%
   }
   .col-md-9 {
-   /* width: 75%*/
-	  width: 90%;
+    width: 75%
   }
   .col-md-8 {
     width: 66.66666667%
@@ -2242,7 +2241,7 @@ pre code {
   }
   .col-md-4 {/**/
     width: 33.33333333%;
-    height: 700px;
+    height: 800px;
   }
   .col-md-3 {
     width: 25%
@@ -6972,3 +6971,4 @@ button.close {
 	height:400px;
 }
 /*# sourceMappingURL=bootstrap.min.css.map */
+
