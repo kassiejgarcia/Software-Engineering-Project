@@ -78,21 +78,21 @@ else
 	  <ul class="categories">
 
 	    <li class="categories__item">
-	      <a class="categories__link" href="shop.php?page=1&cat[]=1&"> <!-- LINK THE COFFEE.PHP page here to display it -->
+	      <a class="categories__link" href="../../shop.php?page=1&cat[]=1&"> <!-- LINK THE COFFEE.PHP page here to display it -->
 		Coffee
 
 	      </a>
 	      </li>
 
 	    <li class="categories__item">
-	      <a class="categories__link" href="shop.php?page=1&cat[]=2&"> <!-- LINK THE TEAS.PHP page here to display it -->
+	      <a class="categories__link" href="../../shop.php?page=1&cat[]=2&"> <!-- LINK THE TEAS.PHP page here to display it -->
 		Tea
 
 	      </a>
 	    </li>
 
 	    <li class="categories__item">
-	      <a class="categories__link" href="shop.php?page=1&cat[]=3&"> <!--LINK THE ACCESSORIES.PHP page here to display it -->
+	      <a class="categories__link" href="../../shop.php?page=1&cat[]=3&"> <!--LINK THE ACCESSORIES.PHP page here to display it -->
 		Accessories
 
 	      </a>
