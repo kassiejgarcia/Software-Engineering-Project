@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 03, 2022 at 09:44 PM
+-- Generation Time: Apr 12, 2022 at 04:44 AM
 -- Server version: 8.0.28-0ubuntu0.20.04.3
 -- PHP Version: 7.4.3
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ecom_store`
+-- Database: `SoftwareEngineeringProject`
 --
 
 -- --------------------------------------------------------
@@ -428,6 +428,27 @@ INSERT INTO `product_categories` (`p_cat_id`, `p_cat_title`, `p_cat_top`, `p_cat
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `Results`
+--
+
+CREATE TABLE `Results` (
+  `ID` int NOT NULL,
+  `Title` varchar(255) DEFAULT NULL,
+  `URL` varchar(255) DEFAULT NULL,
+  `Description` varchar(255) DEFAULT NULL,
+  `Preview` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `Results`
+--
+
+INSERT INTO `Results` (`ID`, `Title`, `URL`, `Description`, `Preview`) VALUES
+(1, 'Here is Coffee!', 'http://3.19.243.215/shop.php?page=1&cat[]=1&', 'Coffee', 'Shop for coffee.');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `store`
 --
 
@@ -566,6 +587,12 @@ ALTER TABLE `product_categories`
   ADD PRIMARY KEY (`p_cat_id`);
 
 --
+-- Indexes for table `Results`
+--
+ALTER TABLE `Results`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `store`
 --
 ALTER TABLE `store`
@@ -664,6 +691,12 @@ ALTER TABLE `products`
 --
 ALTER TABLE `product_categories`
   MODIFY `p_cat_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `Results`
+--
+ALTER TABLE `Results`
+  MODIFY `ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `store`
