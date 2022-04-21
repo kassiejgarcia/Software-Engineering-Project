@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 12, 2022 at 04:44 AM
+-- Generation Time: Apr 21, 2022 at 03:00 AM
 -- Server version: 8.0.28-0ubuntu0.20.04.3
 -- PHP Version: 7.4.3
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `SoftwareEngineeringProject`
+-- Database: `ecom_store`
 --
 
 -- --------------------------------------------------------
@@ -195,7 +195,9 @@ INSERT INTO `customers` (`customer_id`, `full_name`, `username`, `customer_email
 (4, '', 'UTSA_user', 'thomas@demo.com', 'Password123', '777777777', '111 Address'),
 (5, '', 'hellokitty', 'test@customer.com', 'Password123', '780000000', '112 Bleck Street'),
 (6, '', 'smpl_user', 'customer@mail.com', 'Password123', '7800000000', 'Sample Address'),
-(10, 'Kassie Garcia', 'hamtaro', 'kassiejgarcia@gmail.com', '$2y$10$YitACqQ5IJd2UTYgYAqv2.sdCfbF3vKL09.72v9p8StDmVyev26ae', '210210210', 'san antonio ');
+(10, 'Kassie Garcia', 'hamtaro', 'kassiejgarcia@gmail.com', '$2y$10$YitACqQ5IJd2UTYgYAqv2.sdCfbF3vKL09.72v9p8StDmVyev26ae', '210210210', 'san antonio '),
+(11, 'herm', 'herm', 'herm@coffee.com', '$2y$10$dTqLaF/F4m6IKjoGW1Ppf.h4/utk/NXJRuA9WE1j6Xw/wSIBbarAy', '210-111-1234', 'UTSA blvd'),
+(12, 'herm', 'hg', 'hg@example.com', '$2y$10$P0e1Vhpfjcqx217OKSLegeGxai1RvS.AAsJfkMZghuKb29xghAJha', '2101234567', 'utsa blvd');
 
 -- --------------------------------------------------------
 
@@ -428,23 +430,29 @@ INSERT INTO `product_categories` (`p_cat_id`, `p_cat_title`, `p_cat_top`, `p_cat
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Results`
+-- Table structure for table `search_results`
 --
 
-CREATE TABLE `Results` (
-  `ID` int NOT NULL,
-  `Title` varchar(255) DEFAULT NULL,
-  `URL` varchar(255) DEFAULT NULL,
-  `Description` varchar(255) DEFAULT NULL,
-  `Preview` varchar(255) DEFAULT NULL
+CREATE TABLE `search_results` (
+  `id` int NOT NULL,
+  `title` varchar(200) NOT NULL,
+  `description` text NOT NULL,
+  `url` text NOT NULL,
+  `keywords` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `Results`
+-- Dumping data for table `search_results`
 --
 
-INSERT INTO `Results` (`ID`, `Title`, `URL`, `Description`, `Preview`) VALUES
-(1, 'Here is Coffee!', 'http://3.19.243.215/shop.php?page=1&cat[]=1&', 'Coffee', 'Shop for coffee.');
+INSERT INTO `search_results` (`id`, `title`, `description`, `url`, `keywords`) VALUES
+(1, 'Coffee ', '', 'http://ec2-54-172-16-142.compute-1.amazonaws.com/shop.php?page=1&cat[]=1&', 'coffee Coffee COFFEE'),
+(3, 'Matcha', '', 'http://ec2-54-172-16-142.compute-1.amazonaws.com/shop.php?page=1&cat[]=2&', 'Matcha matcha MATCHA'),
+(4, 'Tea', '', 'http://ec2-54-172-16-142.compute-1.amazonaws.com/shop.php?page=1&cat[]=2&', 'Tea tea TEA'),
+(5, 'T-Shirt', '', 'http://ec2-54-172-16-142.compute-1.amazonaws.com/shop.php?page=1&cat[]=3&', 'T-shirt T-SHIRT t-shirt tshirt T-shirts T-SHIRTS t-shirts tshirts'),
+(7, 'Espresso', '', 'http://ec2-54-172-16-142.compute-1.amazonaws.com/shop.php?page=1&cat[]=1&', 'Espresso ESPRESSO espresso'),
+(9, 'Mug', '', 'http://ec2-54-172-16-142.compute-1.amazonaws.com/shop.php?page=1&cat[]=3&', 'mug Mug MUG mugs Mugs MUGS'),
+(10, 'Bag', '', 'http://ec2-54-172-16-142.compute-1.amazonaws.com/shop.php?page=1&cat[]=3&', 'bag Bag BAG bags Bags BAGS');
 
 -- --------------------------------------------------------
 
@@ -587,10 +595,10 @@ ALTER TABLE `product_categories`
   ADD PRIMARY KEY (`p_cat_id`);
 
 --
--- Indexes for table `Results`
+-- Indexes for table `search_results`
 --
-ALTER TABLE `Results`
-  ADD PRIMARY KEY (`ID`);
+ALTER TABLE `search_results`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `store`
@@ -648,7 +656,7 @@ ALTER TABLE `coupons`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `customer_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `customer_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `customer_orders`
@@ -693,10 +701,10 @@ ALTER TABLE `product_categories`
   MODIFY `p_cat_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `Results`
+-- AUTO_INCREMENT for table `search_results`
 --
-ALTER TABLE `Results`
-  MODIFY `ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `search_results`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `store`
