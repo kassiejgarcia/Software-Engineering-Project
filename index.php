@@ -6,9 +6,10 @@ include("includes/db.php");
 include("includes/header.php");
 include("functions/functions.php");
 include("includes/main.php");
-
+include("includes/search.php");
+#include("includes/search_results.php");
 ?>
-<div class="wrapper">
+<div class="wrapper" style="position:relative; top:90px; right:70px; white-space:nowrap;">
 	<h1>
 		<b>Welcome to Hug with Mug!</b>
 	</h1>
@@ -16,13 +17,13 @@ include("includes/main.php");
 
   <!-- slide show cover images -->
   <main>
-<div class="image-container">
+<div class="image-container" style="position:relative; top:70px">
 <img class = "slidepic" src="/images/merch_image.png" id = "pic3"/>
 <img class = "slidepic" src="/images/matcha_tea_image.png" id = "pic2"/>
 <img class = "slidepic" src="/images/hug_w_mug_image.png" id = "pic1"/>
 </div>
 
-    <div class="wrapper">
+    <div class="wrapper" style="position:relative; top:70px;">
 	    <h1>
 		Happiness in a mug :)			
 	    </h1>
@@ -33,7 +34,7 @@ include("includes/main.php");
 </div>
     </div>
     <!-- Main -->
-    <div class="wrapper">
+    <div class="wrapper" style="position:relative; top:40px;">
             <h1>BESTSELLERS<h1>
             
       </div>

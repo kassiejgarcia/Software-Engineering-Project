@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 if(!isset($_SESSION['customer_email'])){
@@ -13,7 +12,7 @@ include("includes/db.php");
 include("includes/header.php");
 include("../functions/functions.php");
 include("includes/main.php");
-
+include("includes/search.php");
 
 ?>
   <main>
@@ -53,6 +52,10 @@ $c_email = $_SESSION['customer_email'];
 
 <?php
 
+if(isset($_GET['search'])){
+include("search.php");
+
+}
 
 
 if(isset($_GET['my_orders'])){

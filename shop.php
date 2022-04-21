@@ -8,6 +8,7 @@ include("functions/functions.php");
 include("includes/main.php");
 
 ?>
+
 <!-- display the shop all products header -->
  <!-- MAIN -->
 

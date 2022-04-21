@@ -377,7 +377,7 @@ img {
 }
 /* header with register, login, and cart */
 .page-header__topline {
-  height: 35px;
+  height: 36px;
 }
 
 .page-header__topline .currency {
