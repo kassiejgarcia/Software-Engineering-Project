@@ -3,7 +3,7 @@
 
 if(!isset($_SESSION['admin_email'])){
 
-echo "<script>window.open('login.php','_self')</script>";
+	echo "<script>window.open('login.php','_self')</script>";
 
 }
 
@@ -58,7 +58,8 @@ else {
 <tr>
 
 <th>#</th>
-<th>Customer</th>
+<th>Customer ID</th>
+<th>Customer Email</th>
 <th>Invoice</th>
 <th>Product</th>
 <th>Qty</th>
@@ -77,69 +78,75 @@ else {
 
 <?php
 
-$i = 0;
-if (isset($_POST['price']))
-{
+	$i = 0;
+	if (isset($_POST['price']))
+	{
 
-$get_orders = "select * from customer_orders order by due_amount DESC";
-}
-else if (isset($_POST['customer']))
-{
-$get_orders = "select * from customer_orders order by customer_id DESC";
-}
-else if (isset($_POST['date']))
-{
-$get_orders = "select * from customer_orders order by order_date ASC";
-}
-else {
-$get_orders = "select * from pending_orders";
-}
-$run_orders = mysqli_query($con,$get_orders);
+		$get_orders = "select * from customer_orders order by due_amount DESC";
+	}
+	else if (isset($_POST['customer']))
+	{
+		$get_orders = "select * from customer_orders order by customer_id ASC";
+	}
+	else if (isset($_POST['date']))
+	{
+		$get_orders = "select * from customer_orders order by order_date ASC";
+	}
+	else {	
+		$get_orders = "select * from customer_orders";
+	}
+	$run_orders = mysqli_query($con,$get_orders);
 
-while ($row_orders = mysqli_fetch_array($run_orders)) {
+	while ($row_orders = mysqli_fetch_array($run_orders)) {
 
-$order_id = $row_orders['order_id'];
+		$order_id = $row_orders['order_id'];
 
-$c_id = $row_orders['customer_id'];
+		$c_id = $row_orders['customer_id'];
 
-$invoice_no = $row_orders['invoice_no'];
+		$invoice_no = $row_orders['invoice_no'];
 
-$product_id = $row_orders['product_id'];
+		$get_pending = "select * from pending_orders where order_id = '$order_id'";
 
-$qty = $row_orders['qty'];
+		$run_pending = mysqli_query($con, $get_pending);
+		
+		$row_pending = mysqli_fetch_array($run_pending);
 
-$order_status = $row_orders['order_status'];
+		$product_id = $row_pending['product_id'];
 
-$get_products = "select * from products where product_id='$product_id'";
+		$qty = $row_orders['qty'];
 
-$run_products = mysqli_query($con,$get_products);
+		$order_status = $row_orders['order_status'];
 
-$row_products = mysqli_fetch_array($run_products);
+		$get_products = "select * from products where product_id='$product_id'";
 
-$product_title = $row_products['product_title'];
+		$run_products = mysqli_query($con,$get_products);
 
-$i++;
+		$row_products = mysqli_fetch_array($run_products);
+
+		$product_title = $row_products['product_title'];
+
+		$i++;
 
 ?>
 
 <tr>
 
 <td><?php echo $i; ?></td>
-
+<td><?php echo $c_id; ?></td>
 <td>
 <?php 
 
-$get_customer = "select * from customers where customer_id='$c_id'";
+		$get_customer = "select * from customers where customer_id='$c_id'";
 
-$run_customer = mysqli_query($con,$get_customer);
+		$run_customer = mysqli_query($con,$get_customer);
 
-$row_customer = mysqli_fetch_array($run_customer);
+		$row_customer = mysqli_fetch_array($run_customer);
 
-$customer_email = $row_customer['customer_email'];
+		$customer_email = $row_customer['customer_email'];
 
-echo $customer_email;
+		echo $customer_email;
 
- ?>
+?>
  </td>
 
 <td bgcolor="orange" ><?php echo $invoice_no; ?></td>
@@ -151,17 +158,17 @@ echo $customer_email;
 <td>
 <?php
 
-$get_customer_order = "select * from customer_orders where order_id='$order_id'";
+		$get_customer_order = "select * from customer_orders where order_id='$order_id'";
 
-$run_customer_order = mysqli_query($con,$get_customer_order);
+		$run_customer_order = mysqli_query($con,$get_customer_order);
 
-$row_customer_order = mysqli_fetch_array($run_customer_order);
+		$row_customer_order = mysqli_fetch_array($run_customer_order);
 
-$order_date = $row_customer_order['order_date'];
+		$order_date = $row_customer_order['order_date'];
 
-$due_amount = $row_customer_order['due_amount'];
+		$due_amount = $row_customer_order['due_amount'];
 
-echo $order_date;
+		echo $order_date;
 
 ?>
 </td>
@@ -171,16 +178,16 @@ echo $order_date;
 <td>
 <?php
 
-if($order_status=='pending'){
+		if($order_status=='pending'){
 
-echo $order_status='<div style="color:red;">Pending</div>';
+			echo $order_status='<div style="color:red;">Pending</div>';
 
-}
-else{
+		}
+		else{
 
-echo $order_status='Completed';
+			echo $order_status='Completed';
 
-}
+		}
 
 
 ?>

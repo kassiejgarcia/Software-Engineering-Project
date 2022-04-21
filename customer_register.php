@@ -64,7 +64,7 @@ include("includes/main.php");
 
 <div class="form-group"><!-- form-group Starts -->
 
-<label> Enter a Unique password:</label>
+<label> Enter a Strong password:</label>
 
 <input type="password" class="form-control" id="pass" name="password" required>
 </div><!-- form-group Ends -->

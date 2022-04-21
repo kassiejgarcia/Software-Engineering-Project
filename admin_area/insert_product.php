@@ -205,10 +205,21 @@ echo "<option value='$cat_id'>$cat_title</option>";
 </div>
 
 </div><!-- form-group Ends -->
+<div class="form-group" ><!-- form-group Starts -->
+
+<label class="col-md-3 control-label" > Product Quantity </label>
+
+<div class="col-md-6" >
+
+<input type="text" name="product_qty" class="form-control" required >
+
+</div>
+
+</div><!-- form-group Ends -->
 
 <div class="form-group" ><!-- form-group Starts -->
 
-<label class="col-md-3 control-label" > Product Tabs </label>
+<label class="col-md-3 control-label" > Product Description </label>
 
 <div class="col-md-6" >
 
@@ -291,7 +302,7 @@ $cat = $_POST['cat'];
 $product_price = $_POST['product_price'];
 $product_desc = $_POST['product_desc'];
 $product_keywords = $_POST['product_keywords'];
-
+$product_qty = $_POST['product_qty'];
 $psp_price = $_POST['psp_price'];
 
 $product_label = $_POST['product_label'];
@@ -313,7 +324,7 @@ move_uploaded_file($temp_name1,"product_images/$product_img1");
 move_uploaded_file($temp_name2,"product_images/$product_img2");
 move_uploaded_file($temp_name3,"product_images/$product_img3");
 
-$insert_product = "insert into products (cat_id,date,product_title,product_url,product_img1,product_img2,product_img3,product_price,product_psp_price,product_desc,product_keywords,product_label,status) values ('$cat',NOW(),'$product_title','$product_url','$product_img1','$product_img2','$product_img3','$product_price','$psp_price','$product_desc','$product_keywords','$product_label','$status')";
+$insert_product = "insert into products (cat_id,date,product_title,product_url,product_img1,product_img2,product_img3,product_price,product_psp_price,product_desc,product_quantity,product_keywords,product_label,status) values ('$cat',NOW(),'$product_title','$product_url','$product_img1','$product_img2','$product_img3','$product_price','$psp_price','$product_desc','$product_qty','$product_keywords','$product_label','$status')";
 
 $run_product = mysqli_query($con,$insert_product);
 

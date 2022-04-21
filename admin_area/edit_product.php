@@ -55,6 +55,7 @@ $psp_price = $row_edit['product_psp_price'];
 $p_label = $row_edit['product_label'];
 
 $p_url = $row_edit['product_url'];
+$p_qty = $row_edit['product_quantity'];
 
 /*$p_features = $row_edit['product_features'];
 
@@ -293,6 +294,17 @@ echo "<option value='$cat_id'>$cat_title</option>";
 
 <div class="form-group" ><!-- form-group Starts -->
 
+<label class="col-md-3 control-label" > Product QTY </label>
+
+<div class="col-md-6" >
+
+<input type="text" name="product_qty" class="form-control" required value="<?php echo $p_qty; ?>" >
+
+</div>
+
+</div><!-- form-group Ends -->
+<div class="form-group" ><!-- form-group Starts -->
+
 <label class="col-md-3 control-label" > Product Tabs </label>
 
 <div class="col-md-6" >
@@ -413,6 +425,7 @@ $product_label = $_POST['product_label'];
 
 $product_url = $_POST['product_url'];
 
+$product_qty = $_POST['product_qty'];
 //$product_features = $_POST['product_features'];
 
 //$product_video = $_POST['product_video'];
@@ -451,7 +464,7 @@ move_uploaded_file($temp_name1,"product_images/$product_img1");
 move_uploaded_file($temp_name2,"product_images/$product_img2");
 move_uploaded_file($temp_name3,"product_images/$product_img3");
 
-$update_product = "update products set cat_id='$cat',date=NOW(),product_title='$product_title',product_url='$product_url',product_img1='$product_img1',product_img2='$product_img2',product_img3='$product_img3',product_price='$product_price',product_psp_price='$psp_price',product_desc='$product_desc',product_keywords = '$product_keywords', product_label='$product_label',status='$status' where product_id='$p_id'";
+$update_product = "update products set cat_id='$cat',date=NOW(),product_title='$product_title',product_url='$product_url',product_img1='$product_img1',product_img2='$product_img2',product_img3='$product_img3',product_price='$product_price',product_psp_price='$psp_price',product_desc='$product_desc',product_quantity = '$product_qty',product_keywords = '$product_keywords', product_label='$product_label',status='$status' where product_id='$p_id'";
 
 $run_product = mysqli_query($con,$update_product);
 

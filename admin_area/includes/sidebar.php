@@ -198,16 +198,6 @@ else {
 
 <li>
 
-<a href="index.php?view_customers">
-
-<i class="fa fa-fw fa-edit"></i> View Customers
-
-</a>
-
-</li>
-
-<li>
-
 <a href="index.php?view_orders">
 
 <i class="fa fa-fw fa-list"></i> View Orders
