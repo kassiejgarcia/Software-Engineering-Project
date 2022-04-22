@@ -512,7 +512,15 @@ echo "
 
 <td> Shipping and handling </td>
 
-<th>$5.00</th>
+<th><?php
+if($total == 0){
+	$shipping = 0.00;
+	echo "$0.00";
+}
+else {
+	$shipping = 5.00;
+	echo "$5.00";
+}?></th>
 
 </tr>
 
@@ -558,7 +566,6 @@ else {
 <td>Total</td>
 
 <th>$<?php 
-$shipping = 5.00;
 $total = $total + $shipping + $tax; 
 echo $total; ?></th>
 

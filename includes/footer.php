@@ -12,7 +12,7 @@
 		<a href="about.php" class="footer-nav__link">About Us</a>
 	      </li>
 	      <li class="footer-nav__item">
-		<a href="" class="footer-nav__link">Help</a>
+		<a href="contact.php" class="footer-nav__link">Contact Us</a>
 	      </li>
 	    </ul>
 	  </div>

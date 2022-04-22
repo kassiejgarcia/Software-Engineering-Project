@@ -13,7 +13,7 @@ include("includes/main.php");
     <!-- HERO -->
     <div class="nero">
       <div class="nero__heading">
-        <span class="nero__bold">About Us</span>
+        About us
       </div>
       <p class="nero__text">
       </p>

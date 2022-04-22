@@ -15,11 +15,11 @@ include("includes/main.php");
     <!-- HERO -->
     <div class="nero">
       <div class="nero__heading">
-        <span class="nero__bold">Contact</span> Us
+        Contact Us
       </div>
       <p class="nero__text">
-      If you have any questions, please feel free to contact us, our customer service center is working for you 24/7.
-      </p>
+Down below, send a message to our customer service team      
+</p>
     </div>
   </main>
 
@@ -92,36 +92,6 @@ $contact_email = $row_conatct_us['contact_email'];
 </div><!-- form-group Ends -->
 
 
-<div class="form-group"><!-- form-group Starts -->
-
-<label> Select Enquiry Type </label>
-
-
-<select name="enquiry_type" class="form-control"><!-- select Starts -->
-
-<option> Select Enquiry Type </option>
-
-<?php
-
-$get_enquiry_types = "select * from enquiry_types";
-
-$run_enquiry_types = mysqli_query($con,$get_enquiry_types);
-
-while($row_enquiry_types = mysqli_fetch_array($run_enquiry_types)){
-
-$enquiry_title = $row_enquiry_types['enquiry_title'];
-
-echo "<option> $enquiry_title </option>";
-
-}
-
-?>
-
-</select><!-- select Ends -->
-
-</div><!-- form-group Ends -->
-
-
 <div class="text-center"><!-- text-center Starts -->
 
 <button type="submit" name="submit" class="btn btn-primary">
@@ -148,8 +118,6 @@ $sender_subject = $_POST['subject'];
 
 $sender_message = $_POST['message'];
 
-$enquiry_type = $_POST['enquiry_type'];
-
 $new_message = "
 
 <h1> This Message Has Been Sent By $sender_name </h1>
@@ -158,31 +126,14 @@ $new_message = "
 
 <p> <b> Sender Subject :  </b> <br> $sender_subject </p>
 
-<p> <b> Sender Enquiry Type :  </b> <br> $enquiry_type </p>
-
 <p> <b> Sender Message :  </b> <br> $sender_message </p>
 
 ";
 
-$headers = "From: $sender_email \r\n";
 
-$headers .= "Content-type: text/html\r\n";
+echo "<script> alert('Message Has Been Sent.') </script>";
 
-mail($contact_email,$sender_subject,$new_message,$headers);
-
-// Send email to sender through this code
-
-$email = $_POST['email'];
-
-$subject = "Welcome to my website";
-
-$msg = "I shall get you soon, thanks for sending us email";
-
-$from = "sad.ahmed22224@gmail.com";
-
-mail($email,$subject,$msg,$from);
-
-echo "<h2 align='center'>Your message has been sent successfully</h2>";
+echo "<script>window.open('contact.php','_self')</script>";
 
 }
 

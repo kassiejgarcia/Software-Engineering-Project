@@ -1,5 +1,6 @@
 <?php
 
+
 $db = mysqli_connect("localhost","root","UTSA2022se!","ecom_store");
 
 /// IP address code starts /////
@@ -82,7 +83,8 @@ echo "$" . $total;
 /* get the products for the homepage display */
 function getPro(){
 
-global $db;
+	global $db;
+	$rowcheck = 1;
 //select only 8 products
 $get_products = "select * from products order by 1 DESC LIMIT 0,8";
 
@@ -152,11 +154,10 @@ $product_label = "
 }
 echo "
 
-<div class='col-md-4 col-sm-6 single' >
-
+ <div class='col-lg-3 col-md-6'>
 <div class='product' >
 
-<a href='http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url' >
+<a href='details.php?pro_id=$pro_url' >
 
 <img src='admin_area/product_images/$pro_img1' class='product-display' >
 
@@ -172,15 +173,15 @@ echo "
 
 <hr>
 
-<h3><a href='http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url' >$pro_title</a></h3>
+<h3><a href='details.php?pro_id=$pro_url' >$pro_title</a></h3>
 
 <p class='price' > $product_price $product_psp_price </p>
 
 <p class='buttons' >
 
-<a href='http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url' class='btn btn-default' >View Details</a>
+<a href='details.php?pro_id=$pro_url' class='btn btn-default' >View Details</a>
 
-<a href='http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url' class='btn btn-danger'>
+<a href='details.php?pro_id=$pro_url' class='btn btn-danger'>
 
 <i class='fa fa-shopping-cart'></i> Add To Cart
 
@@ -200,7 +201,11 @@ echo "
 </div>
 
 ";
-
+if($rowcheck == 4){
+        echo "</div> <!-- row ends -->";
+        echo "<div class = 'row'> <!-- row starts -->";
+}
+$rowcheck++;
 }
 
 }
@@ -293,6 +298,7 @@ $sWhere = (count($aWhere)>0?' WHERE '.implode(' or ',$aWhere):'').$sLimit;
 $get_products = "select * from products  ".$sWhere;
 
 $run_products = mysqli_query($db,$get_products);
+$rowcheck = 1;
 
 while($row_products=mysqli_fetch_array($run_products)){
 
@@ -361,9 +367,9 @@ $product_label = "
 
 
 echo "
-<div class='col-md-4 col-sm-6 single' >
+ <div class='col-lg-3 col-md-6'>
 <div class = 'product'>
-<a href='http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url' >
+<a href='details.php?pro_id=$pro_url' >
 
 <img src='admin_area/product_images/$pro_img1' class='product-display' >
 
@@ -379,15 +385,15 @@ echo "
 -->
 <hr>
 
-<h3><a href='http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url' >$pro_title</a></h3>
+<h3><a href='details.php?pro_id=$pro_url' >$pro_title</a></h3>
 
 <p class='price' > $product_price $product_psp_price </p>
 
 <p class='buttons' >
 
-<a href='http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url' class='btn btn-default' >View details</a>
+<a href='details.php?pro_id=$pro_url' class='btn btn-default' >View details</a>
 
-<a href='http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url' class='btn btn-danger'>
+<a href='details.php?pro_id=$pro_url' class='btn btn-danger'>
 
 <i class='fa fa-shopping-cart' data-price=$pro_price></i> Add To Cart
 
@@ -406,7 +412,11 @@ echo"
 </div>
 
 ";
-
+if($rowcheck == 4){
+	echo "</div> <!-- row ends -->";
+	echo "<div class = 'row'> <!-- row begins -->";
+}
+$rowcheck++;
 }
 /// getProducts function Code Ends ///
 

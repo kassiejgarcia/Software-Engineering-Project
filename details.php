@@ -205,6 +205,8 @@ $query = "insert into cart (p_id,ip_add,qty,p_price) values ('$p_id','$ip_add','
 
 $run_query = mysqli_query($db,$query);
 // refresh the homepage
+ echo "<script>alert('Product added to your cart.')</script>";
+
 echo "<script>window.open('http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url','_self')</script>";
 
 }
@@ -468,7 +470,7 @@ $product_label = "
 echo "
 <div class='col-md-3 col-sm-6 center-responsive' >
 <div class='product' >
-<a href='http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url' >
+<a href='details.php?pro_id=$pro_url' >
 <img src='admin_area/product_images/$pro_img1' class='similar-product' >
 </a>
 <div class='text' >
@@ -476,16 +478,16 @@ echo "
 <p class='btn btn-warning'> $manufacturer_name </p>
 </center> -->
 <hr>
-<h3><a href='http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url' >$pro_title</a></h3>
+<h3><a href='details.php?pro_id=$pro_url' >$pro_title</a></h3>
 <p class='price' > $product_price $product_psp_price </p>
 <p class='buttons' >
-<a href='http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url' class='btn btn-default' >View Details</a>
-<a href='http://ec2-54-172-16-142.compute-1.amazonaws.com/details.php?pro_id=$pro_url' class='btn btn-danger'>
+<a href='details.php?pro_id=$pro_url' class='btn btn-default' >View Details</a>
+<a href='details.php?pro_id=$pro_url' class='btn btn-danger'>
 <i class='fa fa-shopping-cart'></i> Add To Cart
 </a>
 </p>
 </div>";
-if($pro_label != NULL){
+if($pro_label == 'Sale' or $pro_label == 'sale'){
 	echo "$product_label";
 }
 echo"
