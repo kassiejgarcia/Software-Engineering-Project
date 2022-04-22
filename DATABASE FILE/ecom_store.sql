@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 21, 2022 at 03:00 AM
+-- Generation Time: Apr 22, 2022 at 07:04 AM
 -- Server version: 8.0.28-0ubuntu0.20.04.3
 -- PHP Version: 7.4.3
 
@@ -40,7 +40,7 @@ CREATE TABLE `about_us` (
 --
 
 INSERT INTO `about_us` (`about_id`, `about_heading`, `about_short_desc`, `about_desc`) VALUES
-(1, 'About Us - Our Story for Hug With Mug Co.', 'Coffee. For some people, it’s more than a drink. It’s a way to connect. It’s a way to share moments. And, ok, sometimes it’s just a way to wake up and get work done.\r\n\r\n\r\n', 'Hug With Mug Co. is the collective vision of a small group of Computer Science students at the University of Texas at San Antonio for the Software Engineering course.\r\nEver since we joined together as a group, we decided coffee was the perfect thing to sell. It is a daily part of all our lives and routines, so when it came to picking a theme- coffee was a no-brainer! \r\n\r\n\r\nSo say hello to Hug With Mug Coffee Co. - I hope you like it.\r\n');
+(1, 'About Us - Our Story for Hug With Mug Co.', 'Coffee. For some people, it’s more than a drink. It’s a way to connect. It’s a way to share moments. And, ok, sometimes it’s just a way to wake up and get work done.\r\n\r\n\r\n', 'Hug With Mug Co. is the collective vision of a small group of Computer Science students at the University of Texas at San Antonio for the Software Engineering course.\r\n<p>Ever since we joined together as a group, we decided coffee was the perfect thing to sell. It is a daily part of all our lives and routines, so when it came to picking a theme- coffee was a no-brainer! \r\n</p>\r\n<p>\r\nSo say hello to Hug With Mug Coffee Co. - I hope you like it.\r\n</p><p>\r\nThis is Group 2\'s Project for Software Engineering CS-3773-002 Spring 2022\r\n</p><p>\r\nThis project is essentially a Coffee Shop eCommerce Website, named Hug With Mug. At Hug With Mug, we sell coffee items, tea items, and accessories. \r\n</p><p>\r\nDevelopers:\r\n<ul><li>Kassie Garcia THR757 - Project Manager / Developer </li> \r\n<li>Nkeiruka Nwogu eib615 - Front End </li>\r\n<li>James Le fcp930 - Front End</li>\r\n<li>Azra Al Rabeeah hou319-  report write up</li>\r\n<li>Walter Schmidt iys583 - Back End</li>\r\n<li>Herman Garza jgo997 - Back end</li>\r\n</p><p>\r\nTechnologies Used:\r\nJavascript, HTML, CSS, PHP\r\n</p><p>MySQL as our DBMS</p><p>\r\nAWS ec2 instance as our host server service\r\n</p><p>\r\nDatabase Name: ecom_store\r\n</p><p>\r\n\r\nAdmin Panel: url/admin_area</p><p>\r\nAdmin Login Details\r\n</p><p>\r\nUsername: admin@mail.com</p><p>\r\nPassword: Password@123</p>\r\n</p>\r\n');
 
 -- --------------------------------------------------------
 
@@ -65,7 +65,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`admin_id`, `admin_name`, `admin_email`, `admin_pass`, `admin_image`, `admin_contact`, `admin_country`, `admin_job`, `admin_about`) VALUES
-(2, 'Administrator', 'admin@mail.com', 'Password@123', 'user-profile-min.png', '7777775500', 'Morocco', 'Front-End Developer', ' Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical ');
+(2, 'Administrator', 'admin@mail.com', 'Password@123', 'user-profile-min.png', '210210210', 'USA', 'Developer', '');
 
 -- --------------------------------------------------------
 
@@ -166,8 +166,8 @@ CREATE TABLE `coupons` (
 --
 
 INSERT INTO `coupons` (`coupon_id`, `product_id`, `coupon_title`, `coupon_price`, `coupon_code`, `coupon_limit`, `coupon_used`) VALUES
-(6, 14, 'Sale', '65', 'CODEASTRO', 3, 1),
-(12, 32, 'Sale', '5', 'HUGWMUG5OFF', 20, 10);
+(12, 32, 'Sale', '5', 'HUGWMUG5OFF', 20, 13),
+(13, 19, 'Demo Coupon Code', '10', 'DEMOCODE10OFF', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -190,14 +190,18 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`customer_id`, `full_name`, `username`, `customer_email`, `customer_pass`, `customer_contact`, `customer_address`) VALUES
-(2, '', 'test_user', 'user@ave.com', '123', '0092334566931', 'new york'),
-(3, '', 'test_user_2', 'demo@customer.com', 'Password123', '700000000', 'DemoAddress'),
-(4, '', 'UTSA_user', 'thomas@demo.com', 'Password123', '777777777', '111 Address'),
-(5, '', 'hellokitty', 'test@customer.com', 'Password123', '780000000', '112 Bleck Street'),
-(6, '', 'smpl_user', 'customer@mail.com', 'Password123', '7800000000', 'Sample Address'),
-(10, 'Kassie Garcia', 'hamtaro', 'kassiejgarcia@gmail.com', '$2y$10$YitACqQ5IJd2UTYgYAqv2.sdCfbF3vKL09.72v9p8StDmVyev26ae', '210210210', 'san antonio '),
-(11, 'herm', 'herm', 'herm@coffee.com', '$2y$10$dTqLaF/F4m6IKjoGW1Ppf.h4/utk/NXJRuA9WE1j6Xw/wSIBbarAy', '210-111-1234', 'UTSA blvd'),
-(12, 'herm', 'hg', 'hg@example.com', '$2y$10$P0e1Vhpfjcqx217OKSLegeGxai1RvS.AAsJfkMZghuKb29xghAJha', '2101234567', 'utsa blvd');
+(10, 'Kassie Garcia', 'hamtaro', 'kassiejgarcia@gmail.com', '$2y$10$YitACqQ5IJd2UTYgYAqv2.sdCfbF3vKL09.72v9p8StDmVyev26ae', '210210210210', 'san antonio '),
+(11, 'demo customer', 'demo', 'demo@demo.com', '$2y$10$RMKg94c/zXaDH5LCgzqdOO9bmP6iS/Ie9bC9vejaz8Y8ft2STzj1.', '210102102', '280 Brighton Avenue'),
+(12, 'frog', 'frog', 'frog@gmail.com', '$2y$10$mBfoOVMpgGAO3344XMsE8utkgLKTAghlpJbEtAiKOsGm9iNAspfa6', '555555555', '832 Kinwest Parkway'),
+(13, 'toady', 'toad', 'toad@toad.com', '$2y$10$eQIuy2j2q/bMvJCsniEuX.GiMoi0I64mLX5.FsMiaf7ObvI1jx3lm', '3333334444', '112 toad ave'),
+(14, 'Mr. Toad', 'mistertoad', 'toad@email.com', '$2y$10$9MEIQytOLw96ujyOaWglbu9lJFobegxEdUjGoT5ySsl2mKG5soleC', '210210210', '832 Kinwest Parkway'),
+(15, 'John Doe', 'user001', 'john.doe@mail.com', '$2y$10$cMrbOWXF52bJnj11qy5WY.StstIB4u29wWAOtAFqBEQ2q76G5/GPu', '200990432', '123 Plum Street'),
+(16, 'Jane Doe', 'BestShopperEva', 'jane.doe@mail.com', '$2y$10$f4uHcjPY4BT6/ahyvZO2d.JJp0RgklNQ50JTMtfZG.MVhBHnuW9Jq', '300455231', '321 Mango Avenue'),
+(17, 'demo customer', 'demo_customer', 'democustomer@demo.com', '$2y$10$hE4kfJ.I9pj4G9sUkVIYcOuwUzr.NTJypWNCBcmsw0iy1doeNeQP6', '210210210', '280 Brighton Avenue'),
+(18, 'demo demo demo', 'demo2', 'demo2@2.com', '$2y$10$3nujp3pXSAKuER6P00aS8uIR4iEObCZAVWABlXbf/l3YiKkzyuqDi', '1111111111', '280 Brighton Avenue'),
+(19, 'demo demo demo', 'demo22', 'demo2@2.com', '$2y$10$fJmCF8vdnAt2PKvXxd789ecibGKWksdFdJqHi2ycrmMFOK...VQaC', '1111111111', '280 Brighton Avenue'),
+(20, 'walter schmidt', 'retlaw', 'retlaw3480@gmail.com', '$2y$10$O2iq5ciEI9KRqlLPVERxd.RRc51g/RHWrwX.iCz2bfCpwUepeppTG', '5129404272', '13903 babcock rd, San Antonio TX 78249'),
+(21, 'kassie garcia', 'k_garcia', 'k_garcia@email.com', '$2y$10$I6knEr0Q0gRVCYpDpO04tuSPMOpSveDs0YZ9I/vPFqrS4a19J.GtC', '21210211200', '210 Ave');
 
 -- --------------------------------------------------------
 
@@ -226,9 +230,11 @@ INSERT INTO `customer_orders` (`order_id`, `customer_id`, `due_amount`, `invoice
 (35, 10, 21, 533714995, 1, '', 'pending'),
 (36, 10, 15, 533714995, 1, '', 'pending'),
 (37, 10, 21, 533714995, 1, '', 'pending'),
-(38, 10, 16, 801177859, 1, '', 'pending'),
-(39, 10, 12, 2084351728, 2, '', 'pending'),
-(40, 10, 12, 235453125, 2, '', 'pending');
+(41, 11, 42, 1222349279, 2, '', 'pending'),
+(42, 11, 6, 1222349279, 1, '', 'pending'),
+(46, 14, 5, 1582428953, 1, '', 'pending'),
+(47, 14, 42, 1582428953, 2, '', 'pending'),
+(53, 10, 38, 599222338, 2, '', 'pending');
 
 -- --------------------------------------------------------
 
@@ -246,6 +252,9 @@ CREATE TABLE `enquiry_types` (
 --
 
 INSERT INTO `enquiry_types` (`enquiry_id`, `enquiry_title`) VALUES
+(1, 'Order and Delivery Support'),
+(2, 'Technical Support'),
+(3, 'Price Concern'),
 (1, 'Order and Delivery Support'),
 (2, 'Technical Support'),
 (3, 'Price Concern');
@@ -352,9 +361,12 @@ INSERT INTO `pending_orders` (`order_id`, `customer_id`, `invoice_no`, `product_
 (35, 10, 533714995, '29', 1, '', 'pending'),
 (36, 10, 533714995, '30', 1, '', 'pending'),
 (37, 10, 533714995, '32', 1, '', 'pending'),
-(38, 10, 801177859, '32', 1, '', 'pending'),
 (39, 10, 2084351728, '33', 2, '', 'pending'),
-(40, 10, 235453125, '33', 2, '', 'pending');
+(41, 11, 1222349279, '29', 2, '', 'pending'),
+(42, 11, 1222349279, '33', 1, '', 'pending'),
+(46, 14, 1582428953, '19', 1, '', 'pending'),
+(47, 14, 1582428953, '32', 2, '', 'pending'),
+(53, 10, 599222338, '27', 2, '', 'pending');
 
 -- --------------------------------------------------------
 
@@ -364,9 +376,9 @@ INSERT INTO `pending_orders` (`order_id`, `customer_id`, `invoice_no`, `product_
 
 CREATE TABLE `products` (
   `product_id` int NOT NULL,
-  `p_cat_id` int NOT NULL,
+  `p_cat_id` int DEFAULT NULL,
   `cat_id` int NOT NULL,
-  `manufacturer_id` int NOT NULL,
+  `manufacturer_id` int DEFAULT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `product_title` text NOT NULL,
   `product_url` text NOT NULL,
@@ -374,11 +386,11 @@ CREATE TABLE `products` (
   `product_img2` text NOT NULL,
   `product_img3` text NOT NULL,
   `product_price` int NOT NULL,
-  `product_psp_price` int NOT NULL,
+  `product_psp_price` int DEFAULT NULL,
   `product_desc` text NOT NULL,
-  `product_features` text NOT NULL,
-  `product_video` text NOT NULL,
-  `product_keywords` text NOT NULL,
+  `product_features` text CHARACTER SET latin1 COLLATE latin1_swedish_ci,
+  `product_video` text CHARACTER SET latin1 COLLATE latin1_swedish_ci,
+  `product_keywords` text CHARACTER SET latin1 COLLATE latin1_swedish_ci,
   `product_label` text CHARACTER SET latin1 COLLATE latin1_swedish_ci,
   `status` varchar(255) NOT NULL,
   `product_quantity` int DEFAULT NULL
@@ -389,21 +401,21 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `p_cat_id`, `cat_id`, `manufacturer_id`, `date`, `product_title`, `product_url`, `product_img1`, `product_img2`, `product_img3`, `product_price`, `product_psp_price`, `product_desc`, `product_features`, `product_video`, `product_keywords`, `product_label`, `status`, `product_quantity`) VALUES
-(9, 3, 3, 7, '2022-04-03 19:54:28', 'Coffee and work mug', 'coffee-work-mug', 'hugwithmugaccessory1.png', 'product_image_placeholder.jpeg', 'faded.jpg', 16, 35, '\r\n<p> A mug with a catchy slogan to display to your friends.</p>\r\n\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n\r\n', 'Merch', 'NULL', 'product', 100),
-(13, 3, 3, 3, '2022-04-02 01:19:31', ' Coffee Definition T-shirt\r\n', 'coffee-definition-shirt', 'hugwithmugshirt1.png', 'product_image_placeholder.jpeg', 'product_image_placeholder.jpeg', 90, 85, '<p>A T-shirt that defines the qualities of coffee in the morning or anytime\r\n</p>\r\n\r\n', '', '', 'Merch', NULL, 'product', 50),
-(15, 2, 2, 8, '2022-04-02 01:19:40', 'Organic Lemon Tea', 'lemon-tea', 'organiclemontea_1.png', 'product_image_placeholder.jpeg', 'product_image_placeholder.jpeg', 9, 75, ' <p>A box containing 10 organic tea bags ready to be brewed </p>', '', '\r\n\r\n\r\n\r\n', 'Tea', NULL, 'product', 90),
-(18, 3, 3, 0, '2022-04-02 01:26:55', 'Coffee Heartbeat T-shirt', 'coffee-heartbeat-shirt', 'hugwithmugshirt2.png', 'product_image_placeholder.jpeg', 'product_image_placeholder.jpeg', 15, 0, '<p>A T-shirt that shows coffee flows with every heartbeat </p>', '', '', 'Merch', NULL, 'Product', 300),
-(19, 3, 3, 0, '2022-04-02 01:29:08', ' PotHead T-shirt', 'pot-head-shirt', 'hugwithmugshirt3.png', 'product_image_placeholder.jpeg', 'product_image_placeholder.jpeg', 15, 0, '<p> A T-shirt that shows the wonders of caffeine contained within a pot of coffee  \r\n</p>', '', '', 'Merch', NULL, 'Product', 210),
-(25, 1, 1, 0, '2022-04-02 04:05:13', 'Whole Bean Espresso', 'bean-espresso', 'coffee7.png', 'coffee_showcase_image_1.jpeg', 'coffee_showcase_image_2.jpeg', 23, 0, '<p> An espresso blend ready to be brewed to create the perfect cup of espresso </p>', '', '', 'Coffee', NULL, 'Product', 150),
-(26, 2, 2, 0, '2022-04-02 04:07:11', 'Organic Green Tea', 'green-tea-org', 'greentea_1.jpeg', 'product_image_placeholder.jpeg', 'product_image_placeholder.jpeg', 9, 0, '<p> A bag containing 15 green tea bags ready to be brewed </p>', 'Tea', '', '', NULL, 'Product', 300),
-(27, 1, 1, 0, '2022-04-02 04:22:31', 'Cold Brew Coffee Blend', 'cold-brew-blend', 'coffee6.png', 'coffee_showcase_image_1.jpeg', 'coffee_showcase_image_2.jpeg', 24, 19, '<p> A blend of coffee ready to be cold brewed into the perfect cup of coffee</p>', '', '', 'Coffee', 'Sale', 'Product', 110),
-(28, 1, 1, 0, '2022-04-02 04:22:43', ' French Roast Coffee Blend', 'french-blend', 'coffee5.png', 'coffee_showcase_image_1.jpeg', 'coffee_showcase_image_2.jpeg', 21, 0, '<p> A french roast coffee blend enough for 15 cups </p>', '', '', 'Coffee', NULL, 'Product', 110),
-(29, 1, 1, 0, '2022-04-02 04:23:00', 'Espresso Roast Coffee Blend', 'espresso-blend', 'coffee4.png', 'coffee_showcase_image_1.jpeg', 'coffee_showcase_image_2.jpeg', 21, 0, '<p>A espresso roast coffee blend enough for 15 cups. </p>', '', '', 'Coffee', NULL, 'Product', 120),
-(30, 1, 1, 0, '2022-04-02 04:23:15', 'Premium Roast Coffee Beans', 'premium-coffee', 'coffee3.png', 'coffee_showcase_image_1.jpeg', 'coffee_showcase_image_2.jpeg', 15, 0, '\r\n<p> A valve bag containing high-quality coffee beans from the Caribbean. </p>', '', '', 'Coffee', NULL, 'Product', 130),
-(31, 1, 1, 0, '2022-04-02 04:23:33', 'Breakfast Coffee Blend', 'breakfast-coffee', 'coffee2.png', 'coffee_showcase_image_1.jpeg', 'coffee_showcase_image_2.jpeg', 12, 0, '<p> A light roast coffee blend with enough to make 20 cups. Perfect for mornings </p>', '', '', 'Coffee', NULL, 'Product', 200),
-(32, 3, 3, 2, '2022-04-02 04:24:39', 'Coffee Lover bag', 'coffee-tote-bg', 'hugwithmugaccessory2.png', 'tote_showcase_image_1.jpeg', 'tote_showcase_image_2.jpeg', 21, 180, '<p> A tote bag displaying for love for the liquid happiness that is coffee </p>', '', '', 'Merch', NULL, 'product', 120),
-(33, 1, 1, 5, '2022-04-02 04:25:13', 'Yellow Instant Coffee Blend', 'yellow-coffee-blend', 'coffee1.png', 'coffee_showcase_image_1.jpeg', 'coffee_showcase_image_2.jpeg', 10, 6, '<p>A bag of instant coffee powder ready to make within minutes, med roast coffee. </p>\r\n', '\r\n', '', 'Coffee', 'Sale', 'product', 198),
-(34, 2, 2, 4, '2022-04-02 04:25:38', 'Matcha Tea Powder', 'matcha-tea-powder', 'matchapowder.png', 'matcha_showcase_image_1.jpeg', 'matcha_showcase_image_2.jpeg', 15, 100, '\r\n\r\n\r\n<p> 20 servings of high-quality matcha tea powder </p>\r\n\r\n\r\n', '\r\n\r\n', '', 'Tea', NULL, 'product', 200);
+(9, 3, 3, 7, '2022-04-04 00:51:40', 'Coffee & work mug', 'coffee-work-mug', 'hugwithmugaccessory1.png', 'product_image_placeholder.jpeg', 'product_image_placeholder.jpeg', 16, 0, '\r\n\r\n\r\n<p> A mug with a catchy slogan to display to your friends.</p>\r\n\r\n\r\n\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n\r\n', 'Merch', 'NULL', 'product', 100),
+(13, 3, 3, 3, '2022-04-04 00:51:57', ' Coffee T-shirt', 'coffee-definition-shirt', 'hugwithmugshirt1.png', 'product_image_placeholder.jpeg', 'product_image_placeholder.jpeg', 90, 0, '\r\n<p>A T-shirt that defines the qualities of coffee in the morning or anytime\r\n</p>\r\n\r\n\r\n', '', '', 'Merch', 'NULL', 'product', 50),
+(15, 2, 2, 8, '2022-04-04 00:52:11', 'Organic Lemon Tea', 'lemon-tea', 'organiclemontea_1.png', 'product_image_placeholder.jpeg', 'product_image_placeholder.jpeg', 9, 0, '\r\n <p>A box containing 10 organic tea bags ready to be brewed </p>\r\n', '', '\r\n\r\n\r\n\r\n', 'Tea', 'NULL', 'product', 89),
+(18, 3, 3, 0, '2022-04-04 00:53:50', 'Coffee Heart T-shirt', 'coffee-heartbeat-shirt', 'hugwithmugshirt2.png', 'product_image_placeholder.jpeg', 'product_image_placeholder.jpeg', 15, 0, '\r\n<p>A T-shirt that shows coffee flows with every heartbeat </p>\r\n', '', '', 'Merch', 'NULL', 'product', 300),
+(19, 3, 3, 0, '2022-04-04 00:54:07', ' PotHead T-shirt', 'pot-head-shirt', 'hugwithmugshirt3.png', 'product_image_placeholder.jpeg', 'product_image_placeholder.jpeg', 15, 0, '\r\n<p> A T-shirt that shows the wonders of caffeine contained within a pot of coffee  \r\n</p>\r\n', '', '', 'Merch', 'NULL', 'product', 209),
+(25, 1, 1, 0, '2022-04-04 00:54:23', 'Whole Bean Espresso Blend', 'bean-espresso', 'coffee7.png', 'coffee_showcase_image_1.jpeg', 'coffee_showcase_image_2.jpeg', 23, 0, '\r\n<p> An espresso blend ready to be brewed to create the perfect cup of espresso </p>\r\n', '', '', 'Coffee', 'NULL', 'product', 150),
+(26, 2, 2, 0, '2022-04-04 00:54:35', 'Organic Green Tea', 'green-tea-org', 'greentea_1.jpeg', 'product_image_placeholder.jpeg', 'product_image_placeholder.jpeg', 9, 0, '\r\n<p> A bag containing 15 green tea bags ready to be brewed </p>\r\n', '', '', 'Tea', 'NULL', 'product', 299),
+(27, 1, 1, 0, '2022-04-02 04:22:31', 'Cold Brew Coffee Blend', 'cold-brew-blend', 'coffee6.png', 'coffee_showcase_image_1.jpeg', 'coffee_showcase_image_2.jpeg', 24, 19, '<p> A blend of coffee ready to be cold brewed into the perfect cup of coffee</p>', '', '', 'Coffee', 'Sale', 'Product', 106),
+(28, 1, 1, 0, '2022-04-04 00:55:14', ' French Roast Coffee Blend', 'french-blend', 'coffee5.png', 'coffee_showcase_image_1.jpeg', 'coffee_showcase_image_2.jpeg', 21, 0, '\r\n<p> A french roast coffee blend enough for 15 cups </p>\r\n', '', '', 'Coffee', 'NULL', 'product', 110),
+(29, 1, 1, 0, '2022-04-04 00:55:23', 'Espresso Roast Coffee Blend', 'espresso-blend', 'coffee4.png', 'coffee_showcase_image_1.jpeg', 'coffee_showcase_image_2.jpeg', 21, 0, '\r\n<p>A espresso roast coffee blend enough for 15 cups. </p>\r\n', '', '', 'Coffee', 'NULL', 'product', 118),
+(30, 1, 1, 0, '2022-04-02 04:23:15', 'Premium Roast Coffee Beans', 'premium-coffee', 'coffee3.png', 'coffee_showcase_image_1.jpeg', 'coffee_showcase_image_2.jpeg', 15, 0, '\r\n<p> A valve bag containing high-quality coffee beans from the Caribbean. </p>', '', '', 'Coffee', NULL, 'Product', 129),
+(31, 1, 1, 0, '2022-04-04 00:55:45', 'Breakfast Coffee Blend', 'breakfast-coffee', 'coffee2.png', 'coffee_showcase_image_1.jpeg', 'coffee_showcase_image_2.jpeg', 12, 0, '\r\n\r\n<p> A light roast coffee blend with enough to make 20 cups. Perfect for mornings </p>\r\n\r\n', '', '', 'Coffee', 'NULL', 'product', 200),
+(32, 3, 3, 2, '2022-04-04 01:05:55', 'Coffee Lover bag', 'coffee-tote-bg', 'hugwithmugaccessory2.png', 'tote_showcase_image_1.jpeg', 'tote_showcase_image_2.jpeg', 21, 5, '\r\n\r\n\r\n<p> USE CODE: HUGWMUG5OFF to get $5 off this product ! </p>\r\n\r\n\r\n', '', '', 'Merch', 'NULL', 'product', 116),
+(33, 1, 1, 5, '2022-04-04 00:56:10', 'Yellow Instant Coffee Blend', 'yellow-coffee-blend', 'coffee1.png', 'coffee_showcase_image_1.jpeg', 'coffee_showcase_image_2.jpeg', 10, 6, '\r\n<p>A bag of instant coffee powder ready to make within minutes, med roast coffee. </p>\r\n\r\n', '\r\n', '', 'Coffee', 'Sale', 'product', 194),
+(34, 2, 2, 4, '2022-04-04 00:53:04', 'Matcha Tea Powder', 'matcha-tea-powder', 'matchapowder.png', 'matcha_showcase_image_1.jpeg', 'matcha_showcase_image_2.jpeg', 15, 10, '\r\n\r\n\r\n\r\n\r\n<p> 20 servings of high-quality matcha tea powder </p>\r\n\r\n\r\n\r\n\r\n', '\r\n\r\n', '', 'Tea', 'Sale', 'product', 198);
 
 -- --------------------------------------------------------
 
@@ -446,6 +458,13 @@ CREATE TABLE `search_results` (
 --
 
 INSERT INTO `search_results` (`id`, `title`, `description`, `url`, `keywords`) VALUES
+(1, 'Coffee ', '', 'http://ec2-54-172-16-142.compute-1.amazonaws.com/shop.php?page=1&cat[]=1&', 'coffee Coffee COFFEE'),
+(3, 'Matcha', '', 'http://ec2-54-172-16-142.compute-1.amazonaws.com/shop.php?page=1&cat[]=2&', 'Matcha matcha MATCHA'),
+(4, 'Tea', '', 'http://ec2-54-172-16-142.compute-1.amazonaws.com/shop.php?page=1&cat[]=2&', 'Tea tea TEA'),
+(5, 'T-Shirt', '', 'http://ec2-54-172-16-142.compute-1.amazonaws.com/shop.php?page=1&cat[]=3&', 'T-shirt T-SHIRT t-shirt tshirt T-shirts T-SHIRTS t-shirts tshirts'),
+(7, 'Espresso', '', 'http://ec2-54-172-16-142.compute-1.amazonaws.com/shop.php?page=1&cat[]=1&', 'Espresso ESPRESSO espresso'),
+(9, 'Mug', '', 'http://ec2-54-172-16-142.compute-1.amazonaws.com/shop.php?page=1&cat[]=3&', 'mug Mug MUG mugs Mugs MUGS'),
+(10, 'Bag', '', 'http://ec2-54-172-16-142.compute-1.amazonaws.com/shop.php?page=1&cat[]=3&', 'bag Bag BAG bags Bags BAGS'),
 (1, 'Coffee ', '', 'http://ec2-54-172-16-142.compute-1.amazonaws.com/shop.php?page=1&cat[]=1&', 'coffee Coffee COFFEE'),
 (3, 'Matcha', '', 'http://ec2-54-172-16-142.compute-1.amazonaws.com/shop.php?page=1&cat[]=2&', 'Matcha matcha MATCHA'),
 (4, 'Tea', '', 'http://ec2-54-172-16-142.compute-1.amazonaws.com/shop.php?page=1&cat[]=2&', 'Tea tea TEA'),
@@ -498,7 +517,15 @@ INSERT INTO `wishlist` (`wishlist_id`, `customer_id`, `product_id`) VALUES
 (2, 2, 8),
 (3, 5, 13),
 (4, 3, 13),
-(5, 6, 15);
+(5, 6, 15),
+(7, 15, 18),
+(8, 15, 32),
+(9, 17, 30),
+(10, 10, 32),
+(11, 10, 15),
+(12, 10, 9),
+(13, 10, 25),
+(15, 21, 28);
 
 --
 -- Indexes for dumped tables
@@ -559,12 +586,6 @@ ALTER TABLE `customer_orders`
   ADD PRIMARY KEY (`order_id`);
 
 --
--- Indexes for table `enquiry_types`
---
-ALTER TABLE `enquiry_types`
-  ADD PRIMARY KEY (`enquiry_id`);
-
---
 -- Indexes for table `manufacturers`
 --
 ALTER TABLE `manufacturers`
@@ -595,12 +616,6 @@ ALTER TABLE `product_categories`
   ADD PRIMARY KEY (`p_cat_id`);
 
 --
--- Indexes for table `search_results`
---
-ALTER TABLE `search_results`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `store`
 --
 ALTER TABLE `store`
@@ -629,12 +644,6 @@ ALTER TABLE `admins`
   MODIFY `admin_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `bundle_product_relation`
---
-ALTER TABLE `bundle_product_relation`
-  MODIFY `rel_id` int NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
@@ -650,25 +659,19 @@ ALTER TABLE `contact_us`
 -- AUTO_INCREMENT for table `coupons`
 --
 ALTER TABLE `coupons`
-  MODIFY `coupon_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `coupon_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `customer_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `customer_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `customer_orders`
 --
 ALTER TABLE `customer_orders`
-  MODIFY `order_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
-
---
--- AUTO_INCREMENT for table `enquiry_types`
---
-ALTER TABLE `enquiry_types`
-  MODIFY `enquiry_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `order_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `manufacturers`
@@ -686,25 +689,19 @@ ALTER TABLE `payments`
 -- AUTO_INCREMENT for table `pending_orders`
 --
 ALTER TABLE `pending_orders`
-  MODIFY `order_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `order_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `product_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `product_categories`
 --
 ALTER TABLE `product_categories`
   MODIFY `p_cat_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT for table `search_results`
---
-ALTER TABLE `search_results`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `store`
@@ -716,7 +713,7 @@ ALTER TABLE `store`
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `wishlist_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `wishlist_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
