@@ -141,6 +141,9 @@ echo '<li class="categories__item">
 		      <li class="dropdown__item">
 			<a href="customer/my_account.php?change_pass" class="dropdown__link">Change Password</a>
 		      </li>
+			<li class="dropdown__item">
+                        <a href="customer/my_account.php?edit_account" class="dropdown__link">Edit Account</a>
+                      </li>
 		    </ul>
 		  </div>
 		</div>

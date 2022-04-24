@@ -93,7 +93,7 @@ else
 
 	    <li class="categories__item">
 	      <a class="categories__link" href="../../shop.php?page=1&cat[]=3&"> <!--LINK THE ACCESSORIES.PHP page here to display it -->
-		Accessories
+		Merch
 
 	      </a>
 	    </li>
@@ -135,6 +135,9 @@ echo '<li class="categories__item">
 		      <li class="dropdown__item">
 			<a href="my_account.php?change_pass" class="dropdown__link">Change Password</a>
 		      </li>
+			<li class="dropdown__item">
+                        <a href="my_account.php?edit_account" class="dropdown__link">Edit Account</a>
+                      </li>
 		    </ul>
 		  </div>
 		</div>

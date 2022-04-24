@@ -15,21 +15,21 @@ $customer_id = $row_customer['customer_id'];
 
 ?>
 
-<h1 class="text-center">Payment Options For You</h1>
 
 <p class="lead text-center">
 
-<a href="order.php?c_id=<?php echo $customer_id; ?>">Place Order</a>
+<a href="order.php?c_id=<?php echo $customer_id; ?>" style = "font-size: 30px; color: #18236b;">Click Here to Place Order</a>
 
 </p>
-
+<h1 class="text-center" style = "font-size: 21px; ">Payment Options For You</h1>
 <center><!-- center Starts -->
-
+<!--
   <form action="" method="post" target="_top">
   <input type="hidden" name="cmd" value="_s-xclick">
   <input type="hidden" name="hosted_button_id" value="9PWJZYVQH8KGU">
-  <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-  </form>
+-->  
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+ <!-- </form> -->
 
 
 <?php
@@ -75,7 +75,7 @@ $i++;
 
 <?php } ?>
 
-<input type="image" name="submit" width="500" height="270" src="images/paypal.png" >
+<img width="500" height="270" src="images/paypal.png" >
 
 
 </form><!-- form Ends -->

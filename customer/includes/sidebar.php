@@ -44,6 +44,12 @@ echo "
 <a href="my_account.php?my_orders"> <i class="fa fa-list"> </i> My Orders </a>
 
 </li>
+<!-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
+<li class="<?php if(isset($_GET['edit_account'])){ echo "active"; } ?>">
+
+<a href="my_account.php?edit_account"> <i class="fa fa-list"> </i> Edit Account </a>
+
+</li>
 
 <li class="<?php if(isset($_GET['change_pass'])){ echo "active"; } ?>">
 

@@ -222,16 +222,16 @@ echo "<script>window.open('http://ec2-54-172-16-142.compute-1.amazonaws.com/deta
 <div class="form-group"><!-- form-group Starts -->
  <label class="col-md-5 control-label"> Product Description </label>
  <div id = "description">
-<?php echo "$pro_desc"; ?>
+<?php echo "<p>$pro_desc<hr></p>"; ?>
 </div>
-<label class="col-md-5 control-label"> In Stock </label>
+<label class="col-md-5 control-label" style= "margin-bottom: 0;"> In Stock </label>
 <div id = "description">
-<?php echo "<p>$pro_quantity</p>"; ?>
+<?php echo "<p>$pro_quantity<hr></p>"; ?>
 </div>
-<label class="col-md-5 control-label" >Product Quantity </label>
+<label class="col-md-5 control-label">Product Quantity </label>
 
 <div class="col-md-7" ><!-- col-md-7 Starts -->
-
+<p>
 <select name="product_qty" class="form-control" >
 
 <option>Select quantity</option>
@@ -241,7 +241,7 @@ echo "<script>window.open('http://ec2-54-172-16-142.compute-1.amazonaws.com/deta
 
 
 </select>
-
+</p>
 </div><!-- col-md-7 Ends -->
 
 </div><!-- form-group Ends -->

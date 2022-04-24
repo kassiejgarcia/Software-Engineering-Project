@@ -66,7 +66,7 @@ else {
 
 <div class="form-group" ><!-- form-group Starts -->
 
-<label class="col-md-3 control-label" > Product Title </label>
+<label class="col-md-3 control-label" > *Product Title </label>
 
 <div class="col-md-6" >
 
@@ -79,7 +79,7 @@ else {
 
 <div class="form-group" ><!-- form-group Starts -->
 
-<label class="col-md-3 control-label" > Product Url </label>
+<label class="col-md-3 control-label" > *Product Url </label>
 
 <div class="col-md-6" >
 
@@ -100,7 +100,7 @@ Product Url Example : french-coffee-beans
 
 <div class="form-group" ><!-- form-group Starts -->
 
-<label class="col-md-3 control-label" > Category </label>
+<label class="col-md-3 control-label" > *Category </label>
 
 <div class="col-md-6" >
 
@@ -136,7 +136,7 @@ echo "<option value='$cat_id'>$cat_title</option>";
 
 <div class="form-group" ><!-- form-group Starts -->
 
-<label class="col-md-3 control-label" > Product Image 1 </label>
+<label class="col-md-3 control-label" > *Product Image 1 </label>
 
 <div class="col-md-6" >
 
@@ -148,7 +148,7 @@ echo "<option value='$cat_id'>$cat_title</option>";
 
 <div class="form-group" ><!-- form-group Starts -->
 
-<label class="col-md-3 control-label" > Product Image 2 </label>
+<label class="col-md-3 control-label" > *Product Image 2 </label>
 
 <div class="col-md-6" >
 
@@ -160,7 +160,7 @@ echo "<option value='$cat_id'>$cat_title</option>";
 
 <div class="form-group" ><!-- form-group Starts -->
 
-<label class="col-md-3 control-label" > Product Image 3 </label>
+<label class="col-md-3 control-label" > *Product Image 3 </label>
 
 <div class="col-md-6" >
 
@@ -172,7 +172,7 @@ echo "<option value='$cat_id'>$cat_title</option>";
 
 <div class="form-group" ><!-- form-group Starts -->
 
-<label class="col-md-3 control-label" > Product Price </label>
+<label class="col-md-3 control-label" > *Product Price </label>
 
 <div class="col-md-6" >
 
@@ -207,7 +207,7 @@ echo "<option value='$cat_id'>$cat_title</option>";
 </div><!-- form-group Ends -->
 <div class="form-group" ><!-- form-group Starts -->
 
-<label class="col-md-3 control-label" > Product Quantity </label>
+<label class="col-md-3 control-label" > *Product Quantity </label>
 
 <div class="col-md-6" >
 
@@ -219,7 +219,7 @@ echo "<option value='$cat_id'>$cat_title</option>";
 
 <div class="form-group" ><!-- form-group Starts -->
 
-<label class="col-md-3 control-label" > Product Description </label>
+<label class="col-md-3 control-label" > *Product Description </label>
 
 <div class="col-md-6" >
 
