@@ -5,6 +5,13 @@
  */
 
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+<!doctype html>
+<html lang ="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+	</head>
+</html>
 
 html {
   font-family: sans-serif;
@@ -3163,8 +3170,8 @@ select[multiple].input-lg, textarea.input-lg {
 @media (min-width:768px) {
   .form-horizontal .control-label {
     padding-top: 7px;
-    margin-bottom: 0;
-    text-align: right
+    /*margin-bottom: 0;
+    */text-align: right
   }
 }
 
@@ -6971,3 +6978,5 @@ button.close {
 	height:400px;
 }
 /*# sourceMappingURL=bootstrap.min.css.map */
+
+

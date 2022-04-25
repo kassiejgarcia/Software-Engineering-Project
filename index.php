@@ -24,10 +24,10 @@ include("includes/search.php");
 </div>
 
     <div class="wrapper" style="position:relative; top:70px;">
-	    <h1>
+	    <h1 style="font-size:2vw;">
 		Happiness in a mug :)			
 	    </h1>
-	    <p> We sell the best coffee and tea available to bring a smile on your face. Need a mug? Want a shirt related to coffee or tea? We got that too!  </p>
+	    <p style="font-size:1.3vw;"> We sell the best coffee and tea available to bring a smile on your face. Need a mug? Want a shirt related to coffee or tea? We got that too!  </p>
 	</div>
             
 
@@ -35,7 +35,7 @@ include("includes/search.php");
     </div>
     <!-- Main -->
     <div class="wrapper" style="position:relative; top:40px;">
-            <h1>BESTSELLERS<h1>
+            <h1 style="font-size:3vw;">BESTSELLERS<h1>
             
       </div>
 
