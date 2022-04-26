@@ -11,7 +11,7 @@
   <header class="page-header">
     <!-- topline -->
     <div class="page-header__topline">
-      <div class="container clearfix">
+      <div class="container">
 
 	<div class="currency">
 	  <a class="currency__change" href="customer/my_account.php?my_orders">
