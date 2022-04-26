@@ -1,0 +1,1 @@
+Included in this directory are the files that I changed to implement the product sorting for our project. I made a change to the functions.php document so i did not want to upload the changes to our github repo fearing that it would interfere with other people's changes. I also included a short video showing what the feature looks like when implemented,titled sorting.mp4.
