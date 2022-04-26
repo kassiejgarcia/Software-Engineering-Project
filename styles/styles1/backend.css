@@ -1,13 +1,8 @@
 html {
   font-family: "Roboto", Helvetica, Arial, sans-serif;
- /* line-height: 1.15;*/
- /* overflow-x: hidden;*/
- /* zoom: .8;
-  -moz-transform: scale(.5);
-  -webkit-transform: scale(.8);
-  transform: scale(.8);
- -ms-text-size-adjust: 100%;
- -webkit-text-size-adjust: 100%;*/
+  line-height: 1.15;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%
 }
 
 body {
@@ -22,17 +17,14 @@ h1 {
   font-size: 2em;
   margin: .67em 0
 }
-/* media queries */
-@media screen and (max-width: 991px){
-   
- html{
-  font-size: 5%;
-}
- h1{
-  padding: 2rem;
-}
-}
 
+/*media query*/
+@media screen and (max-width:991px)
+{
+  body{
+  padding: 2rem;
+  }
+}
 figcaption, figure, main {
   display: block
 }
@@ -449,7 +441,6 @@ img {
 }
 
 .page-header__topline .basket {
-  position: relative;
   float: right;
   width: 95px;
 }
@@ -497,7 +488,7 @@ img {
   animation: a .2s
 }
 
-/*@media screen and (max-width:1500px){
+@media screen and (max-width:1500px){
 
 }
 
@@ -515,7 +506,9 @@ img {
 }
 @media screen and (max-width:1214px){
 
-    
+    .page-header__topline .basket{
+     width: 25%;
+    }
    .image-container .slidepic{
     width: 85%; 
    }
@@ -523,10 +516,12 @@ img {
 
 @media screen and (max-width: 1100px){
    
-    
+    .page-header__topline .basket{
+     width: 40%;
+    }
   /* .image-container{
    align-items: center;
-   }
+   }*/
    .image-container .slidepic{
     width: 75%; 
    }
@@ -536,7 +531,6 @@ img {
    }
    
 }
-
 @media screen and (max-width: 1000px){
    
    .image-container{
@@ -583,13 +577,14 @@ img {
      width: 86%;
     }
 }
-   
 @media screen and (max-width: 720px){
    
    .image-container{
    align-items: center;
    }
-   
+   .page-header__topline .basket{
+    width: 108%;
+   }
    .image-container .slidepic{
     width: 45%; 
    }
@@ -606,9 +601,13 @@ img {
    .image-container .slidepic{
     width: 45%;
    }
- } */
-
-  
+ } 
+@media screen and (max-width: 400px){
+   
+   .image-container .slidepic{
+    width: 100px; 
+   }
+}
 .page-header__bottomline .main-nav .categories__link {
   position: relative;
   display: block;
@@ -722,7 +721,7 @@ img {
 }
 
 .page-footer .footer-nav__col {
- /* float: left;*/
+  float: left;
   width: 160px
 }
 

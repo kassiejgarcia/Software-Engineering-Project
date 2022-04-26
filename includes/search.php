@@ -67,7 +67,7 @@ if (isset($_GET['search']) && $_GET['search'] != '') {
 		echo '<table class="search">';
 		#display search results to user
 		while($row = mysqli_fetch_assoc($query)) {
-			echo '<h1><u><a href="'.$row['url'].'">'.$row['title'].'</h1></u></a>';
+			echo '<h1 class="sh1"><u><a href="'.$row['url'].'">'.$row['title'].'</h1></u></a>';
 		}
 		echo '</table>';
 	}

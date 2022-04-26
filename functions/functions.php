@@ -157,11 +157,15 @@ echo "
  <div class='col-lg-3 col-md-6'>
 <div class='product' >
 
+<div class='move-image'>
+
 <a href='details.php?pro_id=$pro_url' >
 
 <img src='admin_area/product_images/$pro_img1' class='product-display' >
 
 </a>
+
+</div>
 
 <div class='text' >
 
