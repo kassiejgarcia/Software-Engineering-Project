@@ -28,4 +28,4 @@ Visit: http://ec2-54-172-16-142.compute-1.amazonaws.com/checkout.php
 Login With:
 Username: hamtaro
 Password: UTSA2022se!
-OR register a new account at http://ec2-54-172-16-142.compute-1.amazonaws.com/customer_register.php
+OR: register a new account at http://ec2-54-172-16-142.compute-1.amazonaws.com/customer_register.php
